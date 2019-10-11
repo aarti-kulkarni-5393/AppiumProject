@@ -29,6 +29,7 @@ public class Login extends TestBase{
 	  * //this.driver=driver;
 	  */
 	 driver = DriverManagement.getInstance("real");
+	 wait = new Waits();
 		
 }
 	
@@ -39,6 +40,7 @@ public class Login extends TestBase{
 		/*
 		 * first check if user is on landing page if not then redirect it landing page by logging out
 		 */
+		
 		wait.waitForGivenTime(60);
 		if(driver.findElement(By.xpath("//android.widget.TextView[@text='LOGIN']")).isDisplayed())
 		{
@@ -96,7 +98,7 @@ public class Login extends TestBase{
 		 */
 		if(status.equalsIgnoreCase("be succesfully"))
 		{
-			if(driver.findElementByClassName("android.widget.ImageButton").isDisplayed())
+			if(driver.findElement(By.xpath("//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp:id/lable_my_hanger']")).isDisplayed())
 			{
 				System.out.println("Yes succesfully logged in");
 			}

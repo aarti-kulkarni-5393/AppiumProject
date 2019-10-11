@@ -11,7 +11,7 @@ import io.appium.java_client.android.AndroidElement;
 public class DriverManagement extends TestBase {
 	
 	public static AndroidDriver<AndroidElement> driver = null;
-	private DriverManagement() {
+	private DriverManagement() throws MalformedURLException {
 		// TODO Auto-generated constructor stub
 	}
 	

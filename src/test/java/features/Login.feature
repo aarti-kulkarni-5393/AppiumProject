@@ -2,7 +2,7 @@ Feature: Login to Cirrus Connected Mobile App
 
 
 
-
+@MyHangar @Login
 Scenario Outline: User logged in to cirrus application with valid credentails
   Given User is on landing page
   Then User navigate to sign in page
@@ -12,13 +12,8 @@ Scenario Outline: User logged in to cirrus application with valid credentails
   
   Examples:
   | Username                                  |     Password       |
-  | conaircraftnhltestuser1@gmail.com         |     cirrus001      |
-
-  
-Scenario: User logged out the application
-Given User is on dahsboard
-Then User log out from the application
-
+  | conaircraftnhltestuser1@gmail.com         |     cirrus006      |
+ 
 
 
   
