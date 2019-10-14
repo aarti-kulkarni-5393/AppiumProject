@@ -78,9 +78,9 @@ public class Dashboard extends TestBase{
     }
 
     @Then("^User should see aircraft tale number (.+) and model number (.+)$")
-    public void verifyTaleNumberAndModelNumber(String aircraftmodelnumber, String aircrafttalenumber) throws Throwable {
+    public void verifyTaleNumberAndModelNumber(String aircraftmodelnumber, String aircrafttailenumber) throws Throwable {
         
-    	//to verify model number
+    	//to verify tail number
     	List <AndroidElement> airctaft_List = driver.findElements(By.xpath("//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp:id/aircraft_name']"));
     	System.out.println(airctaft_List.size());
     	for (AndroidElement aircraft : airctaft_List) {
@@ -96,16 +96,16 @@ public class Dashboard extends TestBase{
 		}
     	
     	//to verify tale number
-    	verifyUserAccessToAircraft(aircrafttalenumber);
+    	verifyUserAccessToAircraft(aircrafttailenumber);
     	
     	
     }
     
     @Then("^User should have access to (.+) aircraft$")
     public void verifyUserAccessToAircraft(String aircrafttalenumber) throws Throwable {
-    	
-        System.out.println("here checking");
-    	List <AndroidElement> airctaft_List = driver.findElements(By.xpath("//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp:id/aircraft_key']"));
+    	        
+//        scrollTo("com.cirrusaircraft.connectedapp:id/aircraft_list", "SR22T");
+    	List <AndroidElement> airctaft_List = driver.findElements(By.xpath("//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp:id/hanger_holder']"));
     	System.out.println(airctaft_List.size());
     	for (AndroidElement aircraft : airctaft_List) {
 			

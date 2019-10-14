@@ -2,7 +2,7 @@ Feature: User invites additional users
 
 
 
-@Login @inviteUser 
+@inviteUser 
 Scenario Outline: User logged in to cirrus application with valid credentails
   Given User is on landing page
   Then User navigate to sign in page
@@ -14,7 +14,7 @@ Scenario Outline: User logged in to cirrus application with valid credentails
   | Username                                  |     Password       |
   | conaircraftnhltestuser1@gmail.com         |     cirrus005      |
   
- @Login @inviteUser 
+ @inviteUser 
  Scenario Outline:User invites additional users to aircraft
  Given User is on My Hangar screen
  Then User navigate to invite user screen

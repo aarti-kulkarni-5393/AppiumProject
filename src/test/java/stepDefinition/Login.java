@@ -29,8 +29,7 @@ public class Login extends TestBase{
 	  * //this.driver=driver;
 	  */
 	 driver = DriverManagement.getInstance("real");
-	 wait = new Waits();
-		
+     wait = new Waits();
 }
 	
 	

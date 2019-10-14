@@ -3,23 +3,22 @@ Feature: Verify Aircraft details on My Hanagr page
 Background:logged in application
 
 
-@MyHangar 
+@Login,@MyHangar
 Scenario Outline: user see all assigned aircraft on my hangar screen
 Given User is on My Hangar screen
-Then User should have access to <Aircraft Model Number> aircraft
+Then User should have access to <Aircraft tail Number> aircraft
 Examples:
-| Aircraft Model Number |
-|   N837EF              |
+| Aircraft tail Number |
+|   N527FC             |
 
 
-@MyHangar @Login
+
 Scenario Outline: User see aircraft details on My Hangar screen
 Given User is on My Hangar screen
 When User has access to <Aircraft tale Number> aircraft
-
-Then User should see aircraft tale number <Aircraft Model Number> and model number <Aircraft tale Number>
+Then User should see aircraft tale number <Aircraft Model Number> and model number <Aircraft tail Number>
  Examples:
- | Aircraft Model Number | Aircraft tale Number | 
+ | Aircraft Model Number | Aircraft tail Number | 
  | SR22                  | N336HT               |
  | SR20                  | N837EF               |
  

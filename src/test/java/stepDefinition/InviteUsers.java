@@ -62,6 +62,7 @@ public class InviteUsers {
 					 {
 						 System.out.println(aircraft.getText());
 						 aircraft.click();
+						 break;
 					 }
 					
 				}

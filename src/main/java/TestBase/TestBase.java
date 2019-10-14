@@ -5,6 +5,7 @@ import java.net.URL;
 
 import org.openqa.selenium.remote.DesiredCapabilities;
 
+import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
@@ -56,9 +57,18 @@ public class TestBase {
 
 	public void scrollTo(String parent,String child)
 	{
-		MobileElement radioGroup = driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()"
-                + ".resourceId("+parent+")).scrollIntoView("
-                + "new UiSelector().text("+child+"));");
+		// scroll to given element
+		System.out.println("scrolling");
+		driver
+        .findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()"
+        + ".resourceId(\"com.cirrusaircraft.connectedapp:id/hanger_holder\")).scrollIntoView("
+        + "new UiSelector().text(\"N527FC\"));");
+
+//		driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()"
+//        + ".resourceId("+parent+")).scrollIntoView("
+//        + "new UiSelector().text("+child+"));");
+//		System.out.println("scrolling");
+
         
 	}
 	
