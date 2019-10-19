@@ -6,6 +6,7 @@ Background:logged in application
 @Login,@MyHangar
 Scenario Outline: user see all assigned aircraft on my hangar screen
 Given User is on My Hangar screen
+When User has access to <Aircraft tail Number> aircraft
 Then User should have access to <Aircraft tail Number> aircraft
 Examples:
 | Aircraft tail Number |

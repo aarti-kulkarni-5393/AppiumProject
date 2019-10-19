@@ -95,6 +95,19 @@ public class Login extends TestBase{
 		/*
 		 * VErify it is logged in
 		 */
+		if(driver.findElement(By.xpath("//android.view.View[@text=\"TERMS AND CONDITIONS\"]")).isDisplayed())
+		{
+			/*
+			 * if accept terms are coming accept and go ahead
+			 */
+			driver.findElement(By.xpath("//android.widget.Button[@text=\"Accept\"]")).click();
+			wait.waitForGivenTime(30);
+			if(driver.findElement(By.xpath("//android.view.View[@text='Allow Access?']")).isDisplayed())
+			{
+				driver.findElement(By.xpath("//android.widget.Button[@text='Allow']")).click();
+			}
+			
+		}
 		if(status.equalsIgnoreCase("be succesfully"))
 		{
 			if(driver.findElement(By.xpath("//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp:id/lable_my_hanger']")).isDisplayed())
@@ -126,6 +139,7 @@ public class Login extends TestBase{
     @Given("^User is on sign in page$")
     public void verifyUserIsOnLoginPage()
     {
+    	wait.waitForGivenTime(30);
 		if(!driver.findElement(By.xpath("//android.widget.EditText[@resource-id='loginPage:loginForm:username']")).isDisplayed())
 		{
 			System.out.println("No user is not on sign in page");

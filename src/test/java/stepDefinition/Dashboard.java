@@ -9,13 +9,17 @@ import java.util.concurrent.TimeUnit;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.interactions.touch.TouchActions;
+import org.openqa.selenium.remote.RemoteWebElement;
 
 import TestBase.DriverManagement;
+import TestBase.Scrolling;
 import TestBase.TestBase;
 import TestBase.Waits;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 
@@ -23,11 +27,13 @@ public class Dashboard extends TestBase{
 	
 	private AndroidDriver<AndroidElement> driver;
 	private Waits wait;
+	private Scrolling scroll;
 	
 	public Dashboard() throws MalformedURLException {
 		// TODO Auto-generated constructor stub
 		driver = DriverManagement.getInstance("real");
 		wait = new Waits();
+		scroll = new Scrolling();
 	}
 	
 	
@@ -68,14 +74,38 @@ public class Dashboard extends TestBase{
 	@When("^User has access to (.+) aircraft$")
     public void checkAccessToAircraft(String aircraftmodelnumber) throws Throwable {
 	
-		/*
-		 * scroll to given aircraft model
-		 */
-		System.out.println("scrolling to specific element");
-		scrollTo("com.cirrusaircraft.connectedapp:id/aircraft_list", aircraftmodelnumber);
-		
-        
-    }
+     //AndroidElement element1 =  driver.findElementByAndroidUIAutomator("new UiSelector().className(\"android.view.ViewGroup\");");
+     //AndroidElement element =  driver.findElementByAndroidUIAutomator("new UiSelector().text(\"N336HT\");");
+     //2
+     int size_aircrafts = driver.findElements(By.xpath("//android.view.ViewGroup[@resource-id='com.cirrusaircraft.connectedapp:id/hanger_holder']")).size();
+     System.out.println(size_aircrafts);
+     
+     while(size_aircrafts!=0)
+     {
+    	 int i=1;
+    	 AndroidElement Aircraft = driver.findElement(By.xpath("(//android.view.ViewGroup)["+i+"]"));
+    	 AndroidElement aircraftName = (AndroidElement) Aircraft.findElement(By.xpath("//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp:id/aircraft_key']"));
+    	 System.out.println(aircraftName.getText());
+    	 if(!aircraftName.getText().equalsIgnoreCase(aircraftmodelnumber))
+    	 {
+           //add scroll
+    	   
+    		
+    	 }
+    	 
+    	 i++;
+    	 size_aircrafts--;
+    	 
+     }
+     
+     
+   
+	
+	
+	
+	
+	
+	}
 
     @Then("^User should see aircraft tale number (.+) and model number (.+)$")
     public void verifyTaleNumberAndModelNumber(String aircraftmodelnumber, String aircrafttailenumber) throws Throwable {
@@ -104,7 +134,10 @@ public class Dashboard extends TestBase{
     @Then("^User should have access to (.+) aircraft$")
     public void verifyUserAccessToAircraft(String aircrafttalenumber) throws Throwable {
     	        
-//        scrollTo("com.cirrusaircraft.connectedapp:id/aircraft_list", "SR22T");
+        //scrollTo("com.cirrusaircraft.connectedapp:id/aircraft_list", "SR22T");
+    	//scroll.scrollWithGetChild();
+    	//AndroidElement element = driver.findElement(By.xpath("//android.widget.TextView[@text=\"N336HT\"]"));
+    	//scroll.scrollByJavascript(element);
     	List <AndroidElement> airctaft_List = driver.findElements(By.xpath("//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp:id/hanger_holder']"));
     	System.out.println(airctaft_List.size());
     	for (AndroidElement aircraft : airctaft_List) {

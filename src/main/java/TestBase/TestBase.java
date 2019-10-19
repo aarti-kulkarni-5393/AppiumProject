@@ -1,7 +1,11 @@
 package TestBase;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Properties;
 
 import org.openqa.selenium.remote.DesiredCapabilities;
 
@@ -38,7 +42,7 @@ public class TestBase {
 		caps.setCapability(MobileCapabilityType.DEVICE_NAME, "Android Device");
 	}
 	caps.setCapability(MobileCapabilityType.APP, "C:\\Users\\aarti.kulkarni\\eclipse-workspace\\Cirrus\\src\\main\\java\\Resources\\UAT-0.4.0.apk");
-	
+	//caps.setCapability(MobileCapabilityType.BROWSER_NAME, "Chrome");
 	//return new AndroidDriver<AndroidElement>(new URL("http://127.0.0.1:4723/wd/hub"),caps);
 	 return caps;
 	
@@ -54,22 +58,22 @@ public class TestBase {
 //	}
 	
 	
-
-	public void scrollTo(String parent,String child)
-	{
-		// scroll to given element
-		System.out.println("scrolling");
-		driver
-        .findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()"
-        + ".resourceId(\"com.cirrusaircraft.connectedapp:id/hanger_holder\")).scrollIntoView("
-        + "new UiSelector().text(\"N527FC\"));");
-
-//		driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()"
-//        + ".resourceId("+parent+")).scrollIntoView("
-//        + "new UiSelector().text("+child+"));");
-//		System.out.println("scrolling");
-
-        
+static {
+		
+		/*
+		 * Temp code to read property file
+		 */
+		Properties PropertyReader = new Properties();
+		File file = new File("C:\\Users\\aarti.kulkarni\\eclipse-workspace\\Cirrus\\src\\main\\java\\Resources\\email.properties");
+	try {
+			FileInputStream stream = new FileInputStream(file);
+			PropertyReader.load(stream);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
 	}
 	
    
