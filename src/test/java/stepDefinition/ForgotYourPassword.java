@@ -90,7 +90,7 @@ public class ForgotYourPassword {
 		 //https://conarftqa-cirrusaircraftvpo.cs4.force.com/conaircraft/_nc_external/identity/ui/login/ForgotPasswordInterstitial?r=00DP00000003O41005P0000002JFwOeyJlbmMiOiJBMjU2R0NNIiwiYXVkIjoiMDBEUDAwMDAwMDAzTzQxIiwia2lkIjoie1widFwiOlwiMDBEUDAwMDAwMDAzTzQxXCIsXCJ2XCI6XCIwMkcwQjAwMDAwMDRyWGtcIixcImFcIjpcImZvcmdvdHBhc3N3b3JkdXNlcnRyYW5zaWVudGtleWVuY3J5cHRcIixcInVcIjpcIjAwNVAwMDAwMDAySkZ3T1wifSIsImNyaXQiOlsiaWF0Il0sImlhdCI6MTU2Nzc2Nzc2Mzk4MSwiZXhwIjowfQ%3D%3D..lwKAHJPHJZQgkZ1J.oTSdmG5Yr50wFF1UPzuEfhlxc_i-0u6z__A_yZeoQ9062-YDbV2pxyThqAATXe7q7aDYFkpnI-2FFKhJEA%3D%3D.i0g5Qu2tMHuryiBcZCdjmg%3D%3D&display=page&fpot=fd364fc2-df28-437e-b608-312293be46026799a7ae-b14b-4565-835f-8bb0522e37ad
           List<String> links  = utl.printAllLinksFromEmail("Sandbox: Your new Connected Aircraft password", "Click Here", 2, true);
           //driver.navigate().to(linktext);	
-          System.out.println(links.size());
+          //System.out.println(links.size());
 		 for (String linktext : links) {
 			//System.out.println(linktext);
 			 /*
@@ -100,10 +100,15 @@ public class ForgotYourPassword {
 			 cap.setCapability(MobileCapabilityType.BROWSER_NAME, "Chrome");
 			 cap.setCapability(MobileCapabilityType.DEVICE_NAME, "Android Device");
 			 AndroidDriver<AndroidElement> driver1 =  new AndroidDriver<AndroidElement>(new URL("http://127.0.0.1:4723/wd/hub"),cap);
-			driver1.get(linktext);
-			wait.waitForGivenTime(30);
-			driver1.findElement(By.xpath(".//input[@title='Reset Password']")).click();
-			driver1.close();
+			 driver1.manage().deleteAllCookies();
+			 driver1.navigate().to(linktext);
+			 //driver1.get(linktext);
+			 wait.waitForGivenTime(60);
+			 driver1.findElement(By.xpath(".//input[@title='Reset Password']")).click();
+			 wait.waitForGivenTime(60);
+//			 if(driver1.findElement(By.xpath(".//h2[contains(text(),\"Change Your Password\")]")).isDisplayed())
+//			 System.out.println("true");
+			  //driver1.close();
 		}
 		 
 	 }

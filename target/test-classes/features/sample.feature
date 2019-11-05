@@ -4,7 +4,7 @@ Feature: User invites additional users
 
 @inviteUser 
 Scenario Outline: User logged in to cirrus application with valid credentails
-  Given User is on landing page
+  Given User is on landing page 
   Then User navigate to sign in page
   When User enter username <Username> and password <Password>
   And User submit the details
@@ -16,28 +16,10 @@ Scenario Outline: User logged in to cirrus application with valid credentails
   
  @inviteUser 
  Scenario Outline:User invites additional users to aircraft
- Given User is on My Hangar screen
+ Given User is on My Hangar screen new
  Then User navigate to invite user screen
  When User submit details of additional user firstname <firstName> ,lastname <LastName>,email<Email>,airctaft<Airctaft>
  
  Examples:
  | firstName | LastName | Email          | Airctaft  |
  | test      | test     | xyz1@gmail.com | SR22-4801 |
- 
- 
- 
- @inviteUser 
- Scenario Outline:User invites additional users to aircraft
- Given User is on My Hangar screen
- Then User navigate to invite user screen
- When User submit details of additional user firstname <firstName> ,lastname <LastName>,email<Email>,airctaft<Airctaft>
- 
- Examples:
- | firstName | LastName | Email          | Airctaft  |
- | test      | test     | xyz1@gmail.com | SR22-4801 |
- 
- 
- 
- 
- 
- 

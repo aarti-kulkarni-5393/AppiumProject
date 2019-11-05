@@ -95,6 +95,7 @@ public class Login extends TestBase{
 		/*
 		 * VErify it is logged in
 		 */
+		try {
 		if(driver.findElement(By.xpath("//android.view.View[@text=\"TERMS AND CONDITIONS\"]")).isDisplayed())
 		{
 			/*
@@ -107,18 +108,19 @@ public class Login extends TestBase{
 				driver.findElement(By.xpath("//android.widget.Button[@text='Allow']")).click();
 			}
 			
-		}
-		if(status.equalsIgnoreCase("be succesfully"))
-		{
-			if(driver.findElement(By.xpath("//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp:id/lable_my_hanger']")).isDisplayed())
+		}}catch (Exception e) {
+			System.out.println("this is not first time user");
+			if(status.equalsIgnoreCase("be succesfully"))
 			{
-				System.out.println("Yes succesfully logged in");
+				if(driver.findElement(By.xpath("//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp:id/lable_my_hanger']")).isDisplayed())
+				{
+					System.out.println("Yes succesfully logged in");
+				}
+			}else if(status.equalsIgnoreCase("not be succesfully"))
+			{
+				verifyUserIsOnLoginPage();
 			}
-		}else if(status.equalsIgnoreCase("not be succesfully"))
-		{
-			verifyUserIsOnLoginPage();
 		}
-		
 		
 	}
 
@@ -151,6 +153,7 @@ public class Login extends TestBase{
 		}
     	
     }
+    
     
 	
 }

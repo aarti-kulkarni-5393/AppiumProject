@@ -12,7 +12,7 @@ Scenario Outline: User logged in to cirrus application with valid credentails
   
   Examples:
   | Username                                  |     Password       |
-  | nihilentuat@gmail.com                     |     cirrus007      |
+  | nihilentallaircraft1@gmail.com            |     cirrus005      |
  
  
 

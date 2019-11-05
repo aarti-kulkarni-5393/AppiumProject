@@ -41,9 +41,7 @@ public class TestBase {
 		//For Real device just change device name
 		caps.setCapability(MobileCapabilityType.DEVICE_NAME, "Android Device");
 	}
-	caps.setCapability(MobileCapabilityType.APP, "C:\\Users\\aarti.kulkarni\\eclipse-workspace\\Cirrus\\src\\main\\java\\Resources\\UAT-0.4.0.apk");
-	//caps.setCapability(MobileCapabilityType.BROWSER_NAME, "Chrome");
-	//return new AndroidDriver<AndroidElement>(new URL("http://127.0.0.1:4723/wd/hub"),caps);
+	 caps.setCapability(MobileCapabilityType.APP, "C:\\Users\\aarti.kulkarni\\eclipse-workspace\\Cirrus\\src\\main\\java\\Resources\\UAT-0.4.0.apk");
 	 return caps;
 	
 	}

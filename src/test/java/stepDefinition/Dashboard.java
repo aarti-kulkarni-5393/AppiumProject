@@ -76,11 +76,10 @@ public class Dashboard extends TestBase{
 	
      //AndroidElement element1 =  driver.findElementByAndroidUIAutomator("new UiSelector().className(\"android.view.ViewGroup\");");
      //AndroidElement element =  driver.findElementByAndroidUIAutomator("new UiSelector().text(\"N336HT\");");
-     //2
      int size_aircrafts = driver.findElements(By.xpath("//android.view.ViewGroup[@resource-id='com.cirrusaircraft.connectedapp:id/hanger_holder']")).size();
      System.out.println(size_aircrafts);
      
-     while(size_aircrafts!=0)
+     while(size_aircrafts!=1)
      {
     	 int i=1;
     	 AndroidElement Aircraft = driver.findElement(By.xpath("(//android.view.ViewGroup)["+i+"]"));
@@ -89,24 +88,19 @@ public class Dashboard extends TestBase{
     	 if(!aircraftName.getText().equalsIgnoreCase(aircraftmodelnumber))
     	 {
            //add scroll
-    	   
+    	   Scrolling scroll = new Scrolling();
+    	   scroll.scrollToElement("N336HT", true);
     		
+    	 }else {
+    		 
     	 }
     	 
     	 i++;
     	 size_aircrafts--;
     	 
      }
-     
-     
-   
-	
-	
-	
-	
 	
 	}
-
     @Then("^User should see aircraft tale number (.+) and model number (.+)$")
     public void verifyTaleNumberAndModelNumber(String aircraftmodelnumber, String aircrafttailenumber) throws Throwable {
         

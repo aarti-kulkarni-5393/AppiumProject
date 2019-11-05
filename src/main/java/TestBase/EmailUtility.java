@@ -155,6 +155,20 @@ public EmailUtility(String username, String password,EmailFolder emailFolder) th
 	    }
 	    return allMatches;
 	  }
+ // to click through button
+ public List<String> getUrlsWithButtonFromMessage(Message message, String linkText) throws Exception{
+	    String html = getMessageContent(message);
+	    //System.out.println(html);
+	    List<String> allMatches = new ArrayList<String>();
+	    Matcher matcher = Pattern.compile("(?i)<a([^>]+)>(.+?)</a>").matcher(html);
+	    while (matcher.find()) {
+	      String aTag = matcher.group(1);
+	      System.out.println(aTag);
+	      allMatches.add(aTag.substring(aTag.indexOf("https"), aTag.indexOf("conaircraftforgotpasswordredirect")));
+	      
+	    }
+	    return allMatches;
+	  }
 	 
 public String getAuthorizationCode() throws Exception {
 	    Message email = getMessagesBySubject("Authorization Code", true, 5)[0];
@@ -173,24 +187,27 @@ public String getAuthorizationCode() throws Exception {
 
 public List<String> printAllLinksFromEmail(String subject,String linktext,int max,boolean unreadonly) throws Exception
 {
-   
-//	Message msg = getMessagesBySubject(subject, unreadonly, max)[0];
-//  List<String> links =getUrlsFromMessage(msg, linktext);
-	//current date 
-	Date current_date =java.util.Calendar.getInstance().getTime();
-	Message msgs[] = getMessagesBySubject(subject, unreadonly, max);
-	System.out.println(msgs.length);
 	List<String> link = new ArrayList<String>();
-	//List<String> links = new ArrayList<String>();
-	for (Message message : msgs) {
-		Date date = message.getReceivedDate();
-		System.out.println(date);
-	    link = getUrlsFromMessage(message, linktext);
-		
-	}
+	Message msg = getMessagesBySubject(subject, unreadonly, max)[0];
+	Date date = msg.getReceivedDate();
+ 	System.out.println(date);
+	link = getUrlsFromMessage(msg, linktext);
+	System.out.println(link);
+    return link;
 	
-   
-   return link;
+// List<String> links =getUrlsFromMessage(msg, linktext);
+	//current date 
+	//Date current_date =java.util.Calendar.getInstance().getTime();
+//	Message msgs[] = getMessagesBySubject(subject, unreadonly, max);	
+//	List<String> link = new ArrayList<String>();
+//	System.out.println(msgs.length);
+//	for (Message message : msgs) {
+//		Date date = message.getReceivedDate();
+//		System.out.println(date);
+//	    link = getUrlsFromMessage(message, linktext);
+//		System.out.println(link.size());
+//	}
+//	
 		
 }
 }

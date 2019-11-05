@@ -3,9 +3,11 @@ package TestBase;
 import java.net.MalformedURLException;
 import java.util.HashMap;
 
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.remote.RemoteWebElement;
 
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
@@ -79,7 +81,26 @@ MobileElement el = (MobileElement) driver
     public void scroll()
     {
     	
+    	    Dimension dimensions = driver.manage().window().getSize();
+    	    int Startpoint = (int) (dimensions.getHeight() * 0.5);
+    	    int scrollEnd = (int) (dimensions.getHeight() * 0.5);
+    	    //driver.swipe(200, Startpoint,200,scrollEnd,2000); 
     	
+    	
+    }
+    public void scrollToElement(String elementName, boolean scrollDown){
+    	String listID = ((RemoteWebElement) driver.findElementByAndroidUIAutomator("new UiSelector().className(\"android.widget.ListView\")")).getId();
+    	String direction;
+    	if (scrollDown) {
+    		direction = "down";
+    	} else {
+    		direction = "up";
+    	}
+    	HashMap<String, String> scrollObject = new HashMap<String, String>();
+    	scrollObject.put("direction", direction);
+    	scrollObject.put("element", listID);
+    	scrollObject.put("text", elementName);
+    	driver.executeScript("mobile: scrollTo", scrollObject);
     }
 
 }
