@@ -1,6 +1,8 @@
+TestBase\EmailUtility.class
+TestBase\TestBase.class
+TestBase\Scrolling.class
+TestBase\AppiumSetUp.class
+TestBase\EmailUtility$EmailFolder.class
 TestBase\DriverManagement.class
 TestBase\Waits.class
-TestBase\TestBase.class
-Base.class
-TestBase\Scrolling.class
-basic.class
+TestBase\PropertyReader.class

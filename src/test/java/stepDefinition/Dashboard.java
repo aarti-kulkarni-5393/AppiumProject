@@ -40,8 +40,10 @@ public class Dashboard extends TestBase{
 	@Given("^User is on My Hangar screen$")
 	public void verifyUserIsOnMyHangarScreen()
 	{
-		wait.waitForGivenTime(30);;
-		if(driver.findElement(By.xpath("//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp:id/lable_my_hanger']")).isDisplayed())
+		wait.waitForGivenTime(60);;
+		
+		//if(driver.findElement(By.xpath("//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp:id/label_my_hanger']")).isDisplayed())
+		if(driver.findElement(By.xpath("//android.widget.TextView[@text='MY HANGAR']")).isDisplayed())
 		{
 			System.out.println("user is logged in and now on my hangar screen");
 			
@@ -52,8 +54,10 @@ public class Dashboard extends TestBase{
 	public void logout()
 	{
 		wait.waitForGivenTime(30);
-		//click on bottom menu
-		driver.findElement(By.xpath("//android.widget.ImageView[@resource-id='com.cirrusaircraft.connectedapp:id/bottom_sheet_hamburger']")).click();
+		//click on bottom menu uat
+		//driver.findElement(By.xpath("//android.widget.ImageView[@resource-id='com.cirrusaircraft.connectedapp:id/bottom_sheet_hamburger']")).click();
+		//QA
+		driver.findElement(By.xpath("//android.widget.ImageView[@resource-id='com.cirrusaircraft.connectedapp.qa:id/bottom_sheet_hamburger']")).click();
 		//click on logout
 		driver.findElement(By.xpath("//android.widget.CheckedTextView[@text=\"Log Out\"]")).click();
 		wait.waitForGivenTime(30);
@@ -101,6 +105,8 @@ public class Dashboard extends TestBase{
      }
 	
 	}
+	
+	
     @Then("^User should see aircraft tale number (.+) and model number (.+)$")
     public void verifyTaleNumberAndModelNumber(String aircraftmodelnumber, String aircrafttailenumber) throws Throwable {
         
@@ -124,6 +130,19 @@ public class Dashboard extends TestBase{
     	
     	
     }
+    @Then("^User Should see (.+) with its (.+)$")
+    public void user_should_see_with_its(String welcome, String username) throws Throwable {
+       
+    	AndroidElement WelcomeText = driver.findElement(By.xpath("//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp:id/welcome_user']"));
+    	if(WelcomeText.getText().equalsIgnoreCase(welcome))
+		{
+			System.out.println(WelcomeText.getText());
+			Assert.assertTrue(true);
+		}else {
+			
+			Assert.assertTrue(false);
+		}	
+    }
     
     @Then("^User should have access to (.+) aircraft$")
     public void verifyUserAccessToAircraft(String aircrafttalenumber) throws Throwable {
@@ -146,6 +165,7 @@ public class Dashboard extends TestBase{
 		}
     	 	 	 
          
+    	
     }
 	
 	

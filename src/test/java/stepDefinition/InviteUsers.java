@@ -4,11 +4,13 @@ import java.net.MalformedURLException;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 import TestBase.DriverManagement;
 import TestBase.Waits;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 
@@ -30,7 +32,9 @@ public class InviteUsers {
 	{
 		wait.waitForGivenTime(30);
 		// click on bottom menu
-		driver.findElement(By.xpath("//android.widget.ImageView[@resource-id='com.cirrusaircraft.connectedapp:id/bottom_sheet_hamburger']")).click();
+		//driver.findElement(By.xpath("//android.widget.ImageView[@resource-id='com.cirrusaircraft.connectedapp:id/bottom_sheet_hamburger']")).click();
+		//QA
+	    driver.findElement(By.xpath("//android.widget.ImageView[@resource-id='com.cirrusaircraft.connectedapp.qa:id/bottom_sheet_hamburger']")).click();
 		driver.findElement(By.xpath("//android.widget.CheckedTextView[@text=\"Manage Additional Users\"]")).click();
 		
 	}
@@ -42,6 +46,8 @@ public class InviteUsers {
 		 // check user is on invite screen
 		 if(driver.findElement(By.xpath("//android.widget.TextView[@text=\"Additional User Details\"]")).isDisplayed())
 		 {
+			 driver.findElement(By.xpath("//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.qa:id/add']")).click();
+			 wait.waitForGivenTime(30);
 			 driver.findElement(By.xpath("//android.widget.EditText[@resource-id='com.cirrusaircraft.connectedapp:id/et_first_name']")).sendKeys(firstname);
 			 driver.findElement(By.xpath("//android.widget.EditText[@resource-id='com.cirrusaircraft.connectedapp:id/et_last_name']")).sendKeys(lastname);
 			 driver.findElement(By.xpath("//android.widget.EditText[@resource-id='com.cirrusaircraft.connectedapp:id/et_email']")).sendKeys(email);
@@ -91,6 +97,14 @@ public class InviteUsers {
 	         driver.findElement(By.className("android.widget.ImageButton")).click();
 		 
 		 }
+	    }
+
+	 @Then("^user should get error message$")
+	    public void user_should_get_error_message() throws Throwable {
+		 
+		 WebElement btn = driver.findElement(By.xpath("//android.widget.EditText[@resource-id='com.cirrusaircraft.connectedapp:id/et_email']/[@clickable='true']"));
+		 btn.click();
+		 
 	    }
 
 }
