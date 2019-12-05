@@ -1,10 +1,7 @@
 package TestBase;
 
-import java.awt.Checkbox;
 import java.io.IOException;
 import java.net.ServerSocket;
-
-import javax.sql.rowset.serial.SerialArray;
 
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 
