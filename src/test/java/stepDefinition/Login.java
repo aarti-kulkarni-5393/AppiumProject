@@ -28,7 +28,7 @@ public class Login extends TestBase{
 	  * For Temporary purpose instantiniating driver in constructor
 	  * //this.driver=driver;
 	  */
-	 driver = DriverManagement.getInstance("real");
+	 driver = DriverManagement.getInstance("emulator");
      wait = new Waits();
 }
 	

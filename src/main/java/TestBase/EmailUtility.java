@@ -41,7 +41,7 @@ public EmailUtility(String username, String password,EmailFolder emailFolder) th
 	
 	Properties props = System.getProperties();
 	    try {
-	      props.load(new FileInputStream(new File("C:\\Users\\aarti.kulkarni\\eclipse-workspace\\Cirrus\\src\\main\\java\\Resources\\email.properties")));
+	      props.load(new FileInputStream(new File("C:\\sagar\\cirrusnew\\src\\main\\java\\Resources\\email.properties")));
 	    } catch(Exception e) {
 	      e.printStackTrace();
 	      System.exit(-1);

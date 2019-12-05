@@ -1,0 +1,6 @@
+stepDefinition\InviteUsers.class
+stepDefinition\Logout.class
+cucumberOptions\TestRunner.class
+stepDefinition\Dashboard.class
+stepDefinition\Login.class
+stepDefinition\ForgotYourPassword.class

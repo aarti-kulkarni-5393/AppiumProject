@@ -1,4 +1,15 @@
+<<<<<<< HEAD
 TestBase\TestBase.class
 TestBase\Scrolling.class
 TestBase\DriverManagement.class
 TestBase\Waits.class
+=======
+TestBase\EmailUtility.class
+TestBase\TestBase.class
+TestBase\Scrolling.class
+TestBase\AppiumSetUp.class
+TestBase\EmailUtility$EmailFolder.class
+TestBase\DriverManagement.class
+TestBase\Waits.class
+TestBase\PropertyReader.class
+>>>>>>> 9df22d16a7855b5bab93a1685425e2acc6f69471

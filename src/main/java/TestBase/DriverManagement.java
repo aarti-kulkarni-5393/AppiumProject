@@ -24,8 +24,8 @@ public class DriverManagement extends TestBase {
 		    * it will start appium
 		    */
 		   
-		   AppiumSetUp setup = new AppiumSetUp();
-		   setup.startAppiumServer(4723);
+		 //  AppiumSetUp setup = new AppiumSetUp();
+		 //  setup.startAppiumServer(4723);
 		   DesiredCapabilities caps =capabilties(device);
 		   driver = new AndroidDriver<AndroidElement>(new URL("http://127.0.0.1:4723/wd/hub"),caps);	   
 	   }

@@ -7,8 +7,8 @@ import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-		features = "C:\\Users\\aarti.kulkarni\\eclipse-workspace\\Cirrus\\src\\test\\java\\features",
-		glue="stepDefinition",tags= {"@Login"})
+		features = "C:\\sagar\\cirrusnew\\src\\test\\java\\features\\Regression",
+		glue="stepDefinition",tags= {"@ValidationFnameLastname"})
 
 public class TestRunner {
 	
