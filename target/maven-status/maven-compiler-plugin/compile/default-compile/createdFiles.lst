@@ -1,6 +1,4 @@
+TestBase\TestBase.class
+TestBase\Scrolling.class
 TestBase\DriverManagement.class
 TestBase\Waits.class
-TestBase\TestBase.class
-Base.class
-TestBase\Scrolling.class
-basic.class
