@@ -3,15 +3,22 @@ package TestBase;
 import java.net.MalformedURLException;
 import java.util.HashMap;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.interactions.touch.TouchActions;
 import org.openqa.selenium.remote.RemoteWebElement;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
+import io.appium.java_client.MobileDriver;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.PerformsActions;
+import io.appium.java_client.PerformsTouchActions;
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.touch.offset.PointOption;
 
 public class Scrolling {
 	
@@ -61,46 +68,54 @@ MobileElement el = (MobileElement) driver
 	 * Try to scroll using javascript
 	 * Its helpful in iOS than Android
 	 */
-    public void scrollByJavascript(AndroidElement element,AndroidElement element1)
-    { 
-    	//create javascript object
-    	JavascriptExecutor js = (JavascriptExecutor) driver;
-    	// create hashmap to handle scroll object
-    	HashMap<String, String> scrollObject = new HashMap<String, String>();
-    	scrollObject.put("direction", "down");
-    	scrollObject.put("elementId", ((RemoteWebElement)element).getId());
-    	scrollObject.put("elementToId", ((RemoteWebElement)element1).getId());
-    	// give scroll object and action as scroll
-    	js.executeScript("mobile:scrollBackTo", scrollObject);
-    }
+//    public void scrollByJavascript(AndroidElement element,AndroidElement element1)
+//    { 
+//    	//create javascript object
+//    	JavascriptExecutor js = (JavascriptExecutor) driver;
+//    	// create hashmap to handle scroll object
+//    	HashMap<String, String> scrollObject = new HashMap<String, String>();
+//    	scrollObject.put("direction", "down");
+//    	scrollObject.put("elementId", ((RemoteWebElement)element).getId());
+//    	scrollObject.put("elementToId", ((RemoteWebElement)element1).getId());
+//    	// give scroll object and action as scroll
+//    	js.executeScript("mobile:scrollBackTo", scrollObject);
+//    }
     
     /*
      * To work it, addinng static method for scroll which will scroll to specific amount
      */
     
-    public void scroll()
+    public void verticalScroll()
     {
     	
     	    Dimension dimensions = driver.manage().window().getSize();
-    	    int Startpoint = (int) (dimensions.getHeight() * 0.5);
-    	    int scrollEnd = (int) (dimensions.getHeight() * 0.5);
-    	    //driver.swipe(200, Startpoint,200,scrollEnd,2000); 
+    	    int height = dimensions.getHeight();
+    	    int width = dimensions.getWidth();
+    	    // x will be same 
+    	    int x = width/2;
+    	    int startY = (int)(height*0.80);
+    	    int endY = (int)(height*0.20);
+    	    
+    	    TouchAction action = new TouchAction(driver);
+    	    action.press(PointOption.point(x, startY)).waitAction().moveTo(PointOption.point(x, endY)).release().perform();
+    	    
+ 
     	
     	
     }
-    public void scrollToElement(String elementName, boolean scrollDown){
-    	String listID = ((RemoteWebElement) driver.findElementByAndroidUIAutomator("new UiSelector().className(\"android.widget.ListView\")")).getId();
-    	String direction;
-    	if (scrollDown) {
-    		direction = "down";
-    	} else {
-    		direction = "up";
-    	}
-    	HashMap<String, String> scrollObject = new HashMap<String, String>();
-    	scrollObject.put("direction", direction);
-    	scrollObject.put("element", listID);
-    	scrollObject.put("text", elementName);
-    	driver.executeScript("mobile: scrollTo", scrollObject);
-    }
+//    public void scrollToElement(String elementName, boolean scrollDown){
+//    	String listID = ((RemoteWebElement) driver.findElementByAndroidUIAutomator("new UiSelector().className(\"android.widget.ListView\")")).getId();
+//    	String direction;
+//    	if (scrollDown) {
+//    		direction = "down";
+//    	} else {
+//    		direction = "up";
+//    	}
+//    	HashMap<String, String> scrollObject = new HashMap<String, String>();
+//    	scrollObject.put("direction", direction);
+//    	scrollObject.put("element", listID);
+//    	scrollObject.put("text", elementName);
+//    	driver.executeScript("mobile: scrollTo", scrollObject);
+//    }
 
 }

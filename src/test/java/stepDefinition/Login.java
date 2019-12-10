@@ -28,7 +28,7 @@ public class Login extends TestBase{
 	  * For Temporary purpose instantiniating driver in constructor
 	  * //this.driver=driver;
 	  */
-	 driver = DriverManagement.getInstance("emulator");
+	 driver = DriverManagement.getInstance("real");
      wait = new Waits();
 }
 	
@@ -112,7 +112,7 @@ public class Login extends TestBase{
 			System.out.println("this is not first time user");
 			if(status.equalsIgnoreCase("be succesfully"))
 			{
-				if(driver.findElement(By.xpath("//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp:id/lable_my_hanger']")).isDisplayed())
+				if(driver.findElement(By.xpath("//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/label_my_hanger']")).isDisplayed())
 				{
 					System.out.println("Yes succesfully logged in");
 				}

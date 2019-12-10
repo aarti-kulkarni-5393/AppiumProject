@@ -3,11 +3,11 @@ Feature: Verify Aircraft details on My Hanagr page
 Background:logged in application
 
 
-
+@MyHangar
 Scenario Outline: user see all assigned aircraft on my hangar screen
 Given User is on My Hangar screen
 When User has access to <Aircraft tail Number> aircraft
-Then User should have access to <Aircraft tail Number> aircraft
+#Then User should have access to <Aircraft tail Number> aircraft
 Examples:
 | Aircraft tail Number |
 |   N527FC             |

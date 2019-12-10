@@ -47,7 +47,7 @@ public class TestBase {
 		//For Real device just change device name
 		caps.setCapability(MobileCapabilityType.DEVICE_NAME, "Android Device");
 	}
-	 caps.setCapability(MobileCapabilityType.APP, "C:\\sagar\\cirrusnew\\src\\main\\java\\Resources\\app-qa.apk");
+	 caps.setCapability(MobileCapabilityType.APP, "C:\\Users\\aarti.kulkarni\\eclipse-workspace\\Cirrus\\src\\main\\java\\Resources\\UAT-0.11.0.apk");
 	 return caps;
 	
 	}
@@ -68,7 +68,7 @@ static {
 		 * Temp code to read property file
 		 */
 		Properties PropertyReader = new Properties();
-		File file = new File("C:\\sagar\\cirrusnew\\src\\main\\java\\Resources\\email.properties");
+		File file = new File("C:\\Users\\aarti.kulkarni\\eclipse-workspace\\Cirrus\\src\\main\\java\\Resources\\email.properties");
 	try {
 			FileInputStream stream = new FileInputStream(file);
 			PropertyReader.load(stream);

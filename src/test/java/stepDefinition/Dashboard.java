@@ -7,6 +7,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import javax.swing.plaf.synth.SynthSplitPaneUI;
+
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.interactions.touch.TouchActions;
@@ -40,7 +42,7 @@ public class Dashboard extends TestBase{
 	@Given("^User is on My Hangar screen$")
 	public void verifyUserIsOnMyHangarScreen()
 	{
-		wait.waitForGivenTime(60);;
+		wait.waitForGivenTime(60);
 		
 		//if(driver.findElement(By.xpath("//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp:id/label_my_hanger']")).isDisplayed())
 		if(driver.findElement(By.xpath("//android.widget.TextView[@text='MY HANGAR']")).isDisplayed())
@@ -79,31 +81,23 @@ public class Dashboard extends TestBase{
     public void checkAccessToAircraft(String aircraftmodelnumber) throws Throwable {
 	
      //AndroidElement element1 =  driver.findElementByAndroidUIAutomator("new UiSelector().className(\"android.view.ViewGroup\");");
-     //AndroidElement element =  driver.findElementByAndroidUIAutomator("new UiSelector().text(\"N336HT\");");
-     int size_aircrafts = driver.findElements(By.xpath("//android.view.ViewGroup[@resource-id='com.cirrusaircraft.connectedapp:id/hanger_holder']")).size();
-     System.out.println(size_aircrafts);
+     //AndroidElement element =  driver.findElementByAndroidUIAutomator("new UiSelector().text(\"N336HT\");")
      
-     while(size_aircrafts!=1)
-     {
-    	 int i=1;
-    	 AndroidElement Aircraft = driver.findElement(By.xpath("(//android.view.ViewGroup)["+i+"]"));
-    	 AndroidElement aircraftName = (AndroidElement) Aircraft.findElement(By.xpath("//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp:id/aircraft_key']"));
-    	 System.out.println(aircraftName.getText());
-    	 if(!aircraftName.getText().equalsIgnoreCase(aircraftmodelnumber))
-    	 {
-           //add scroll
-    	   Scrolling scroll = new Scrolling();
-    	   scroll.scrollToElement("N336HT", true);
-    		
-    	 }else {
-    		 
-    	 }
-    	 
-    	 i++;
-    	 size_aircrafts--;
-    	 
-     }
-	
+     //int sizeBYList = driver.findElements(By.xpath("//androidx.recyclerview.widget.RecyclerView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/aircraft_list']")).size();
+     //System.out.println(sizeBYList);
+     
+	 String aircraftNAme;
+    //System.out.println(onscreenAircraft.getText());
+	do {
+		AndroidElement onscreenAircraft = driver.findElement(By.xpath("//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/aircraft_key']"));
+		aircraftNAme = onscreenAircraft.getText();
+		System.out.println(aircraftNAme);
+		   System.out.println("scrolling");
+		   Scrolling scroll = new Scrolling();
+		   scroll.verticalScroll();
+	} while (aircraftNAme.equalsIgnoreCase(aircraftmodelnumber));
+        
+    
 	}
 	
 	

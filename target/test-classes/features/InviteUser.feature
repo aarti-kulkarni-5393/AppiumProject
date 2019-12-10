@@ -14,7 +14,7 @@ Scenario Outline: User logged in to cirrus application with valid credentails
   | nihilentallaircraft1@gmail.com         |     cirrus005      |
   
  @inviteUser 
- Scenario Outline:User invites additional users to aircraft
+ Scenario Outline:User invites additional users to aircraftr
  Given User is on My Hangar screen
  Then User navigate to invite user screen
  When User submit details of additional user firstname <firstName> ,lastname <LastName>,email<Email>,airctaft<Airctaft>
