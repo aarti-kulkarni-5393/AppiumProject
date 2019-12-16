@@ -1,5 +1,6 @@
 package stepDefinition;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.List;
 
@@ -19,9 +20,9 @@ public class InviteUsers {
 	private AndroidDriver<AndroidElement> driver;
 	private Waits wait;
 	
-	public InviteUsers() throws MalformedURLException {
+	public InviteUsers() throws IOException {
 		// TODO Auto-generated constructor stub
-		driver = DriverManagement.getInstance("real");
+		driver = DriverManagement.getInstance("real","");
 		wait = new Waits();
 	}
 	

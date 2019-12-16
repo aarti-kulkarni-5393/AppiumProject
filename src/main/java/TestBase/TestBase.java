@@ -17,6 +17,9 @@ import io.appium.java_client.remote.MobileCapabilityType;
 
 public class TestBase {
 	
+	public static PropertyReader propertyObj;
+	public static PropertyReader objectRepository;
+	
 	private AndroidDriver<AndroidElement> driver;
 	/*
 	 * This is launching app in emulator or device
@@ -24,13 +27,18 @@ public class TestBase {
 	public TestBase() throws MalformedURLException {
 		// TODO Auto-generated constructor stub
 		try {
-	  driver = DriverManagement.getInstance("emulator");
+			propertyObj = new PropertyReader();
+			objectRepository = new PropertyReader();
+			handleProperties();
+			System.out.println(propertyObj.getProperty("PlatForm") + propertyObj.getProperty("App_Path"));
+	  driver = DriverManagement.getInstance(propertyObj.getProperty("PlatForm"),propertyObj.getProperty("App_Path"));
+		
 		}catch(Exception e) {
 			System.out.println("Exception occured  while creating driver:::::"+e.getMessage());
 			e.printStackTrace();
 		}
 	}
-	public static DesiredCapabilities capabilties(String device) throws MalformedURLException {
+	public static DesiredCapabilities capabilties(String device,String App_Path) throws MalformedURLException {
 	
 	/* This is another way to give generic path in framework
 	 * File srcsFile = new File("src");
@@ -47,7 +55,8 @@ public class TestBase {
 		//For Real device just change device name
 		caps.setCapability(MobileCapabilityType.DEVICE_NAME, "Android Device");
 	}
-	 caps.setCapability(MobileCapabilityType.APP, "C:\\Users\\aarti.kulkarni\\eclipse-workspace\\Cirrus\\src\\main\\java\\Resources\\UAT-0.11.0.apk");
+	
+	 caps.setCapability(MobileCapabilityType.APP, App_Path);
 	 return caps;
 	
 	}
@@ -61,25 +70,31 @@ public class TestBase {
 //		wait.waitForGivenTime(30);
 //	}
 	
-	
-static {
-		
-		/*
-		 * Temp code to read property file
-		 */
-		Properties PropertyReader = new Properties();
-		File file = new File("C:\\Users\\aarti.kulkarni\\eclipse-workspace\\Cirrus\\src\\main\\java\\Resources\\email.properties");
-	try {
-			FileInputStream stream = new FileInputStream(file);
-			PropertyReader.load(stream);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+
+	public static void handleProperties() throws IOException
+	{
+			
+			propertyObj.loadPropertyFile("C:\\Users\\aarti.kulkarni\\eclipse-workspace\\Cirrus\\src\\main\\java\\Resources\\Application.properties");
+			
+			if(propertyObj.getProperty("Enviornment").equalsIgnoreCase("QA"))
+			{
+				
+				objectRepository.loadPropertyFile(propertyObj.getProperty("QA_ObjectRepositoryPath"));
+				
+              
+						
+			}else {
+				
+				objectRepository.loadPropertyFile(propertyObj.getProperty("UAT_ObjectRepositoryPath"));
+				 
+			}
+			
 		}
-		
 		
 	}
 	
+
+	
    
 
-}
+

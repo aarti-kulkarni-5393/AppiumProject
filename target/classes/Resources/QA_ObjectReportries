@@ -1,0 +1,2 @@
+loginPage= //android.widget.TextView[@text='LOGIN']
+Username= //android.widget.EditText[@resource-id='loginPage:loginForm:username']

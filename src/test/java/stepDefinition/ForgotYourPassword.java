@@ -1,5 +1,6 @@
 package stepDefinition;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
@@ -29,10 +30,10 @@ public class ForgotYourPassword {
 	private Waits wait;
 	
 	
-	public ForgotYourPassword() throws MalformedURLException {
+	public ForgotYourPassword() throws IOException {
 		// TODO Auto-generated constructor stub
 		
-		driver = DriverManagement.getInstance("real");
+		driver = DriverManagement.getInstance("real","");
 		wait = new Waits();
 		
 	}
@@ -68,7 +69,7 @@ public class ForgotYourPassword {
 		}
 	
 	 @Then("^User should be displayed with confirmation screen$")
-	 public void verifyConfirmationScreen() throws MalformedURLException
+	 public void verifyConfirmationScreen() throws IOException
 	 {
 		wait.waitForGivenTime(30); 
 		//verify confirmation screen is coming

@@ -16,7 +16,7 @@ public class DriverManagement extends TestBase {
 	}
 	
 	
-   public static AndroidDriver<AndroidElement> getInstance(String device) throws MalformedURLException
+   public static AndroidDriver<AndroidElement> getInstance(String device,String App_Path) throws MalformedURLException
    {
 	   if(driver==null)
 	   {
@@ -26,7 +26,7 @@ public class DriverManagement extends TestBase {
 		   
 		 //  AppiumSetUp setup = new AppiumSetUp();
 		 //  setup.startAppiumServer(4723);
-		   DesiredCapabilities caps =capabilties(device);
+		   DesiredCapabilities caps =capabilties(device,App_Path);
 		   driver = new AndroidDriver<AndroidElement>(new URL("http://127.0.0.1:4723/wd/hub"),caps);
 		   //0.0.0.0:4723
 	   }

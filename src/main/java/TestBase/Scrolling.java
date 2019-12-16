@@ -1,5 +1,6 @@
 package TestBase;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.HashMap;
 
@@ -24,9 +25,11 @@ public class Scrolling {
 	
 	public AndroidDriver<AndroidElement> driver ;
 	private Waits wait;
-	public Scrolling() throws MalformedURLException {
+	private PropertyReader propertyObj;
+	public Scrolling() throws IOException {
 		// TODO Auto-generated constructor stub
-		driver = DriverManagement.getInstance("real");
+		propertyObj = new PropertyReader();
+		  driver = DriverManagement.getInstance(propertyObj.getProperty("PlatForm"),propertyObj.getProperty("App_Path"));
 		wait = new Waits();
 	}
 	
@@ -50,7 +53,17 @@ public class Scrolling {
         + ".resourceId(\"com.cirrusaircraft.connectedapp:id/hanger_holder\")).scrollIntoView("
         + "new UiSelector().text(\"LOCATION\"));");
 		
-	}/*
+	}
+	
+	public void scrollingTo()
+	{
+		driver
+        .findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()"
+        + ".resourceId(\"com.cirrusaircraft.connectedapp:id/hanger_holder\")).scrollIntoView("
+        + "new UiSelector().text(\"LOCATION\"));");
+		
+	}
+	/*
 	Handling with single scrollable element
 	*/
 	
@@ -101,6 +114,30 @@ MobileElement el = (MobileElement) driver
     	    
  
     	
+    	
+    }
+    
+    public void scrollUp()
+    {
+
+	    Dimension dimensions = driver.manage().window().getSize();
+	    int height = dimensions.getHeight();
+	    int width = dimensions.getWidth();
+	    // x will be same 
+	    int x = width/2;
+	    int startY = (int)(height*0.80);
+	    int endY = (int)(height*0.20);
+	    
+	    TouchAction action = new TouchAction(driver);
+	    action.press(PointOption.point(x, endY)).waitAction().moveTo(PointOption.point(x, startY)).release().perform();
+    	
+    }
+    
+    public void pull()
+    {
+  
+    	scrollingTo();
+    	scrollingTo();
     	
     }
 //    public void scrollToElement(String elementName, boolean scrollDown){

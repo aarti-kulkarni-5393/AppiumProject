@@ -1,12 +1,15 @@
 package stepDefinition;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.tools.ant.taskdefs.WaitFor;
 import org.openqa.selenium.By;
+import org.springframework.util.SystemPropertyUtils;
 
 import TestBase.DriverManagement;
+import TestBase.PropertyReader;
 import TestBase.TestBase;
 import TestBase.Waits;
 import cucumber.api.java.en.And;
@@ -21,14 +24,16 @@ public class Login extends TestBase{
 	private AndroidDriver<AndroidElement> driver;
 	private Waits wait;
 	
- public Login() throws MalformedURLException {
+	
+ public Login() throws IOException {
 	// TODO Auto-generated constructor stub
 	 //instantinaite driver
 	 /*
 	  * For Temporary purpose instantiniating driver in constructor
 	  * //this.driver=driver;
 	  */
-	 driver = DriverManagement.getInstance("real");
+	 
+	  driver = DriverManagement.getInstance(propertyObj.getProperty("PlatForm"),propertyObj.getProperty("App_Path"));
      wait = new Waits();
 }
 	
@@ -142,8 +147,11 @@ public class Login extends TestBase{
     public void verifyUserIsOnLoginPage()
     {
     	wait.waitForGivenTime(30);
-		if(!driver.findElement(By.xpath("//android.widget.EditText[@resource-id='loginPage:loginForm:username']")).isDisplayed())
+    	//driver.findElement(By.xpath("//android.widget.EditText[@resource-id='loginPage:loginForm:username']"))
+    	
+		if(!propertyObj.findMobileElement("xpath", objectRepository.getProperty("Username")).isDisplayed())
 		{
+		
 			System.out.println("No user is not on sign in page");
 			/*
 			 * if user is logged in then will logout

@@ -1,5 +1,6 @@
 package TestBase;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.concurrent.TimeUnit;
 
@@ -11,11 +12,13 @@ import io.appium.java_client.android.AndroidElement;
 public class Waits {
 
 	AndroidDriver<AndroidElement> driver;
+	private PropertyReader propertyObj;
 	
-	public Waits() throws MalformedURLException {
+	public Waits() throws IOException {
 		// TODO Auto-generated constructor stub
 		//It gets you instance of existing class
-		driver= DriverManagement.getInstance("real");
+		propertyObj = new PropertyReader();
+		  driver = DriverManagement.getInstance(propertyObj.getProperty("PlatForm"),propertyObj.getProperty("App_Path"));
 		
 	}
 	
