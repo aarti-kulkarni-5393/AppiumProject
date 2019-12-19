@@ -3,6 +3,7 @@ package TestBase;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Date;
@@ -21,7 +22,7 @@ import javax.mail.Session;
 import javax.mail.Store;
 import javax.mail.search.SubjectTerm;
 
-public class EmailUtility {
+public class EmailUtility extends TestBase {
 	
 	
  private Folder folder;
@@ -31,17 +32,19 @@ public class EmailUtility {
   * @param username Email username (e.g. janedoe@email.com)
   * @param password Email password
   * @param server Email server (e.g. smtp.email.com)
+ * @throws IOException 
   * @par
   */
  
-public EmailUtility(String username, String password,EmailFolder emailFolder) throws MessagingException {
+public EmailUtility(String username, String password,EmailFolder emailFolder) throws MessagingException, IOException {
 	/*
 	 * loading email properties    
 	 */
-	
+	//PropertyReader reader = new PropertyReader();
 	Properties props = System.getProperties();
 	    try {
-	      props.load(new FileInputStream(new File("C:\\Users\\aarti.kulkarni\\eclipse-workspace\\Cirrus\\src\\main\\java\\Resources\\email.properties")));
+	    	props.load(new FileInputStream(new File(propertyObj.getProperty("EmailProperties_Path"))));
+	    	
 	    } catch(Exception e) {
 	      e.printStackTrace();
 	      System.exit(-1);

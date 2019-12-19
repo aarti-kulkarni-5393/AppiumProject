@@ -21,7 +21,7 @@ import io.appium.java_client.android.AndroidElement;
 
 public class Login extends TestBase{
 	
-	private AndroidDriver<AndroidElement> driver;
+	//private AndroidDriver<AndroidElement> driver;
 	private Waits wait;
 	
 	
@@ -33,7 +33,7 @@ public class Login extends TestBase{
 	  * //this.driver=driver;
 	  */
 	 
-	  driver = DriverManagement.getInstance(propertyObj.getProperty("PlatForm"),propertyObj.getProperty("App_Path"));
+	 //driver = DriverManagement.getInstance(propertyObj.getProperty("PlatForm"),propertyObj.getProperty("App_Path"));
      wait = new Waits();
 }
 	
@@ -149,7 +149,7 @@ public class Login extends TestBase{
     	wait.waitForGivenTime(30);
     	//driver.findElement(By.xpath("//android.widget.EditText[@resource-id='loginPage:loginForm:username']"))
     	
-		if(!propertyObj.findMobileElement("xpath", objectRepository.getProperty("Username")).isDisplayed())
+		if(!findMobileElement("xpath", "Username").isDisplayed())
 		{
 		
 			System.out.println("No user is not on sign in page");
@@ -160,6 +160,16 @@ public class Login extends TestBase{
 			
 		}
     	
+    }
+    /*
+     * This will be used in background
+     */
+    @When("^User is already logged in to application$")
+    public void user_is_already_logged_in_to_application(String Username,String password) throws Throwable {
+    	verifyUserIsOnLoginPage();
+    	enterUserNameAndPassword(Username, password);
+    	userSubmitDetails();
+    	//verifyUSerLoggedIn(status);
     }
     
     

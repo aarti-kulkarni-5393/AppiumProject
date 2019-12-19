@@ -21,15 +21,14 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.touch.offset.PointOption;
 
-public class Scrolling {
+public class Scrolling extends TestBase {
 	
-	public AndroidDriver<AndroidElement> driver ;
+	//public AndroidDriver<AndroidElement> driver ;
 	private Waits wait;
-	private PropertyReader propertyObj;
 	public Scrolling() throws IOException {
 		// TODO Auto-generated constructor stub
-		propertyObj = new PropertyReader();
-		  driver = DriverManagement.getInstance(propertyObj.getProperty("PlatForm"),propertyObj.getProperty("App_Path"));
+		//driver = DriverManagement.getInstance(propertyObj.getProperty("PlatForm"),propertyObj.getProperty("App_Path"));
+		  //driver = DriverManagement.getInstance(propertyObj.getProperty("PlatForm"),propertyObj.getProperty("App_Path"));
 		wait = new Waits();
 	}
 	

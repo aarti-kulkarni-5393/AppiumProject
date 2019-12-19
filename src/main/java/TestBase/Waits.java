@@ -9,17 +9,16 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 
-public class Waits {
+public class Waits extends TestBase{
 
-	AndroidDriver<AndroidElement> driver;
-	private PropertyReader propertyObj;
+	//AndroidDriver<AndroidElement> driver;
 	
 	public Waits() throws IOException {
 		// TODO Auto-generated constructor stub
 		//It gets you instance of existing class
-		propertyObj = new PropertyReader();
-		  driver = DriverManagement.getInstance(propertyObj.getProperty("PlatForm"),propertyObj.getProperty("App_Path"));
 		
+		  //driver = DriverManagement.getInstance(propertyObj.getProperty("PlatForm"),propertyObj.getProperty("App_Path"));
+		//driver = DriverManagement.getInstance(propertyObj.getProperty("PlatForm"),propertyObj.getProperty("App_Path"));
 	}
 	
 	

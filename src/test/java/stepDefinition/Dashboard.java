@@ -12,6 +12,7 @@ import java.util.concurrent.TimeUnit;
 
 import javax.swing.plaf.synth.SynthSplitPaneUI;
 
+import org.apache.tools.ant.taskdefs.WaitFor;
 import org.junit.Assert;
 import org.junit.rules.Verifier;
 import org.openqa.selenium.By;
@@ -35,13 +36,12 @@ import net.bytebuddy.matcher.ModifierMatcher.Mode;
 
 public class Dashboard extends TestBase{
 	
-	private AndroidDriver<AndroidElement> driver;
+	//private AndroidDriver<AndroidElement> driver;
 	private Waits wait;
 	private Scrolling scroll;
 	public Dashboard() throws IOException {
 		// TODO Auto-generated constructor stub
-		propertyObj = new PropertyReader();
-		  driver = DriverManagement.getInstance(propertyObj.getProperty("PlatForm"),propertyObj.getProperty("App_Path"));
+		//driver = DriverManagement.getInstance(propertyObj.getProperty("PlatForm"),propertyObj.getProperty("App_Path"));
 		wait = new Waits();
 		scroll = new Scrolling();
 	}
@@ -50,14 +50,22 @@ public class Dashboard extends TestBase{
 	@Given("^User is on My Hangar screen$")
 	public void verifyUserIsOnMyHangarScreen()
 	{
-		wait.waitForGivenTime(60);
+		wait.waitForGivenTime(30);
 		
 		//if(driver.findElement(By.xpath("//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp:id/label_my_hanger']")).isDisplayed())
-		if(driver.findElement(By.xpath("//android.widget.TextView[@text='MY HANGAR']")).isDisplayed())
-		{
-			System.out.println("user is logged in and now on my hangar screen");
-			
+		try {
+			if(driver.findElement(By.xpath("//android.widget.TextView[@text='MY HANGAR']")).isDisplayed())
+			{
+				System.out.println("user is logged in and now on my hangar screen");
+				
+			}
+		}catch (Exception e) {
+			// User navigates to My hangar page
+			findMobileElement("xpath", "HamburgerMenu").click();
+			findMobileElement("xpath", "MyHangarMenu").click();
+			wait.waitForGivenTime(30);
 		}
+		
 	}
 	
 	@When("^User log out from the application$")
@@ -67,7 +75,8 @@ public class Dashboard extends TestBase{
 		//click on bottom menu uat
 		//driver.findElement(By.xpath("//android.widget.ImageView[@resource-id='com.cirrusaircraft.connectedapp:id/bottom_sheet_hamburger']")).click();
 		//QA
-		driver.findElement(By.xpath("//android.widget.ImageView[@resource-id='com.cirrusaircraft.connectedapp.qa:id/bottom_sheet_hamburger']")).click();
+		//driver.findElement(By.xpath("//android.widget.ImageView[@resource-id='com.cirrusaircraft.connectedapp.qa:id/bottom_sheet_hamburger']")).click();
+		findMobileElement("xpath", "HamburgerMenu").click();
 		//click on logout
 		driver.findElement(By.xpath("//android.widget.CheckedTextView[@text=\"Log Out\"]")).click();
 		wait.waitForGivenTime(30);

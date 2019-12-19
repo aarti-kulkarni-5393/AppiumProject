@@ -15,6 +15,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import TestBase.DriverManagement;
 import TestBase.EmailUtility;
 import TestBase.EmailUtility.EmailFolder;
+import TestBase.TestBase;
 import TestBase.Waits;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -24,16 +25,16 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.remote.MobileCapabilityType;
 
-public class ForgotYourPassword {
+public class ForgotYourPassword extends TestBase {
 	
-	private AndroidDriver<AndroidElement> driver;
+	//private AndroidDriver<AndroidElement> driver;
 	private Waits wait;
 	
 	
 	public ForgotYourPassword() throws IOException {
 		// TODO Auto-generated constructor stub
-		
-		driver = DriverManagement.getInstance("real","");
+		//driver = DriverManagement.getInstance(propertyObj.getProperty("PlatForm"),propertyObj.getProperty("App_Path"));
+		//driver = DriverManagement.getInstance("real","");
 		wait = new Waits();
 		
 	}

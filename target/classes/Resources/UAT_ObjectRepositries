@@ -1,1 +1,25 @@
-UAT1=test
+##### Login page #########
+loginPage= //android.widget.TextView[@text='LOGIN']
+Username= //android.widget.EditText[@resource-id='loginPage:loginForm:username']
+
+
+#### Manage Users ################
+ManageUserPageTitle= //android.widget.TextView[@text='Manage Users']
+AdditionalUsersLabel= //android.widget.TextView[@text='Additional Users']
+AddNewUser= //android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/add']
+ExpandListButton= //android.widget.ImageView[@resource-id='com.cirrusaircraft.connectedapp.qa:id/iv_expand']
+AircraftTailNumberOnManageScreen = //android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/tv_aircraft_name_label']
+ListOfAircrafts = //android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/tv_aircraft_name_label']
+AddUser=//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.qa:id/add']
+FirstName=//android.widget.EditText[@resource-id='com.cirrusaircraft.connectedapp:id/et_first_name']
+LastName=//android.widget.EditText[@resource-id='com.cirrusaircraft.connectedapp:id/et_last_name']
+Email=//android.widget.EditText[@resource-id='com.cirrusaircraft.connectedapp:id/et_email']
+AircarftSelectionDropDown=//android.widget.Spinner[@resource-id='com.cirrusaircraft.connectedapp:id/aircraft_spinner']
+SendInviteButton=//android.widget.Button[@resource-id='com.cirrusaircraft.connectedapp.uat:id/send_invite']
+
+#### common Properties###########
+HamburgerMenu=//android.widget.ImageView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/bottom_sheet_hamburger']
+
+
+##### My hangar ###############
+MyHangarMenu= //android.widget.CheckedTextView[@text='My Hangar']
