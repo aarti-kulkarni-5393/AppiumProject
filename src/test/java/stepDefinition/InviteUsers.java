@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.List;
 
+import org.apache.tools.ant.taskdefs.WaitFor;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -50,17 +51,29 @@ public class InviteUsers extends TestBase {
 	 @When("^User submit details of additional user firstname (.+) ,lastname (.+),email(.+),airctaft(.+)$")
 	    public void submitAdditionalUserDetails(String firstname, String lastname, String email, String airctaftName) throws Throwable {
 	     
-		 wait.waitForGivenTime(30);
+		 wait.waitForGivenTime(90);
 		 // check user is on invite screen
-		 try {
-		 if(findMobileElement("xpath", "AdditionalUsersLabel").isDisplayed())
-		 {
-			 findMobileElement("xpath", "AddUser").click();
-			 //driver.findElement(By.xpath("//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.qa:id/add']")).click();
-			 wait.waitForGivenTime(30);
-			 findMobileElement("xpath", "FirstName").sendKeys(firstname);
-			 findMobileElement("xpath", "LastName").sendKeys(lastname);
-			 findMobileElement("xpath", "Email").sendKeys(email);
+			 findMobileElement("xpath", "AddNewUser").click();
+			 try {
+			 if( findMobileElement("xpath", "FirstName").isDisplayed())
+			 {
+				 findMobileElement("xpath", "FirstName").sendKeys(firstname);
+				 findMobileElement("xpath", "LastName").sendKeys(lastname);
+				 findMobileElement("xpath", "Email").sendKeys(email);
+			 }
+			 }catch (Exception e) {
+				// TODO: handle exception
+				 if(findMobileElement("xpath", "AddNewUser").isDisplayed())
+				 {
+					 System.out.println("unable to click on Add user");
+					 findMobileElement("xpath", "AddNewUser").click();
+					 findMobileElement("xpath", "FirstName").sendKeys(firstname);
+					 findMobileElement("xpath", "LastName").sendKeys(lastname);
+					 findMobileElement("xpath", "Email").sendKeys(email);
+				 }
+				 
+			}
+				 
 			 //driver.findElement(By.xpath("//android.widget.EditText[@resource-id='com.cirrusaircraft.connectedapp:id/et_first_name']")).sendKeys(firstname);
 			 //driver.findElement(By.xpath("//android.widget.EditText[@resource-id='com.cirrusaircraft.connectedapp:id/et_last_name']")).sendKeys(lastname);
 			 //driver.findElement(By.xpath("//android.widget.EditText[@resource-id='com.cirrusaircraft.connectedapp:id/et_email']")).sendKeys(email);
@@ -77,7 +90,7 @@ public class InviteUsers extends TestBase {
 				 for (AndroidElement aircraft : list_airctaft) {
 					 System.out.println(aircraft.getText());
 					 System.out.println(aircraft.getText().equals(airctaftName));
-					 if(aircraft.getText().equals(airctaftName))
+					 if(aircraft.getText().equalsIgnoreCase(airctaftName))
 					 {
 						 System.out.println(aircraft.getText());
 						 aircraft.click();
@@ -89,7 +102,7 @@ public class InviteUsers extends TestBase {
 			 // select role by default 
 			 //check aircraft is selected 
 			 try {
-	         if(!driver.findElement(By.xpath("//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp:id/item_text']")).getText().equals("Select Aircraft"))
+	         if(!findMobileElement("xpath", "SelectedAircraftText").getText().equalsIgnoreCase("Select Aircraft"))
 	         {
 	        	// click on role select drop down
 				 //driver.findElement(By.xpath("//android.widget.Spinner[@resource-id='com.cirrusaircraft.connectedapp:id/role_spinner']")).click();
@@ -114,13 +127,7 @@ public class InviteUsers extends TestBase {
 	         driver.findElement(By.className("android.widget.ImageButton")).click();
 		 
 		 }
-		 }
-		 catch (Exception e) {
-			// TODO: handle exception
-			 e.printStackTrace();
-			 System.out.println("User is not present on manage users");
-		}
-	    }
+		
 
 	 @Then("^user should get error message$")
 	    public void user_should_get_error_message() throws Throwable {
@@ -130,12 +137,12 @@ public class InviteUsers extends TestBase {
 		 
 	    }
 
-	    @And("^Invited user is present under list of invited users for Aircraft (.+)$")
-	    public void verifyUserinlist(String aircrafttailnumber) throws Throwable {
-	    	
-	    	
-	    	
+	 @And("^Invited user (.+) is present under list of invited users for Aircraft (.+)$")
+	    public void verfyUserIsList(String email, String aircrafttailnumber) throws Throwable {
+	        
+		 findUserInList(aircrafttailnumber, email);
 	    }
+
 	    @Given("^User is on Manage users screen$")
 	    public void userisOnManageUSerPage() throws Throwable {
 	    	
@@ -162,22 +169,26 @@ public class InviteUsers extends TestBase {
 	    
 	  public void findUserInList(String tailNumber,String email) throws IOException
 	  {
+		  wait.waitForGivenTime(60);
 		  String AircraftName = "";
 		  List<AndroidElement> Aircarfts = driver.findElements(By.xpath("//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/tv_aircraft_name_label']"));
-		  List<AndroidElement> ExpandButtons = driver.findElements(By.xpath("//android.widget.ImageView[@resource-id='com.cirrusaircraft.connectedapp.qa:id/iv_expand']"));
-			for(int i=0;i<Aircarfts.size();i++)
+		  List<AndroidElement> ExpandButtons = driver.findElements(By.xpath("//android.widget.ImageView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/iv_expand']"));
+		  System.out.println(Aircarfts.size());
+		  System.out.println(ExpandButtons.size());
+		  for(int i=0;i<Aircarfts.size();i++)
 			{
+			  
 				if(Aircarfts.get(i).getText().contains(tailNumber))
 				{
+					System.out.println(Aircarfts.get(i).getText());
 					AircraftName = Aircarfts.get(i).getText();
 					ExpandButtons.get(i).click();
 					break;
 				}
 			}
-		  List<AndroidElement> listOfUsers = driver.findElements(By.xpath("com.cirrusaircraft.connectedapp.uat:id/tv_aircraft_user_email"));
-		  String[] total_users = AircraftName.split("\\d+");
-		  System.out.println(total_users.length);
-		  System.out.println(total_users[0]);
+		  List<AndroidElement> listOfUsers = driver.findElements(By.xpath("//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/tv_aircraft_user_email']"));
+		  
+		  System.out.println(listOfUsers.size());
 		  
 		  while(listOfUsers.size()!=0)
 		  {
@@ -197,6 +208,7 @@ public class InviteUsers extends TestBase {
 					 listOfUsers = driver.findElements(By.xpath("com.cirrusaircraft.connectedapp.uat:id/tv_aircraft_user_email"));
 									
 				 }
+				
 				 System.out.println("still seraching");
 			 }
 			  

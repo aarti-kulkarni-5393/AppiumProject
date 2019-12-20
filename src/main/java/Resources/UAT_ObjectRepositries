@@ -6,20 +6,46 @@ Username= //android.widget.EditText[@resource-id='loginPage:loginForm:username']
 #### Manage Users ################
 ManageUserPageTitle= //android.widget.TextView[@text='Manage Users']
 AdditionalUsersLabel= //android.widget.TextView[@text='Additional Users']
-AddUser= //android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/add']
+AddNewUser= //android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/add']
 ExpandListButton= //android.widget.ImageView[@resource-id='com.cirrusaircraft.connectedapp.qa:id/iv_expand']
 AircraftTailNumberOnManageScreen = //android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/tv_aircraft_name_label']
 ListOfAircrafts = //android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/tv_aircraft_name_label']
-AddUser=//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.qa:id/add']
-FirstName=//android.widget.EditText[@resource-id='com.cirrusaircraft.connectedapp:id/et_first_name']
-LastName=//android.widget.EditText[@resource-id='com.cirrusaircraft.connectedapp:id/et_last_name']
-Email=//android.widget.EditText[@resource-id='com.cirrusaircraft.connectedapp:id/et_email']
-AircarftSelectionDropDown=//android.widget.Spinner[@resource-id='com.cirrusaircraft.connectedapp:id/aircraft_spinner']
+FirstName=//android.widget.EditText[@resource-id='com.cirrusaircraft.connectedapp.uat:id/et_first_name']
+LastName=//android.widget.EditText[@resource-id='com.cirrusaircraft.connectedapp.uat:id/et_last_name']
+Email=//android.widget.EditText[@resource-id='com.cirrusaircraft.connectedapp.uat:id/et_email']
+AircarftSelectionDropDown=//android.widget.Spinner[@resource-id='com.cirrusaircraft.connectedapp.uat:id/aircraft_spinner']
 SendInviteButton=//android.widget.Button[@resource-id='com.cirrusaircraft.connectedapp.uat:id/send_invite']
-
+SelectedAircraftText=//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/item_text']
 #### common Properties###########
 HamburgerMenu=//android.widget.ImageView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/bottom_sheet_hamburger']
 
 
 ##### My hangar ###############
 MyHangarMenu= //android.widget.CheckedTextView[@text='My Hangar']
+
+
+######### My Profile ###############
+MyProfileMenu=//android.widget.CheckedTextView[@text='My Profile']
+updateProfile=//android.widget.ImageView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/iv_edit_profile']
+AllowButton=//android.widget.Button[@resource-id='com.android.packageinstaller:id/permission_allow_button']
+AllowButton=//android.widget.Button[@resource-id='com.android.packageinstaller:id/permission_deny_button']
+PermissionMessage=//android.widget.TextView[@text='Allow Cirrus to take pictures and record video?']
+PermissionMessageForFileAccess=//android.widget.TextView[@text='Allow Cirrus to access photos, media, and files on your device?']
+PanelToChooseProfileImage=//androidx.appcompat.widget.LinearLayoutCompat[@resource-id='com.cirrusaircraft.connectedapp.uat:id/parentPanel']
+GalleryOption=//android.widget.Button[@text='GALLERY']
+CameraOption=//android.widget.Button[@text='CAMERA']
+RemoveOption=//android.widget.Button[@text='REMOVE PHOTO']
+ChooseOptionTogetProfilePic=/android.widget.TextView[@text='Choose Picture from?']
+updateProfileButton=//android.widget.Button[@text='Update Profile']
+updateData=//android.widget.ImageView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/iv_edit_names']
+LoggedinUserName=//android.widget.EditText[@resource-id='com.cirrusaircraft.connectedapp.uat:id/et_name']
+UpdateProfileScreenLabel=//android.widget.TextView[@text='Update Profile']
+
+#### App Menu ########
+MobileApplicationSupport=//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/app_support_number']
+AppSuportNumber=//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/aircraft_support_number']
+AppMenu_UserName=//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/user_name']
+AppMenu=//android.widget.CheckedTextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/design_menu_item_text']
+
+########## Dashboard ###############
+OilTempLabel=//android.widget.TextView[@text='OIL TEMP']
