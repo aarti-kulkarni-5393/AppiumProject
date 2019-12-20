@@ -56,7 +56,6 @@ public class InviteUsers extends TestBase {
 		 if(findMobileElement("xpath", "AdditionalUsersLabel").isDisplayed())
 		 {
 			 findMobileElement("xpath", "AddUser").click();
-			 
 			 //driver.findElement(By.xpath("//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.qa:id/add']")).click();
 			 wait.waitForGivenTime(30);
 			 findMobileElement("xpath", "FirstName").sendKeys(firstname);
