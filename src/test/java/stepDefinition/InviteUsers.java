@@ -121,7 +121,7 @@ public class InviteUsers extends TestBase {
 	        	 findMobileElement("xpath", "SendInviteButton").click();
 	         }
 	      	        
-	         wait.waitForGivenTime(30);
+	         wait.waitForGivenTime(60);
 	         //toaster validations
 	         // back button
 	         driver.findElement(By.className("android.widget.ImageButton")).click();
@@ -167,7 +167,7 @@ public class InviteUsers extends TestBase {
 	     * It will find users under list of aircraft
 	     */
 	    
-	  public void findUserInList(String tailNumber,String email) throws IOException
+	  public AndroidElement findUserInList(String tailNumber,String email) throws IOException
 	  {
 		  wait.waitForGivenTime(60);
 		  String AircraftName = "";
@@ -182,41 +182,40 @@ public class InviteUsers extends TestBase {
 				{
 					System.out.println(Aircarfts.get(i).getText());
 					AircraftName = Aircarfts.get(i).getText();
-					ExpandButtons.get(i).click();
+					//ExpandButtons.get(i).click();
 					break;
 				}
 			}
-		  List<AndroidElement> listOfUsers = driver.findElements(By.xpath("//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/tv_aircraft_user_email']"));
+		  //List<AndroidElement> listOfUsers = driver.findElements(By.xpath("//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/tv_aircraft_user_email']"));
 		  
-		  System.out.println(listOfUsers.size());
+		  //System.out.println(listOfUsers.size());
 		  
-		  while(listOfUsers.size()!=0)
-		  {
-			 int i=0;
-			 if(listOfUsers.get(i).getText().equalsIgnoreCase(email))
-			 {
-			       listOfUsers.get(i).click();
-			       System.out.println("Got aircraft"+listOfUsers.get(i).getText());
-			       break;
-				  
-			 }else {
-				 
-				 if(i==listOfUsers.size())
-				 {
-					 System.out.println("searched in all options");
-					 new Scrolling().verticalScroll();
-					 listOfUsers = driver.findElements(By.xpath("com.cirrusaircraft.connectedapp.uat:id/tv_aircraft_user_email"));
-									
-				 }
-				
-				 System.out.println("still seraching");
-			 }
-			  
-			  
-			  
-			  i++;
-		  }
-		  
+         int displayedUserCount = driver.findElements(By.xpath("//android.widget.LinearLayout[@resource-id='com.cirrusaircraft.connectedapp.uat:id/ll_view_aircraft_user']")).size();
+         int openingBracketIndex=AircraftName.indexOf("(");
+         int closingBracketIndex=AircraftName.indexOf(")");
+         String count = AircraftName.substring(openingBracketIndex+1, closingBracketIndex);
+         System.out.println(count);
+         System.out.println(openingBracketIndex);
+         System.out.println(closingBracketIndex);
+         if(displayedUserCount!=Integer.valueOf(count))
+         {
+        	 new Scrolling().verticalScroll();
+        	 int displayedUserCount_new = driver.findElements(By.xpath("//android.widget.LinearLayout[@resource-id='com.cirrusaircraft.connectedapp.uat:id/ll_view_aircraft_user']")).size();
+        	 int final_Count = displayedUserCount+displayedUserCount_new;
+        	 if(final_Count>=Integer.valueOf(count))
+        	 {
+        		 AndroidElement finaluser =driver.findElements(By.xpath("//android.widget.LinearLayout[@resource-id='com.cirrusaircraft.connectedapp.uat:id/ll_view_aircraft_user']")).get(Integer.valueOf(displayedUserCount_new-1));
+            	 return finaluser;
+        	 }else {
+				System.out.println("Now working");
+			}
+         }else {
+			
+        	 AndroidElement finaluser =driver.findElements(By.xpath("//android.widget.LinearLayout[@resource-id='com.cirrusaircraft.connectedapp.uat:id/ll_view_aircraft_user']")).get(Integer.valueOf(count));
+        	 System.out.println(finaluser.getText());
+        	 return finaluser;
+		}
+		
 		 
 		
 		  

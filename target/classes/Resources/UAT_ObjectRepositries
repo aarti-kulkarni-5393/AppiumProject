@@ -18,6 +18,7 @@ SendInviteButton=//android.widget.Button[@resource-id='com.cirrusaircraft.connec
 SelectedAircraftText=//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/item_text']
 #### common Properties###########
 HamburgerMenu=//android.widget.ImageView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/bottom_sheet_hamburger']
+TestUsersCount=//android.widget.LinearLayout[@resource-id='com.cirrusaircraft.connectedapp.uat:id/ll_view_aircraft_user']
 
 
 ##### My hangar ###############
