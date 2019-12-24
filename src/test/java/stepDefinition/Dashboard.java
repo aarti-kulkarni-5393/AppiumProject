@@ -50,7 +50,7 @@ public class Dashboard extends TestBase{
 	@Given("^User is on My Hangar screen$")
 	public void verifyUserIsOnMyHangarScreen()
 	{
-		wait.waitForGivenTime(30);
+		wait.waitForGivenTime(50);
 		
 		//if(driver.findElement(By.xpath("//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp:id/label_my_hanger']")).isDisplayed())
 		try {

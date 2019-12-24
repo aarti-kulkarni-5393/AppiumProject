@@ -8,7 +8,9 @@ import cucumber.api.junit.Cucumber;
 @RunWith(Cucumber.class)
 @CucumberOptions(
 		features = "C:\\Users\\aarti.kulkarni\\eclipse-workspace\\Cirrus\\src\\test\\java\\features",
-		glue="stepDefinition",tags= {"@Login,@Inviteuser"})
+		glue="stepDefinition",tags= {"@Login,@MyProfile"},
+		plugin= {"pretty","html:target/cucumber"}
+		)
 
 public class TestRunner {
 	

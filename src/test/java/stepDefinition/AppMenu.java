@@ -1,5 +1,6 @@
 package stepDefinition;
 
+import java.awt.Menu;
 import java.net.MalformedURLException;
 import java.util.List;
 
@@ -23,37 +24,33 @@ public class AppMenu extends TestBase {
 	@When("^User open App Menu$")
     public void user_open_app_menu() throws Throwable {
         
-		try {
-			if(findMobileElement("xpath", "MyHangarMenu").isDisplayed())
-			{
-				System.out.println("App menu is already opened");
-			}
-		}catch (Exception e) {
-			// TODO: handle exception
-			findMobileElement("xpath", "MyHangarMenu").click();
+			findMobileElement("xpath", "HamburgerMenu").click();
 			if(findMobileElement("xpath", "MyHangarMenu").isDisplayed())
 			{
 				System.out.println("App menu opened");
 			}
 		}
 		
-    }
+    
 	 @Then("^User verifies Mobile Application Support Number is (.+)$")
 	    public void verifyMobileApplicationSupport(String mobileappsupportnumber) throws Throwable {
 	        
 		String actual_MobileSupportNumber= findMobileElement("xpath", "MobileApplicationSupport").getText();
+		System.out.println(actual_MobileSupportNumber);
 		Assert.assertTrue("", actual_MobileSupportNumber.equals(mobileappsupportnumber));
 		 
 	    }
 	 @And("^User verifies Application Support Number is (.+)$")
 	    public void verifyApplicationSupportNumber(String applicationsupportnumber) throws Throwable {
 	        String actualApplicationSupportNumber = findMobileElement("xpath", "AppSuportNumber").getText();
+	        System.out.println(actualApplicationSupportNumber);
 	        Assert.assertTrue("", actualApplicationSupportNumber.equals(applicationsupportnumber));
 	    }
 	 @And("^Username \"([^\"]*)\" should be displayed with profile picture$")
 	    public void verifyUsernameDisplayedOnAppMenu(String username) throws Throwable {
 	        
-		    String actual_Username=findMobileElement("xpath", "").getText().trim();
+		    String actual_Username=findMobileElement("xpath", "AppMenu_UserName").getText().trim();
+		    System.out.println(actual_Username);
 		    Assert.assertTrue(actual_Username.equalsIgnoreCase(username.trim()));
 		 
 	    }
@@ -61,8 +58,12 @@ public class AppMenu extends TestBase {
 
 	    @Then("^App menus should be in sequence$")
 	    public void verifyAppMenuSequence() throws Throwable {
-	        
-	    	List<AndroidElement> Menus = driver.findElements(By.xpath("AppMenu"));
+	       
+	    	//List<AndroidElement> Menus = driver.findElements(By.xpath("//androidx.appcompat.widget.LinearLayoutCompat"));
+	    	List<AndroidElement> Menus 	 = driver.findElements(By.xpath("//android.widget.CheckedTextView"));
+	    	System.out.println(Menus.size());
+	    	
+	    	System.out.println(Menus.get(0).getText());
 	    	if(Menus.get(0).getText().equalsIgnoreCase("My Hangar"))
 	    		System.out.println("First Menu is My Hangar");
 	    	if(Menus.get(1).getText().equalsIgnoreCase("Manage Additional Users"))

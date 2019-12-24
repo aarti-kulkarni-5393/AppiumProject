@@ -1,7 +1,6 @@
 Feature: Login to Cirrus Connected Mobile App
 
 
-
 @Login
 Scenario Outline: User logged in to cirrus application with valid credentails
   Given User is on sign in page

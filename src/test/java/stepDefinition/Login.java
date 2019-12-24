@@ -164,14 +164,13 @@ public class Login extends TestBase{
     /*
      * This will be used in background
      */
-    @When("^User is already logged in to application$")
-    public void user_is_already_logged_in_to_application(String Username,String password) throws Throwable {
-    	verifyUserIsOnLoginPage();
-    	enterUserNameAndPassword(Username, password);
-    	userSubmitDetails();
-    	//verifyUSerLoggedIn(status);
-    }
-    
-    
+@Given("^User is already logged in to application by username (.+) ,Password (.+)$")
+public void userIsLoggedIn(String username, String password) throws Throwable {
+	verifyUserIsOnLoginPage();
+	enterUserNameAndPassword(username, password);
+	userSubmitDetails();
+	verifyUSerLoggedIn("be succesfully");
 	
-}
+	
+}}
+   

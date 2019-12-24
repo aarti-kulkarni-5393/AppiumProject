@@ -19,8 +19,8 @@ SelectedAircraftText=//android.widget.TextView[@resource-id='com.cirrusaircraft.
 #### common Properties###########
 HamburgerMenu=//android.widget.ImageView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/bottom_sheet_hamburger']
 TestUsersCount=//android.widget.LinearLayout[@resource-id='com.cirrusaircraft.connectedapp.uat:id/ll_view_aircraft_user']
-
-
+UserFromUserList=//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/tv_aircraft_user_email']
+UserListCollaps=//android.widget.ImageView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/iv_collapse']
 ##### My hangar ###############
 MyHangarMenu= //android.widget.CheckedTextView[@text='My Hangar']
 
@@ -41,12 +41,12 @@ updateProfileButton=//android.widget.Button[@text='Update Profile']
 updateData=//android.widget.ImageView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/iv_edit_names']
 LoggedinUserName=//android.widget.EditText[@resource-id='com.cirrusaircraft.connectedapp.uat:id/et_name']
 UpdateProfileScreenLabel=//android.widget.TextView[@text='Update Profile']
-
+UserNameFromMyProfile=//android.widget.EditText[@resource-id='com.cirrusaircraft.connectedapp.uat:id/et_name']
 #### App Menu ########
 MobileApplicationSupport=//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/app_support_number']
 AppSuportNumber=//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/aircraft_support_number']
 AppMenu_UserName=//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/user_name']
-AppMenu=//android.widget.CheckedTextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/design_menu_item_text']
+
 
 ########## Dashboard ###############
 OilTempLabel=//android.widget.TextView[@text='OIL TEMP']
