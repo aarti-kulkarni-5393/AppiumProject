@@ -153,5 +153,14 @@ MobileElement el = (MobileElement) driver
 //    	scrollObject.put("text", elementName);
 //    	driver.executeScript("mobile: scrollTo", scrollObject);
 //    }
+    
+    public void singleTap(AndroidElement element)
+    {
+    	TouchActions action = new TouchActions(driver);
+    	action.singleTap(element);
+    	action.perform();
+
+
+    }
 
 }

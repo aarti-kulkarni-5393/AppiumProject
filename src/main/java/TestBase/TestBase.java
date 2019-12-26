@@ -34,6 +34,11 @@ public class TestBase {
 			propertyObj = new PropertyReader();
 			objectRepository = new PropertyReader();
 			 handleProperties();
+			 /*
+			  * Need to add this in Before statement
+			  */
+			 //AppiumSetUp appium = new AppiumSetUp();
+			 AppiumSetUp.startService();
 			//System.out.println(propertyObj.getProperty("PlatForm") + propertyObj.getProperty("App_Path"));
 	      driver = DriverManagement.getInstance(propertyObj.getProperty("PlatForm"),propertyObj.getProperty("App_Path"));
 		

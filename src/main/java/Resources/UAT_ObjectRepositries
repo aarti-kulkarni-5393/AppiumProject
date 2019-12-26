@@ -42,14 +42,14 @@ updateData=//android.widget.ImageView[@resource-id='com.cirrusaircraft.connected
 LoggedinUserName=//android.widget.EditText[@resource-id='com.cirrusaircraft.connectedapp.uat:id/et_name']
 UpdateProfileScreenLabel=//android.widget.TextView[@text='Update Profile']
 UserNameFromMyProfile=//android.widget.EditText[@resource-id='com.cirrusaircraft.connectedapp.uat:id/et_name']
+Gallery=//android.widget.FrameLayout[@resource-id='android:id/action_bar_container']
 #### App Menu ########
 MobileApplicationSupport=//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/app_support_number']
 AppSuportNumber=//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/aircraft_support_number']
 AppMenu_UserName=//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/user_name']
-Gallery=//android.widget.TextView[@text='GALLERY']
 EditPhoto=//android.widget.TextView[@text='Edit Photo']
 cropDone=//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/menu_crop']
-
+RemovePictureValidations=//android.widget.ImageView
 
 ########## Dashboard ###############
 OilTempLabel=//android.widget.TextView[@text='OIL TEMP']

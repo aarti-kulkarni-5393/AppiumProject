@@ -7,6 +7,7 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.springframework.util.SystemPropertyUtils;
 
+import TestBase.Scrolling;
 import TestBase.TestBase;
 import TestBase.Waits;
 import cucumber.api.java.en.Given;
@@ -80,8 +81,16 @@ public class MyProfile extends TestBase{
 			 if(findMobileElement("xpath", "AllowButton").isDisplayed())
 			 {
 				 findMobileElement("xpath", "AllowButton").click();
+				 try {
+					 if(findMobileElement("xpath", "PermissionMessageForFileAccess").isDisplayed())
+					 findMobileElement("xpath", "AllowButton").click();
+				 }catch (Exception e) {
+					// TODO: handle exception
+					 System.out.println("No allow popup came");
+				}
+				 
 				 //findMobileElement("xpath", "PermissionMessage").click();
-				 findMobileElement("xpath", "PermissionMessageForFileAccess").click();
+				 
 				 try {
 				 if(findMobileElement("xpath", "PanelToChooseProfileImage").isDisplayed())
 				 {
@@ -108,17 +117,15 @@ public class MyProfile extends TestBase{
 	 }
   
 	 boolean isPictureSelected=false;
-	 public boolean choosePictureFromGallery()
+	 public boolean choosePictureFromGallery() throws IOException, InterruptedException
 	 {
 		 System.out.println("choosing gallery picture");
-		 try {
-			 if(findMobileElement("xpath", "Gallery").isDisplayed())
-			 {
-				 List<AndroidElement> galleryImages =driver.findElements(By.xpath("//com.sec.samsung.gallery.glview.composeView.ThumbObject"));
+		
+				 List<AndroidElement> galleryImages =driver.findElements(By.className("com.sec.samsung.gallery.glview.composeView.ThumbObject"));
 				 System.out.println(galleryImages.size());
-				 if(!galleryImages.isEmpty())
-				 {
-					 galleryImages.get(1).click();
+				 driver.findElement(By.xpath("//com.sec.samsung.gallery.glview.composeView.ThumbObject{2}")).click();
+				 	 System.out.println("checking");
+				 	 Thread.sleep(1000);
 					 try {
 					 if(findMobileElement("xpath", "EditPhoto").isDisplayed())
 					 {
@@ -126,23 +133,30 @@ public class MyProfile extends TestBase{
 						 wait.waitForGivenTime(60);
 						 isPictureSelected=true;
 						 
+						
 						 
 					 }}catch (Exception e) {
 						// TODO: handle exception
+						 e.printStackTrace();
 						 System.out.println("No picture is selected");
 						 isPictureSelected=false;
-					}
+					
 				 }
-			 }
-		 }catch (Exception e) {
-				// TODO: handle exception
-			 System.out.println("Gallery option is not opened");
-			 isPictureSelected=false;
+					 return isPictureSelected;
+		 
+				 
+			 
 			}
-		 return isPictureSelected;
-	 }
-	 
-	 public void removePictureFromGallery()
+		 
+	 @When("^User remove profile picture$")
+	    public void removeProfilePicture() throws Throwable {
+	      System.out.println("Removing profile picture"); 
+		  removePictureFromGallery();
+	        
+		 
+	    }
+	 boolean isProfileRemoved=false;
+	 public boolean removePictureFromGallery()
 	 {
 		 System.out.println("This time it will remove profile pictuee");
 		 wait.waitForGivenTime(30);
@@ -151,13 +165,15 @@ public class MyProfile extends TestBase{
 			 if(findMobileElement("xpath", "AllowButton").isDisplayed())
 			 {
 				 findMobileElement("xpath", "AllowButton").click();
+				 findMobileElement("xpath", "AllowButton").click();
 				 //findMobileElement("xpath", "PermissionMessage").click();
-				 findMobileElement("xpath", "PermissionMessageForFileAccess").click();
+				 //findMobileElement("xpath", "PermissionMessageForFileAccess").click();
 				 try {
 				 if(findMobileElement("xpath", "PanelToChooseProfileImage").isDisplayed())
 				 {
 					 findMobileElement("xpath", "RemoveOption").click();
 					 //add code to verify if possible	 
+					 isProfileRemoved=true;
 				 }
 				 }catch (Exception e) {
 					// TODO: handle exception
@@ -167,10 +183,17 @@ public class MyProfile extends TestBase{
 			 
 		 }catch (Exception e) {
 			// TODO: handle exception
+			 isProfileRemoved=false;
 			 
 		}
 		 
-		 
+		 return isProfileRemoved;
 	 }
 	
+	 @Then("^profile picture should be removed$")
+	    public void verifyRemoveProfile() throws Throwable {
+	        
+		 findMobileElement("xpath", "RemovePictureValidations").getAttribute("index");
+		 System.out.println(findMobileElement("xpath", "RemovePictureValidations").getAttribute("index"));
+	    }
 }

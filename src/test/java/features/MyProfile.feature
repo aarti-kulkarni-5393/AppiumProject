@@ -20,7 +20,7 @@ Then Uploaded profile pic should be set
 Scenario: User should be able to update profile picture
 Given User is on My profile page
 When User remove profile picture
-Then Uploaded profile pic should be set
+Then profile picture should be removed
 
 
 Scenario Outline: User should be able to update user details
