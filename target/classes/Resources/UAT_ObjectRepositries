@@ -29,7 +29,7 @@ MyHangarMenu= //android.widget.CheckedTextView[@text='My Hangar']
 MyProfileMenu=//android.widget.CheckedTextView[@text='My Profile']
 updateProfile=//android.widget.ImageView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/iv_edit_profile']
 AllowButton=//android.widget.Button[@resource-id='com.android.packageinstaller:id/permission_allow_button']
-AllowButton=//android.widget.Button[@resource-id='com.android.packageinstaller:id/permission_deny_button']
+DenyButton=//android.widget.Button[@resource-id='com.android.packageinstaller:id/permission_deny_button']
 PermissionMessage=//android.widget.TextView[@text='Allow Cirrus to take pictures and record video?']
 PermissionMessageForFileAccess=//android.widget.TextView[@text='Allow Cirrus to access photos, media, and files on your device?']
 PanelToChooseProfileImage=//androidx.appcompat.widget.LinearLayoutCompat[@resource-id='com.cirrusaircraft.connectedapp.uat:id/parentPanel']
@@ -46,6 +46,9 @@ UserNameFromMyProfile=//android.widget.EditText[@resource-id='com.cirrusaircraft
 MobileApplicationSupport=//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/app_support_number']
 AppSuportNumber=//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/aircraft_support_number']
 AppMenu_UserName=//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/user_name']
+Gallery=//android.widget.TextView[@text='GALLERY']
+EditPhoto=//android.widget.TextView[@text='Edit Photo']
+cropDone=//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/menu_crop']
 
 
 ########## Dashboard ###############

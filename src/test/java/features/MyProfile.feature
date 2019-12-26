@@ -3,11 +3,11 @@ Feature: MyProfile
 Background: User logged into application
 Given User is on My Hangar screen
 
-
+@MyProfile
 Scenario: User should be able to update profile picture
 Given User is on My profile page
 When User upload profile pic from "Gallery"
-Then Uploaded profile pic should be set
+#Then Uploaded profile pic should be set
 
 
 
@@ -22,7 +22,7 @@ Given User is on My profile page
 When User remove profile picture
 Then Uploaded profile pic should be set
 
-@MyProfile
+
 Scenario Outline: User should be able to update user details
 Given User is on My profile page
 When User update first name <FirstName> ,last name <LastName>
