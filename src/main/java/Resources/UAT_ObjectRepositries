@@ -50,6 +50,6 @@ AppMenu_UserName=//android.widget.TextView[@resource-id='com.cirrusaircraft.conn
 EditPhoto=//android.widget.TextView[@text='Edit Photo']
 cropDone=//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/menu_crop']
 RemovePictureValidations=//android.widget.ImageView
-
+BackButton=android.widget.ImageButton
 ########## Dashboard ###############
 OilTempLabel=//android.widget.TextView[@text='OIL TEMP']

@@ -157,6 +157,7 @@ MobileElement el = (MobileElement) driver
     public void singleTap(AndroidElement element)
     {
     	TouchActions action = new TouchActions(driver);
+    	System.out.println("here its tap on image");
     	action.singleTap(element);
     	action.perform();
 

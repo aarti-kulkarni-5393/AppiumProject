@@ -4,7 +4,10 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.List;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
 import org.springframework.util.SystemPropertyUtils;
 
 import TestBase.Scrolling;
@@ -58,19 +61,27 @@ public class MyProfile extends TestBase{
 	    }
 	 @Then("^User details should be updated to first name (.+) ,Last name (.+)$")
 	    public void verifyUserDetailsUpdated(String firstNmae ,String LastName) throws Throwable {
-	        wait.waitForGivenTime(60);
+	        wait.waitForGivenTime(30);
 	        String updatedUsername = findMobileElement("xpath", "UserNameFromMyProfile").getText();
-	        String FinalName = firstNmae+LastName;
+	        String FinalName = firstNmae+" "+LastName;
+	        System.out.println(FinalName);
+	        System.out.println(updatedUsername);
 	        if(updatedUsername.equalsIgnoreCase(FinalName))
 	        {
-	        	System.out.println("Details not updated");
+	        	System.out.println("Details updated");
 	        }else {
 	        	System.out.println("Details are not updated");
 	        }
 	        //verify on App Menu
 	        //findMobileElement("xpath", "").click();
 	        
-	        
+	        driver.findElement(By.className("android.widget.ImageButton")).click();
+			 try {
+				 findMobileElement("xpath", "HamburgerMenu").isDisplayed();
+			 }catch (Exception e) {
+				// TODO: handle exception
+				 driver.findElement(By.className("android.widget.ImageButton")).click();
+			}
 	    }
 	 @When("^User upload profile pic from \"([^\"]*)\"$")
 	    public void uploadProfilePicture(String uploadOption) throws Throwable {
@@ -96,9 +107,12 @@ public class MyProfile extends TestBase{
 				 {
 					 findMobileElement("xpath", "GalleryOption").click();
 					 boolean isprofileSelected = choosePictureFromGallery();
+					 findMobileElement("className","BackButton").click();
 					 if(isprofileSelected==false)
 					 {
 						 System.out.println("profile update failed");
+					 }else {
+						 System.out.println("yes it is true!");
 					 }
 					 
 				 }
@@ -113,35 +127,46 @@ public class MyProfile extends TestBase{
 			 
 		}
 		 
-		
+		 
 	 }
   
-	 boolean isPictureSelected=false;
+	 
 	 public boolean choosePictureFromGallery() throws IOException, InterruptedException
 	 {
+		 boolean isPictureSelected = false;
 		 System.out.println("choosing gallery picture");
 		
 				 List<AndroidElement> galleryImages =driver.findElements(By.className("com.sec.samsung.gallery.glview.composeView.ThumbObject"));
 				 System.out.println(galleryImages.size());
-				 driver.findElement(By.xpath("//com.sec.samsung.gallery.glview.composeView.ThumbObject{2}")).click();
-				 	 System.out.println("checking");
-				 	 Thread.sleep(1000);
-					 try {
-					 if(findMobileElement("xpath", "EditPhoto").isDisplayed())
-					 {
-						 findMobileElement("xpath", "cropDone").click();
-						 wait.waitForGivenTime(60);
-						 isPictureSelected=true;
-						 
-						
-						 
-					 }}catch (Exception e) {
-						// TODO: handle exception
-						 e.printStackTrace();
-						 System.out.println("No picture is selected");
-						 isPictureSelected=false;
+                 for (AndroidElement image : galleryImages) {
+					if(image.isDisplayed())
+					{
+						//System.out.println("inside image");
+						Actions action = new Actions(driver);
+						action.doubleClick(image).build().perform();
+						try {
+							 if(findMobileElement("xpath", "EditPhoto").isDisplayed())
+								 {
+									 System.out.println("edit button is visible");
+									 findMobileElement("xpath", "cropDone").click();
+									 wait.waitForGivenTime(60);
+									  isPictureSelected=true; 
+									  break;
+								 }}catch (Exception e) {
+									// TODO: handle exception
+									 e.printStackTrace();
+									 System.out.println("No picture is selected");
+									  isPictureSelected=false;
+								
+							 
+						}
+					}
+                	 
 					
-				 }
+				}
+					 	
+				 
+					
 					 return isPictureSelected;
 		 
 				 
@@ -152,7 +177,8 @@ public class MyProfile extends TestBase{
 	    public void removeProfilePicture() throws Throwable {
 	      System.out.println("Removing profile picture"); 
 		  removePictureFromGallery();
-	        
+		  
+	      
 		 
 	    }
 	 boolean isProfileRemoved=false;
@@ -172,12 +198,15 @@ public class MyProfile extends TestBase{
 				 if(findMobileElement("xpath", "PanelToChooseProfileImage").isDisplayed())
 				 {
 					 findMobileElement("xpath", "RemoveOption").click();
+					 Thread.sleep(1000);
+					 
 					 //add code to verify if possible	 
 					 isProfileRemoved=true;
 				 }
 				 }catch (Exception e) {
 					// TODO: handle exception
 					 System.out.println("Profile image is not updated");
+					 isProfileRemoved=false;
 				}
 			 }
 			 
@@ -187,13 +216,24 @@ public class MyProfile extends TestBase{
 			 
 		}
 		 
+		 
 		 return isProfileRemoved;
 	 }
 	
 	 @Then("^profile picture should be removed$")
 	    public void verifyRemoveProfile() throws Throwable {
 	        
-		 findMobileElement("xpath", "RemovePictureValidations").getAttribute("index");
-		 System.out.println(findMobileElement("xpath", "RemovePictureValidations").getAttribute("index"));
+		 driver.findElement(By.className("android.widget.ImageButton")).click();
+		 try {
+			 findMobileElement("xpath", "HamburgerMenu").isDisplayed();
+		 }catch (Exception e) {
+			// TODO: handle exception
+			 driver.findElement(By.className("android.widget.ImageButton")).click();
+		}
+		 Assert.assertTrue(isProfileRemoved);
+		 
+		 
+		 //findMobileElement("xpath", "RemovePictureValidations");
+		 //System.out.println(findMobileElement("xpath", "RemovePictureValidations").getAttribute("index"));
 	    }
 }

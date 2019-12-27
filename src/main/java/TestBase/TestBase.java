@@ -38,8 +38,7 @@ public class TestBase {
 			  * Need to add this in Before statement
 			  */
 			 //AppiumSetUp appium = new AppiumSetUp();
-			 AppiumSetUp.startService();
-			//System.out.println(propertyObj.getProperty("PlatForm") + propertyObj.getProperty("App_Path"));
+			 //System.out.println(propertyObj.getProperty("PlatForm") + propertyObj.getProperty("App_Path"));
 	      driver = DriverManagement.getInstance(propertyObj.getProperty("PlatForm"),propertyObj.getProperty("App_Path"));
 		
 		}catch(Exception e) {
@@ -118,11 +117,11 @@ public class TestBase {
 			element= driver.findElement(By.xpath(ObjectNameValue));
 			return element;
 		case "ID":
-			element=driver.findElement(By.id(ObjectName));
+			element=driver.findElement(By.id(ObjectNameValue));
 			return element;
 				//break;		
 		case "className":
-			element= driver.findElement(By.className(ObjectName));
+			element= driver.findElement(By.className(ObjectNameValue));
 			return element;			
 
 		default:

@@ -187,7 +187,7 @@ public class InviteUsers extends TestBase {
 					         int openingBracketIndex=AircraftName.indexOf("(");
 					         int closingBracketIndex=AircraftName.indexOf(")");
 					         String Total_count = AircraftName.substring(openingBracketIndex+1, closingBracketIndex);
-					         System.out.println(Total_count);
+					         System.out.println(displayedUserCount);
 					         int final_Count=0;
 					         //scroll till last user comes
 					         do {

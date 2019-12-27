@@ -48,7 +48,13 @@ public class AppMenu extends TestBase {
 	    }
 	 @And("^Username \"([^\"]*)\" should be displayed with profile picture$")
 	    public void verifyUsernameDisplayedOnAppMenu(String username) throws Throwable {
-	        
+	        try {
+	        	findMobileElement("xpath", "AppMenu_UserName").isDisplayed();
+	        }catch (Exception e) {
+				// TODO: handle exception
+	        	findMobileElement("xpath", "HamburgerMenu").click();
+	        	
+			}
 		    String actual_Username=findMobileElement("xpath", "AppMenu_UserName").getText().trim();
 		    System.out.println(actual_Username);
 		    Assert.assertTrue(actual_Username.equalsIgnoreCase(username.trim()));
