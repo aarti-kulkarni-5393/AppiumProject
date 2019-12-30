@@ -65,6 +65,9 @@ public class TestBase {
 	}
 	
 	 caps.setCapability(MobileCapabilityType.APP, App_Path);
+	 caps.setCapability("automationName", "UiAutomator2");
+	 caps.setCapability("waitForIdleTimeout", 2000);
+	 caps.setCapability("disableWindowAnimation", true);
 	 return caps;
 	
 	}

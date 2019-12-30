@@ -11,4 +11,4 @@ Scenario Outline:User invites existing user with new aircraft accessn
  And Invited user <Email> is present under list of invited users for Aircraft <AircraftTailNumber>
  Examples:
  | firstName | LastName | Email                 | AircraftTailNumber |
- | test      | test     | testa2@gmail.com      | N105PG             |
+ | test      | test     | testa8@gmail.com      | N105PG             |

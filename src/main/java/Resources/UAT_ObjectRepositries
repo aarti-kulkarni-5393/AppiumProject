@@ -23,7 +23,7 @@ UserFromUserList=//android.widget.TextView[@resource-id='com.cirrusaircraft.conn
 UserListCollaps=//android.widget.ImageView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/iv_collapse']
 ##### My hangar ###############
 MyHangarMenu= //android.widget.CheckedTextView[@text='My Hangar']
-
+Progressbar=//android.widget.ProgressBar
 
 ######### My Profile ###############
 MyProfileMenu=//android.widget.CheckedTextView[@text='My Profile']

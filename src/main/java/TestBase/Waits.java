@@ -34,10 +34,14 @@ public class Waits extends TestBase{
 	 * Dynammic waits
 	 */
 	
-	public void waitForGivenElement(int time,AndroidElement element)
+	public void waitForGivenElement(int time,AndroidElement androidElement)
 	{
+		try {
 		WebDriverWait wait = new WebDriverWait(driver, time);
-		wait.until(ExpectedConditions.visibilityOf(element));
+		wait.until(ExpectedConditions.visibilityOf(androidElement));
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
 		
 	}
 	

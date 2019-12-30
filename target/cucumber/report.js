@@ -113,8 +113,9 @@ formatter.match({
   "location": "Login.verifyUserIsOnLoginPage()"
 });
 formatter.result({
-  "duration": 39242697800,
-  "status": "passed"
+  "duration": 6610398600,
+  "error_message": "java.lang.NullPointerException\r\n\tat TestBase.Waits.waitForGivenTime(Waits.java:30)\r\n\tat stepDefinition.Login.verifyUserIsOnLoginPage(Login.java:149)\r\n\tat ✽.Given User is on sign in page(Login.feature:6)\r\n",
+  "status": "failed"
 });
 formatter.match({
   "arguments": [
@@ -130,15 +131,13 @@ formatter.match({
   "location": "Login.enterUserNameAndPassword(String,String)"
 });
 formatter.result({
-  "duration": 1854199000,
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.match({
   "location": "Login.userSubmitDetails()"
 });
 formatter.result({
-  "duration": 841016200,
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.match({
   "arguments": [
@@ -150,8 +149,7 @@ formatter.match({
   "location": "Login.verifyUSerLoggedIn(String)"
 });
 formatter.result({
-  "duration": 62148021400,
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.uri("Manage_additional_users.feature");
 formatter.feature({
@@ -216,7 +214,7 @@ formatter.examples({
       "cells": [
         "test",
         "test",
-        "testa2@gmail.com",
+        "testa8@gmail.com",
         "N105PG"
       ],
       "line": 14,
@@ -241,8 +239,9 @@ formatter.match({
   "location": "Dashboard.verifyUserIsOnMyHangarScreen()"
 });
 formatter.result({
-  "duration": 821846700,
-  "status": "passed"
+  "duration": 8152401800,
+  "error_message": "java.lang.NullPointerException\r\n\tat TestBase.Waits.waitForGivenTime(Waits.java:30)\r\n\tat stepDefinition.Dashboard.verifyUserIsOnMyHangarScreen(Dashboard.java:53)\r\n\tat ✽.Given User is on My Hangar screen(Manage_additional_users.feature:4)\r\n",
+  "status": "failed"
 });
 formatter.scenario({
   "line": 14,
@@ -265,7 +264,7 @@ formatter.step({
 });
 formatter.step({
   "line": 9,
-  "name": "User submit details of additional user firstname test ,lastname test,emailtesta2@gmail.com,airctaftN105PG",
+  "name": "User submit details of additional user firstname test ,lastname test,emailtesta8@gmail.com,airctaftN105PG",
   "matchedColumns": [
     0,
     1,
@@ -282,7 +281,7 @@ formatter.step({
     }
   ],
   "line": 11,
-  "name": "Invited user testa2@gmail.com is present under list of invited users for Aircraft N105PG",
+  "name": "Invited user testa8@gmail.com is present under list of invited users for Aircraft N105PG",
   "matchedColumns": [
     2,
     3
@@ -293,9 +292,7 @@ formatter.match({
   "location": "InviteUsers.userisOnManageUSerPage()"
 });
 formatter.result({
-  "duration": 11764853000,
-  "error_message": "org.openqa.selenium.WebDriverException: An unknown server-side error occurred while processing the command. Original error: Could not proxy command to remote server. Original error: Error: connect ECONNREFUSED 127.0.0.1:8203\nBuild info: version: \u00273.141.59\u0027, revision: \u0027e82be7d358\u0027, time: \u00272018-11-14T08:17:03\u0027\nSystem info: host: \u0027NLPULTP4603920\u0027, ip: \u0027192.168.43.158\u0027, os.name: \u0027Windows 10\u0027, os.arch: \u0027amd64\u0027, os.version: \u002710.0\u0027, java.version: \u00271.8.0_181\u0027\nDriver info: io.appium.java_client.android.AndroidDriver\nCapabilities {app: C:\\Users\\aarti.kulkarni\\ecl..., appPackage: com.cirrusaircraft.connecte..., databaseEnabled: false, desired: {app: C:\\Users\\aarti.kulkarni\\ecl..., deviceName: Android Device, platformName: android}, deviceApiLevel: 26, deviceManufacturer: samsung, deviceModel: SM-G930F, deviceName: ce061606e4d9ce3e02, deviceScreenDensity: 480, deviceScreenSize: 1080x1920, deviceUDID: ce061606e4d9ce3e02, javascriptEnabled: true, locationContextEnabled: false, networkConnectionEnabled: true, pixelRatio: 3, platform: LINUX, platformName: Android, platformVersion: 8.0.0, statBarHeight: 72, takesScreenshot: true, viewportRect: {height: 1848, left: 0, top: 72, width: 1080}, warnings: {}, webStorageEnabled: false}\nSession ID: 3ecee1bd-8919-4a17-8dd7-1758897ddcc0\n*** Element info: {Using\u003dxpath, value\u003d//android.widget.ImageView[@resource-id\u003d\u0027com.cirrusaircraft.connectedapp.uat:id/bottom_sheet_hamburger\u0027]}\r\n\tat sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)\r\n\tat sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)\r\n\tat sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)\r\n\tat java.lang.reflect.Constructor.newInstance(Constructor.java:423)\r\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)\r\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)\r\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)\r\n\tat org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)\r\n\tat io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:239)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)\r\n\tat io.appium.java_client.DefaultGenericMobileDriver.execute(DefaultGenericMobileDriver.java:42)\r\n\tat io.appium.java_client.AppiumDriver.execute(AppiumDriver.java:1)\r\n\tat io.appium.java_client.android.AndroidDriver.execute(AndroidDriver.java:1)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)\r\n\tat io.appium.java_client.DefaultGenericMobileDriver.findElement(DefaultGenericMobileDriver.java:62)\r\n\tat io.appium.java_client.AppiumDriver.findElement(AppiumDriver.java:1)\r\n\tat io.appium.java_client.android.AndroidDriver.findElement(AndroidDriver.java:1)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)\r\n\tat io.appium.java_client.DefaultGenericMobileDriver.findElementByXPath(DefaultGenericMobileDriver.java:152)\r\n\tat io.appium.java_client.AppiumDriver.findElementByXPath(AppiumDriver.java:1)\r\n\tat io.appium.java_client.android.AndroidDriver.findElementByXPath(AndroidDriver.java:1)\r\n\tat org.openqa.selenium.By$ByXPath.findElement(By.java:353)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)\r\n\tat io.appium.java_client.DefaultGenericMobileDriver.findElement(DefaultGenericMobileDriver.java:58)\r\n\tat io.appium.java_client.AppiumDriver.findElement(AppiumDriver.java:1)\r\n\tat io.appium.java_client.android.AndroidDriver.findElement(AndroidDriver.java:1)\r\n\tat TestBase.TestBase.findMobileElement(TestBase.java:117)\r\n\tat stepDefinition.InviteUsers.navigateToInviteUserScreen(InviteUsers.java:46)\r\n\tat stepDefinition.InviteUsers.userisOnManageUSerPage(InviteUsers.java:154)\r\n\tat ✽.Given User is on Manage users screen(Manage_additional_users.feature:8)\r\n",
-  "status": "failed"
+  "status": "skipped"
 });
 formatter.match({
   "arguments": [
@@ -308,7 +305,7 @@ formatter.match({
       "offset": 64
     },
     {
-      "val": "testa2@gmail.com",
+      "val": "testa8@gmail.com",
       "offset": 74
     },
     {
@@ -324,7 +321,7 @@ formatter.result({
 formatter.match({
   "arguments": [
     {
-      "val": "testa2@gmail.com",
+      "val": "testa8@gmail.com",
       "offset": 13
     },
     {
