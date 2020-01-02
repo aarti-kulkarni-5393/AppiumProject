@@ -8,6 +8,7 @@ import java.net.URL;
 import java.util.Properties;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -153,10 +154,25 @@ try{
 	isElementPresent = false;
 	System.out.println(e.getMessage());
 	return isElementPresent;
-} }}
+} }
 	
 
-	
+public boolean retryingFindClick(AndroidElement element,int tryCount) {
+    boolean result = false;
+    int attempts = 0;
+    while(attempts < tryCount) {
+        try {
+        	System.out.println(attempts);
+        	element.click();
+            result = true;
+            break;
+        } catch(StaleElementReferenceException e) {
+        }
+        attempts++;
+    }
+    return result;
+}
    
 
 
+}

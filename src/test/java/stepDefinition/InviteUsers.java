@@ -5,8 +5,12 @@ import java.net.MalformedURLException;
 import java.util.List;
 
 import org.apache.tools.ant.taskdefs.WaitFor;
+import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.google.common.collect.Streams.DoubleFunctionWithIndex;
 
@@ -120,7 +124,7 @@ public class InviteUsers extends TestBase {
 	        	 findMobileElement("xpath", "SendInviteButton").click();
                  do {
                 	 System.out.println("In while loop");
-					wait.waitForGivenTime(30);
+					wait.waitForGivenTime(40);
 				} while (!findMobileElement("xpath", "SelectedAircraftText").getText().equalsIgnoreCase("Select Aircraft"));     		
 	        	
 	        	findMobileElement("className", "BackButton").click();
@@ -147,7 +151,18 @@ public class InviteUsers extends TestBase {
 	 @And("^Invited user (.+) is present under list of invited users for Aircraft (.+)$")
 	    public void verfyUserIsList(String email, String aircrafttailnumber) throws Throwable {
 	        
-		 findUserInList(aircrafttailnumber, email);
+		 AndroidElement user =findUserInList(aircrafttailnumber, email);
+		 if(user==null) {
+			 System.out.println("element is not present");
+		 }else {
+			 System.out.println("user is present"+" "+user.getText());
+		 }
+		 
+		 wait.waitForGivenElement(30, findMobileElement("className", "BackButton"));
+		 findMobileElement("className", "BackButton").click();
+			
+		 
+		
 	    }
 
 	    @Given("^User is on Manage users screen$")
@@ -176,8 +191,8 @@ public class InviteUsers extends TestBase {
 	    
 	  public AndroidElement findUserInList(String tailNumber,String email) throws Throwable
 	  {
-		 System.out.println("In find user");
-		 userisOnManageUSerPage();
+		  System.out.println("In find user");
+		  userisOnManageUSerPage();
 		  String AircraftName = "";
 		  List<AndroidElement> Aircarfts = driver.findElements(By.xpath("//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/tv_aircraft_name_label']"));
 		  List<AndroidElement> ExpandButtons = driver.findElements(By.xpath("//android.widget.ImageView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/iv_expand']"));
@@ -188,88 +203,55 @@ public class InviteUsers extends TestBase {
 				  AircraftName = Aircarfts.get(i).getText();
 				  System.out.println("Given aircraft is"+AircraftName);
 				  ExpandButtons.get(i).click();
-				  int displayedUserCount = driver.findElements(By.xpath("//android.widget.LinearLayout[@resource-id='com.cirrusaircraft.connectedapp.uat:id/ll_view_aircraft_user']")).size();
+				  new Scrolling().verticalScroll();
+				  //int displayedUserCount_now = driver.findElements(By.xpath("//android.widget.LinearLayout[@resource-id='com.cirrusaircraft.connectedapp.uat:id/ll_view_aircraft_user']")).size();
 				  wait.waitForGivenTime(50);
-                  new Scrolling().verticalScroll();
+                  
                   try {
                 	findMobileElement("xpath", "UserListCollaps").isDisplayed();
                 	System.out.println("done");
+                	break;
+                	
+                	
                   }catch (Exception e) {
-					// TODO: handle exception
+                     System.out.println("clicking on expand element"+ExpandButtons.size()+" "+ExpandButtons.get(i).toString());
+                     try {
+                    	 ExpandButtons.get(i).isDisplayed();
+                     }catch (Exception e1) {
+						// TODO: handle exception
+ 
+                    	 findMobileElement("xpath", "ExpandListButton").click();
+                    	 //retryingFindClick(ExpandButtons.get(i),5);
+                    	 break;
+                    	 
+					}
+                     //new WebDriverWait(driver, 60).ignoring( StaleElementReferenceException.class).until(ExpectedConditions.elementToBeSelected(ExpandButtons.get(i)));
                      
-                	 ExpandButtons.get(i).click();
-				}
+                     
+                  }
+                    	 
+                    
+               }
 			  }
-		  }
+                  int displayedUserCount = driver.findElements(By.xpath("//android.widget.LinearLayout[@resource-id='com.cirrusaircraft.connectedapp.uat:id/ll_view_aircraft_user']")).size();
+                  System.out.println(displayedUserCount);
+                  int InvitedUsersCount =getInvitedUserCount(AircraftName);
+                  int final_Count=displayedUserCount;
+                  do {
+		        	 if(displayedUserCount!=InvitedUsersCount)
+			             { 
+			            	 //scrolling
+			            	 new Scrolling().verticalScroll();
+			            	 //Post scroll,Take new count of users
+			            	 int displayedUserCount_new = driver.findElements(By.xpath("//android.widget.LinearLayout[@resource-id='com.cirrusaircraft.connectedapp.uat:id/ll_view_aircraft_user']")).size();
+			            	 //Adding new count of users to existing one which are displayed
+			            	 System.out.println(displayedUserCount_new);
+			            	 final_Count = final_Count+displayedUserCount_new;
+			            	 System.out.println(final_Count);
+			             }
+					} while (final_Count<=InvitedUsersCount);
 
-//				
-//				{	
-//					
-//					
-//					wait.waitForGivenTime(50);
-//					System.out.println("waited");
-//					try {
-//						findMobileElement("xpath", "UserListCollaps").isDisplayed();
-//						System.out.println("expanded");
-//					}catch (Exception e) {
-//						// TODO: handle exception
-//						ExpandButtons.get(i).click();
-//						System.out.println("in catch block");
-//					}
-//						//System.out.println("List is open,We can proceed");
-//							//wait.waitForGivenTime(60);
-//						
-//					         //Taking total count of users 
-//					    int openingBracketIndex=AircraftName.indexOf("(");
-//					         int closingBracketIndex=AircraftName.indexOf(")");
-//					         String Total_count = AircraftName.substring(openingBracketIndex+1, closingBracketIndex);
-//					         System.out.println(displayedUserCount);
-//					         int final_Count=0;
-//					         //scroll till last user comes
-//					         do {
-//					        	 if(displayedUserCount!=Integer.valueOf(Total_count))
-//					             { 
-//					            	 //scrolling
-//					            	 new Scrolling().verticalScroll();
-//					            	 //Post scroll,Take new count of users
-//					            	 int displayedUserCount_new = driver.findElements(By.xpath("//android.widget.LinearLayout[@resource-id='com.cirrusaircraft.connectedapp.uat:id/ll_view_aircraft_user']")).size();
-//					            	 //Adding new count of users to existing one which are displayed
-//					            	 final_Count = displayedUserCount+displayedUserCount_new;
-//					            	 System.out.println(final_Count);
-//					             }
-//							} while (final_Count<=Integer.valueOf(Total_count));
-//
-//							
-//						}
-//						
-//					}
-		  
-		  //wait.waitForGivenTime(60);
-		  //List<AndroidElement> listOfUsers = driver.findElements(By.xpath("//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/tv_aircraft_user_email']"));
-		  //System.out.println(listOfUsers.size());
-		  
-		  //Count of users displayed now on screen
-//         int displayedUserCount = driver.findElements(By.xpath("//android.widget.LinearLayout[@resource-id='com.cirrusaircraft.connectedapp.uat:id/ll_view_aircraft_user']")).size();
-//         //Taking total count of users 
-//         int openingBracketIndex=AircraftName.indexOf("(");
-//         int closingBracketIndex=AircraftName.indexOf(")");
-//         String Total_count = AircraftName.substring(openingBracketIndex+1, closingBracketIndex);
-//         System.out.println(Total_count);
-//         int final_Count=0;
-//         //scroll till last user comes
-//         do {
-//        	 if(displayedUserCount!=Integer.valueOf(Total_count))
-//             { 
-//            	 //scrolling
-//            	 new Scrolling().verticalScroll();
-//            	 //Post scroll,Take new count of users
-//            	 int displayedUserCount_new = driver.findElements(By.xpath("//android.widget.LinearLayout[@resource-id='com.cirrusaircraft.connectedapp.uat:id/ll_view_aircraft_user']")).size();
-//            	 //Adding new count of users to existing one which are displayed
-//            	 final_Count = displayedUserCount+displayedUserCount_new;
-//            	 System.out.println(final_Count);
-//             }
-//		} while (final_Count<=Integer.valueOf(Total_count));
-         
+              
 		AndroidElement user = null;
          try {
         	 
@@ -286,6 +268,81 @@ public class InviteUsers extends TestBase {
 			
          return user;
          }
+	  
+       public int GetTotalCountOfInvitedUsers(String aircraftName)
+       {
+    	   wait.waitForGivenTime(30);
+    	   List<AndroidElement> Aircarfts = driver.findElements(By.xpath("//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/tv_aircraft_name_label']"));
+    	   String AircraftName ="";
+    	   int count =0;
+    	   for(int i=0;i<Aircarfts.size();i++)
+    	   {
+    		   if(Aircarfts.get(i).getText().contains(aircraftName))
+    		   {
+    			   AircraftName=Aircarfts.get(i).getText();
+    			   System.out.println(getInvitedUserCount(AircraftName));
+    			   if(getInvitedUserCount(AircraftName)==0)
+    			   {
+    				   
+    				   List<AndroidElement> Aircarfts_again = driver.findElements(By.xpath("//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/tv_aircraft_name_label']"));
+    				   System.out.println(getInvitedUserCount(Aircarfts_again.get(i).getText()+" this in if condition"));
+    				   count= getInvitedUserCount(Aircarfts_again.get(i).getText());
+    				  
+    			   }
+    			   break;
+    		   }
+    	   }
+    	   
+    	   
+    	    return count;
+    		   
+       }
+       
+       @When("^User deletes invited user (.+) access for aircarft (.+)$")
+       public void deleteUserFromList(String email,String aircrafttailnumber) throws Throwable {
+           wait.waitForGivenTime(60);
+           while(findMobileElement("xpath", "Progressbar").isDisplayed())
+           {
+        	   wait.waitForGivenTime(30);
+           }
+           int userCount = GetTotalCountOfInvitedUsers(aircrafttailnumber);
+           System.out.println(userCount);
+           AndroidElement userToDelete = findUserInList(aircrafttailnumber, email);
+           if(userToDelete==null)
+           {
+        	   System.out.println("Make sure user is invited,At present its not on list");
+           }else {
+        	   
+        	   new Scrolling().longPress(userToDelete, 2);
+        	   try {
+        		   findMobileElement("xpath", "DeleteUserConfirmationPopup").isDisplayed();
+        		   findMobileElement("xpath", "YesButton").click();
+        	   }catch (Exception e) {
+				// TODO: handle exception
+        		   new Scrolling().longPress(userToDelete, 3);
+        		   findMobileElement("xpath", "DeleteUserConfirmationPopup").isDisplayed();
+        		   findMobileElement("xpath", "YesButton").click();
+        		   
+			}
+        	   
+           }
+           int postDeleteUserCount = GetTotalCountOfInvitedUsers(aircrafttailnumber);
+           int expectedUserCount = userCount-1;
+           Assert.assertTrue("user is deleted", postDeleteUserCount==expectedUserCount);
+           
+           
+    	   
+       }
+       
+      public int getInvitedUserCount(String aircraftName)
+      {
+    	  String AircraftName=aircraftName;
+    	  int openingBracketIndex=AircraftName.indexOf("(");
+          int closingBracketIndex=AircraftName.indexOf(")");
+          String Total_count = AircraftName.substring(openingBracketIndex+1, closingBracketIndex);
+          System.out.println(Total_count);
+          return Integer.valueOf(Total_count);
+      }
 	  }
 
 

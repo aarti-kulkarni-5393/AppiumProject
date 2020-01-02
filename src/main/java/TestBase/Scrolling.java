@@ -7,6 +7,7 @@ import java.util.HashMap;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.touch.TouchActions;
 import org.openqa.selenium.remote.RemoteWebElement;
 
@@ -19,7 +20,15 @@ import io.appium.java_client.PerformsTouchActions;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.touch.offset.ElementOption;
 import io.appium.java_client.touch.offset.PointOption;
+import io.appium.java_client.TouchAction;
+import static io.appium.java_client.touch.TapOptions.tapOptions;
+import static io.appium.java_client.touch.offset.ElementOption.element;
+import static io.appium.java_client.touch.LongPressOptions.longPressOptions;
+import static java.time.Duration.ofSeconds;
+
+
 
 public class Scrolling extends TestBase {
 	
@@ -156,12 +165,15 @@ MobileElement el = (MobileElement) driver
     
     public void singleTap(AndroidElement element)
     {
-    	TouchActions action = new TouchActions(driver);
-    	System.out.println("here its tap on image");
-    	action.singleTap(element);
-    	action.perform();
+    	TouchAction action = new TouchAction(driver);
+    	action.tap(tapOptions().withElement(element(element))).perform();
 
 
+    }
+    public void longPress(AndroidElement element,int time)
+    {
+    	TouchAction action = new TouchAction(driver);
+    	action.longPress(longPressOptions().withElement(element(element)).withDuration(ofSeconds(time))).release().perform();
     }
 
 }

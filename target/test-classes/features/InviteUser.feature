@@ -38,6 +38,9 @@ Given User is on My Hangar screen
  | firstName | LastName | Email          | Airctaft  |
  | test      | test     | xyz1@gmail.com | SR22-4801 |
  
+ Scenario: User verifies user got an access for given Aircraft
+ 
+ 
  
  
  
