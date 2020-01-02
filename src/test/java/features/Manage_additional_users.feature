@@ -3,7 +3,7 @@ Feature: Manage Additional Users
 Background: User logged into application
 Given User is on My Hangar screen
 
- 
+
 Scenario Outline:User invites existing user with new aircraft accessn
  Given User is on Manage users screen
  When User submit details of additional user firstname <firstName> ,lastname <LastName>,email<Email>,airctaft<AircraftTailNumber>
@@ -11,7 +11,7 @@ Scenario Outline:User invites existing user with new aircraft accessn
  And Invited user <Email> is present under list of invited users for Aircraft <AircraftTailNumber>
  Examples:
  | firstName | LastName | Email                 | AircraftTailNumber |
- | test      | test     | testa17@gmail.com      | N105PG             |
+ | test      | test     | testa19@gmail.com      | N105PG             |
  
  @Inviteuser
  Scenario Outline:User deletes invited user for given aircraft
@@ -20,4 +20,4 @@ Scenario Outline:User invites existing user with new aircraft accessn
  
  Examples:
  | Email             |  AircraftTailNumber |
- | test123@gmail.com |  N105PG             |
+ | testa18@gmail.com |  N105PG             |

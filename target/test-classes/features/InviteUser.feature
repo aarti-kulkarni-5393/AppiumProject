@@ -38,7 +38,18 @@ Given User is on My Hangar screen
  | firstName | LastName | Email          | Airctaft  |
  | test      | test     | xyz1@gmail.com | SR22-4801 |
  
- Scenario: User verifies user got an access for given Aircraft
+ Scenario Outline:: User verifies user got an access to invited aircraft
+Given User is on My Hangar screen
+When User has access to <Aircraft tail Number> aircraft
+And Aircraft module number is <Aircraft Model Number>
+Then User should see Locaton of aircraft is <Location>
+And User should see Last updated date and time is <LastUpdatedDateTime>
+
+Examples:
+ | Aircraft tail Number  | Aircraft Model Number  | Location                        | LastUpdatedDateTime |
+ | N336HT                | SR22                   | Duluth International Airport    | 12                    |
+ 
+
  
  
  
