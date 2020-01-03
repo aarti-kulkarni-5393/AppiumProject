@@ -50,7 +50,7 @@ public class Dashboard extends TestBase{
 	@Given("^User is on My Hangar screen$")
 	public void verifyUserIsOnMyHangarScreen()
 	{
-		wait.waitForGivenTime(50);
+		wait.waitForGivenTime(40);
 		
 		//if(driver.findElement(By.xpath("//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp:id/label_my_hanger']")).isDisplayed())
 		try {
@@ -78,20 +78,35 @@ public class Dashboard extends TestBase{
 		//driver.findElement(By.xpath("//android.widget.ImageView[@resource-id='com.cirrusaircraft.connectedapp.qa:id/bottom_sheet_hamburger']")).click();
 		findMobileElement("xpath", "HamburgerMenu").click();
 		//click on logout
-		driver.findElement(By.xpath("//android.widget.CheckedTextView[@text=\"Log Out\"]")).click();
+		findMobileElement("xpath", "Logout").click();
+		//driver.findElement(By.xpath("//android.widget.CheckedTextView[@text=\"Log Out\"]")).click();
 		wait.waitForGivenTime(30);
-        if(driver.findElement(By.xpath("//android.widget.Button[@text=\"CONFIRM\"]")).isDisplayed())
-        {
-        	driver.findElement(By.xpath("//android.widget.Button[@text=\"CONFIRM\"]")).click();
-        	
-        }
+		try {
+       
+			findMobileElement("xpath", "ConfirmLogoutButton").isDisplayed();
+            findMobileElement("xpath", "ConfirmLogoutButton").click();       
+		}catch (Exception e) {
+			// TODO: handle exception
+			wait.waitForGivenTime(30);
+			findMobileElement("xpath", "Logout").click();
+			findMobileElement("xpath", "ConfirmLogoutButton").isDisplayed();
+            findMobileElement("xpath", "ConfirmLogoutButton").click();
+		}
         wait.waitForGivenTime(60);
-        if(driver.findElement(By.xpath("//android.widget.EditText[@resource-id='loginPage:loginForm:username']")).isDisplayed())
-        {
+        try {
+        	findMobileElement("xpath", "Username").isDisplayed();
         	System.out.println("Successfully logged out");
-        }
-		
+        }catch (Exception e) {
+			// TODO: handle exception
+        	wait.waitForGivenTime(40);
+        	findMobileElement("xpath", "Username").isDisplayed();
+        	System.out.println("Successfully logged out");
+		}
+        
+        	
+        
 	}
+	
 	
 	
 	@When("^User has access to (.+) aircraft$")
@@ -119,8 +134,12 @@ public class Dashboard extends TestBase{
 		   }
 		   countOfAircraft++;
 	} while (aircraftNAme.equalsIgnoreCase(aircraftmodelnumber));
-        
-    return AircraftAccess;
+    // check if aicraft is on screen or at botom of screen
+	int aircrafts_onScreen = driver.findElements(By.xpath("//android.view.ViewGroup[@resource-id='com.cirrusaircraft.connectedapp.uat:id/hanger_holder']")).size();
+    if(aircrafts_onScreen!=1)
+    	scroll.smallverticalScroll();
+	
+	return AircraftAccess;
 	}
 	
 	
@@ -311,7 +330,12 @@ public class Dashboard extends TestBase{
     }
 	
 	
-	
+    @When("^User has not access to (.+) aircraft$")
+    public void noAccessForAircraft(String aircrafttailnumber) throws Throwable {
+        boolean isAccess = checkAccessToAircraft(aircrafttailnumber);
+        Assert.assertTrue("Access is not there", isAccess);
+        
+    }
 	
 	
 	

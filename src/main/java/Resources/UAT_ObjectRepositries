@@ -28,7 +28,9 @@ CancelButton=//android.widget.Button[@text='CANCEL']
 ##### My hangar ###############
 MyHangarMenu= //android.widget.CheckedTextView[@text='My Hangar']
 Progressbar=//android.widget.ProgressBar
-
+Logout=//android.widget.CheckedTextView[@text='Log Out']
+ConfirmLogoutButton=//android.widget.Button[@text='CONFIRM']
+Hangers = //android.view.ViewGroup[@resource-id='com.cirrusaircraft.connectedapp.uat:id/hanger_holder']
 ######### My Profile ###############
 MyProfileMenu=//android.widget.CheckedTextView[@text='My Profile']
 updateProfile=//android.widget.ImageView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/iv_edit_profile']

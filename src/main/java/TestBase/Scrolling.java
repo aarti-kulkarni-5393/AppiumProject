@@ -125,6 +125,25 @@ MobileElement el = (MobileElement) driver
     	
     }
     
+    public void smallverticalScroll()
+    {
+    	
+    	    Dimension dimensions = driver.manage().window().getSize();
+    	    int height = dimensions.getHeight();
+    	    int width = dimensions.getWidth();
+    	    // x will be same 
+    	    int x = width/2;
+    	    int startY = (int)(height*0.80);
+    	    int endY = (int)(height*0.20);
+    	    
+    	    TouchAction action = new TouchAction(driver);
+    	    action.press(PointOption.point(x, startY)).waitAction().moveTo(PointOption.point(x, endY)).release().perform();
+    	    
+ 
+    	
+    	
+    }
+    
     public void scrollUp()
     {
 

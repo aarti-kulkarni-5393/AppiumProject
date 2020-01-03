@@ -313,6 +313,7 @@ public class InviteUsers extends TestBase {
        public void deleteUserFromList(String email,String aircrafttailnumber) throws Throwable {
            wait.waitForGivenTime(60);
            int userCount=0;
+           int postDeleteUserCount=0;
            try {
         	   while(findMobileElement("xpath", "Progressbar").isDisplayed())
         	   {
@@ -347,9 +348,6 @@ public class InviteUsers extends TestBase {
            }
            wait.waitForGivenTime(30);
            int expectedUserCount = userCount-1;
-           
-           int postDeleteUserCount = GetTotalCountOfInvitedUsers(aircrafttailnumber);
-           System.out.println(postDeleteUserCount);
            try {
         	   while(findMobileElement("xpath", "Progressbar").isDisplayed())
         	   {
@@ -357,10 +355,14 @@ public class InviteUsers extends TestBase {
         	   }
            }catch (Exception e) {
 			// TODO: handle exception
-        	   userCount = GetTotalCountOfInvitedUsers(aircrafttailnumber);
-               //System.out.println(userCount);
+        	   wait.waitForGivenTime(30);
+        	    postDeleteUserCount = GetTotalCountOfInvitedUsers(aircrafttailnumber);
+        	   System.out.println("Post"+" "+postDeleteUserCount);
         	     
 		}
+           
+           
+           
            Assert.assertTrue("user is deleted", postDeleteUserCount==expectedUserCount);
            
            
