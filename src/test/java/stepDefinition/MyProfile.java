@@ -10,6 +10,8 @@ import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.springframework.util.SystemPropertyUtils;
 
+import com.aventstack.extentreports.model.Device;
+
 import TestBase.Scrolling;
 import TestBase.TestBase;
 import TestBase.Waits;
@@ -141,9 +143,11 @@ public class MyProfile extends TestBase{
                  for (AndroidElement image : galleryImages) {
 					if(image.isDisplayed())
 					{
-						//System.out.println("inside image");
-						Actions action = new Actions(driver);
-						action.doubleClick(image).build().perform();
+						wait.waitForGivenTime(30);
+//						Actions action = new Actions(driver);
+//						action.doubleClick(image).build().perform();
+						driver.findElements(By.className("com.sec.samsung.gallery.glview.composeView.ThumbObject")).get(0).click();
+						
 						try {
 							 if(findMobileElement("xpath", "EditPhoto").isDisplayed())
 								 {
@@ -157,6 +161,7 @@ public class MyProfile extends TestBase{
 									 e.printStackTrace();
 									 System.out.println("No picture is selected");
 									  isPictureSelected=false;
+									  break;
 								
 							 
 						}
