@@ -7,7 +7,7 @@ Given User is on My Hangar screen
 Scenario: User should be able to update profile picture
 Given User is on My profile page
 When User upload profile pic from "Gallery"
-#Then Uploaded profile pic should be set
+#Then Uploaded profile pic should be set  
 
 
 
