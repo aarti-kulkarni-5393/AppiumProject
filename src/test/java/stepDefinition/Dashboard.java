@@ -21,6 +21,7 @@ import org.openqa.selenium.remote.RemoteWebElement;
 import org.springframework.util.SystemPropertyUtils;
 
 import TestBase.DriverManagement;
+import TestBase.Log;
 import TestBase.PropertyReader;
 import TestBase.Scrolling;
 import TestBase.TestBase;
@@ -39,11 +40,13 @@ public class Dashboard extends TestBase{
 	//private AndroidDriver<AndroidElement> driver;
 	private Waits wait;
 	private Scrolling scroll;
+	private Log log;
 	public Dashboard() throws IOException {
 		// TODO Auto-generated constructor stub
 		//driver = DriverManagement.getInstance(propertyObj.getProperty("PlatForm"),propertyObj.getProperty("App_Path"));
 		wait = new Waits();
 		scroll = new Scrolling();
+		log = new Log(Dashboard.class);
 	}
 	
 	
@@ -56,7 +59,7 @@ public class Dashboard extends TestBase{
 		try {
 			if(driver.findElement(By.xpath("//android.widget.TextView[@text='MY HANGAR']")).isDisplayed())
 			{
-				System.out.println("user is logged in and now on my hangar screen");
+				log.info("user is logged in and now on my hangar screen");
 				
 			}
 		}catch (Exception e) {
@@ -95,12 +98,12 @@ public class Dashboard extends TestBase{
         wait.waitForGivenTime(60);
         try {
         	findMobileElement("xpath", "Username").isDisplayed();
-        	System.out.println("Successfully logged out");
+        	log.info("Successfully logged out");
         }catch (Exception e) {
 			// TODO: handle exception
         	wait.waitForGivenTime(40);
         	findMobileElement("xpath", "Username").isDisplayed();
-        	System.out.println("Successfully logged out");
+        	log.info("Successfully logged out");
 		}
         
         	
@@ -118,7 +121,7 @@ public class Dashboard extends TestBase{
      Boolean AircraftAccess = false;
      int countOfAircraft =0;
 	 String aircraftNAme;
-    //System.out.println(onscreenAircraft.getText());
+    
 	do {
 		AndroidElement onscreenAircraft = driver.findElement(By.xpath("//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/aircraft_key']"));
 		aircraftNAme = onscreenAircraft.getText();
@@ -137,7 +140,7 @@ public class Dashboard extends TestBase{
     // check if aicraft is on screen or at botom of screen
 	int aircrafts_onScreen = driver.findElements(By.xpath("//android.view.ViewGroup[@resource-id='com.cirrusaircraft.connectedapp.uat:id/hanger_holder']")).size();
     if(aircrafts_onScreen!=1)
-    	scroll.smallverticalScroll();
+    	scroll.verticalScroll();
 	
 	return AircraftAccess;
 	}
@@ -148,7 +151,7 @@ public class Dashboard extends TestBase{
         
     	//to verify tail number
     	List <AndroidElement> airctaft_List = driver.findElements(By.xpath("//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp:id/aircraft_name']"));
-    	System.out.println(airctaft_List.size());
+    	log.info(String.valueOf(airctaft_List.size()));
     	for (AndroidElement aircraft : airctaft_List) {
 			
     		if(aircraft.getText().equalsIgnoreCase(aircraftmodelnumber))
@@ -172,7 +175,7 @@ public class Dashboard extends TestBase{
     	AndroidElement WelcomeText = driver.findElement(By.xpath("//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp:id/welcome_user']"));
     	if(WelcomeText.getText().equalsIgnoreCase(welcome))
 		{
-			System.out.println(WelcomeText.getText());
+			log.info(WelcomeText.getText());
 			Assert.assertTrue(true);
 		}else {
 			
@@ -188,7 +191,6 @@ public class Dashboard extends TestBase{
     	//AndroidElement element = driver.findElement(By.xpath("//android.widget.TextView[@text=\"N336HT\"]"));
     	//scroll.scrollByJavascript(element);
     	List <AndroidElement> airctaft_List = driver.findElements(By.xpath("//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp:id/hanger_holder']"));
-    	System.out.println(airctaft_List.size());
     	for (AndroidElement aircraft : airctaft_List) {
 			
     		if(aircraft.getText().equalsIgnoreCase(aircrafttalenumber))
@@ -211,7 +213,7 @@ public class Dashboard extends TestBase{
         //System.out.println(Actual_location);
     	if(Actual_location.equalsIgnoreCase(location))
         {
-        	System.out.println("Location is present on my hangar for particular aircraft");
+    		log.info("Location is present on my hangar for particular aircraft");
         }
     	
     }
@@ -223,7 +225,7 @@ public class Dashboard extends TestBase{
     	//System.out.println(ModelNUmber);
     	if(ModelNUmber.equalsIgnoreCase(aircraftmodelnumber))
         {
-        	System.out.println("Location is present on my hangar for particular aircraft");
+    		log.info("Location is present on my hangar for particular aircraft");
         }
     
     }
@@ -233,7 +235,7 @@ public class Dashboard extends TestBase{
     public void vrifyLastUpdatedDateTime(String lastupdateddatetime) throws Throwable {
         
        String ActualDateTime = driver.findElement(By.xpath("//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/last_updated_time']")).getText();
-       System.out.println(ActualDateTime);
+       log.info(ActualDateTime);
     }
 	
 	
@@ -279,7 +281,7 @@ public class Dashboard extends TestBase{
 			
 		} catch (Exception e) {
 			
-			System.out.println("No oxygen and TKS is assigned to user");
+			log.info("No oxygen and TKS is assigned to user");
 		}
     	/*
     	 * Following are fields which will be always present
@@ -308,7 +310,7 @@ public class Dashboard extends TestBase{
     	try {
     		if(driver.findElement(By.xpath("//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/logo_aircraft_status']")).isDisplayed())
     		{
-    			System.out.println("succesfully navigated to dashboard");
+    			log.info("succesfully navigated to dashboard");
     			if(driver.findElement(By.xpath("//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/logo_aircraft_status']")).getText().equalsIgnoreCase(modelNUmber))
     			Assert.assertFalse(false);	
     			
@@ -322,7 +324,7 @@ public class Dashboard extends TestBase{
     	
     	for (String keys : oldData.keySet()) {
 			
-    		System.out.println(keys+"   "+oldData.get(keys));
+    		log.info(keys+"   "+oldData.get(keys));
 		}
          
     	

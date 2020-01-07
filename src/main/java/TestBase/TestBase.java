@@ -7,6 +7,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Properties;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -24,7 +25,7 @@ public class TestBase {
 	public  static PropertyReader propertyObj;
 	public  static PropertyReader objectRepository;
 	public static MobileElement mobileElement;
-	
+	public Log log;
 	protected AndroidDriver<AndroidElement> driver;
 	/*
 	 * This is launching app in emulator or device
@@ -32,6 +33,8 @@ public class TestBase {
 	public TestBase() throws MalformedURLException {
 		// TODO Auto-generated constructor stub
 		try {
+			System.out.println("Log intialization for TestBase");
+			log = new Log(TestBase.class);
 			propertyObj = new PropertyReader();
 			objectRepository = new PropertyReader();
 			handleProperties();
@@ -43,8 +46,8 @@ public class TestBase {
 	      driver = DriverManagement.getInstance(propertyObj.getProperty("PlatForm"),propertyObj.getProperty("App_Path"));
 		
 		}catch(Exception e) {
-			System.out.println("Exception occured  while creating driver:::::"+e.getMessage());
-			e.printStackTrace();
+			log.info("Exception occured  while creating driver:::::"+e.getMessage());
+			log.info(e.getMessage());
 		}
 	}
 	public static DesiredCapabilities capabilties(String device,String App_Path) throws MalformedURLException {
@@ -53,7 +56,6 @@ public class TestBase {
 	 * File srcsFile = new File("src");
 	 * File finalFilePath = new File(srcsFile,"UAT-0.3.0.apk");
 	 */
-	
 	DesiredCapabilities caps = new DesiredCapabilities();
 	if(device.equalsIgnoreCase("emulator"))
 	{
@@ -73,29 +75,22 @@ public class TestBase {
 	
 	}
 	
-//	/*
-//	 * waits class will be executed from here
-//	 */
-//	public void waitForGivenTime(int time) throws MalformedURLException
-//	{
-//		wait = new Waits();
-//		wait.waitForGivenTime(30);
-//	}
-	
-
+   /*
+    * Loading Object Property files
+    */
 	public  void handleProperties() throws IOException
 	{
-			
+		    log.info("Intializing application property file");
 			propertyObj.loadPropertyFile("C:\\Users\\aarti.kulkarni\\eclipse-workspace\\Cirrus\\src\\main\\java\\Resources\\Application.properties");
 			
 			if(propertyObj.getProperty("Enviornment").contains("QA"))
 			{
-				
+				log.info("Loading Object Property file for QA");
 				objectRepository.loadPropertyFile(propertyObj.getProperty("QA_ObjectRepositoryPath"));
 				             
 						
 			}else if(propertyObj.getProperty("Enviornment").contains("UAT")) {
-				//System.out.println("loading UAT properties");
+				log.info("Loading Object Property file for UAT");
 				objectRepository.loadPropertyFile(propertyObj.getProperty("UAT_ObjectRepositoryPath"));
 				 
 			}
@@ -110,10 +105,11 @@ public class TestBase {
     
     public AndroidElement findMobileElement(String TypeOfObject,String ObjectName)
     {
+    	log.info("Getting Element "+ObjectName+" of Type "+TypeOfObject);
     	String Object = TypeOfObject;
     	
     	String ObjectNameValue= objectRepository.getObjectPropertyValue(ObjectName);
-    	System.out.println("This is value in findElement "+ObjectNameValue);
+    	
     	  	
     	AndroidElement element;
     	switch (Object) {
@@ -123,13 +119,13 @@ public class TestBase {
 		case "ID":
 			element=driver.findElement(By.id(ObjectNameValue));
 			return element;
-				//break;		
+						
 		case "className":
 			element= driver.findElement(By.className(ObjectNameValue));
 			return element;			
 
 		default:
-			System.out.println("No element is found ,please check ");
+			log.info("No element is found.");
 			element =null;
 			return element;
 			

@@ -15,6 +15,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import TestBase.DriverManagement;
 import TestBase.EmailUtility;
 import TestBase.EmailUtility.EmailFolder;
+import TestBase.Log;
 import TestBase.TestBase;
 import TestBase.Waits;
 import cucumber.api.java.en.And;
@@ -29,6 +30,7 @@ public class ForgotYourPassword extends TestBase {
 	
 	//private AndroidDriver<AndroidElement> driver;
 	private Waits wait;
+	private Log log;
 	
 	
 	public ForgotYourPassword() throws IOException {
@@ -36,6 +38,7 @@ public class ForgotYourPassword extends TestBase {
 		//driver = DriverManagement.getInstance(propertyObj.getProperty("PlatForm"),propertyObj.getProperty("App_Path"));
 		//driver = DriverManagement.getInstance("real","");
 		wait = new Waits();
+		log = new Log(ForgotYourPassword.class);
 		
 	}
 	
@@ -57,7 +60,7 @@ public class ForgotYourPassword extends TestBase {
 		//check user is on forgot your password page
 		if(driver.findElement(By.xpath("//android.view.View[@text=\"FORGOT YOUR PASSWORD?\"]")).isDisplayed())
 		{
-			System.out.println("Yes i am on forgot password page");
+			log.info("Yes i am on forgot password page");
 			// enter username
 			driver.findElement(By.xpath("//android.widget.EditText[@resource-id='forgotPassword:forgotForm:forgot-email']")).sendKeys(username);
 			//check if button is enabled if yes then click
@@ -87,7 +90,7 @@ public class ForgotYourPassword extends TestBase {
 	 @Given("^user (.+) and (.+) received an email to reset password$")
 	 public void verifyEmailRecevied(String username,String password) throws Exception
 	 {
-		 
+		 log.info("Verify Email is recevied,It will navigate to reset password page");
 		 EmailUtility utl = new EmailUtility(username,password , EmailUtility.EmailFolder.INBOX);
 		 //https://conarftqa-cirrusaircraftvpo.cs4.force.com/conaircraft/_nc_external/identity/ui/login/ForgotPasswordInterstitial?r=00DP00000003O41005P0000002JFwOeyJlbmMiOiJBMjU2R0NNIiwiYXVkIjoiMDBEUDAwMDAwMDAzTzQxIiwia2lkIjoie1widFwiOlwiMDBEUDAwMDAwMDAzTzQxXCIsXCJ2XCI6XCIwMkcwQjAwMDAwMDRyWGtcIixcImFcIjpcImZvcmdvdHBhc3N3b3JkdXNlcnRyYW5zaWVudGtleWVuY3J5cHRcIixcInVcIjpcIjAwNVAwMDAwMDAySkZ3T1wifSIsImNyaXQiOlsiaWF0Il0sImlhdCI6MTU2Nzc2Nzc2Mzk4MSwiZXhwIjowfQ%3D%3D..lwKAHJPHJZQgkZ1J.oTSdmG5Yr50wFF1UPzuEfhlxc_i-0u6z__A_yZeoQ9062-YDbV2pxyThqAATXe7q7aDYFkpnI-2FFKhJEA%3D%3D.i0g5Qu2tMHuryiBcZCdjmg%3D%3D&display=page&fpot=fd364fc2-df28-437e-b608-312293be46026799a7ae-b14b-4565-835f-8bb0522e37ad
           List<String> links  = utl.printAllLinksFromEmail("Sandbox: Your new Connected Aircraft password", "Click Here", 2, true);

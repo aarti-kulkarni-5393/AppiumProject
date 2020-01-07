@@ -22,12 +22,13 @@ public class PropertyReader {
 	 */
 	private Properties propertyObj;
 	AndroidDriver<AndroidElement> driver;
+	private Log log;
 	
     public PropertyReader() throws IOException {
 		// TODO Auto-generated constructor stub
     	 propertyObj = new Properties();
-    	 
-    	driver = DriverManagement.getInstance("real","C:\\Users\\aarti.kulkarni\\eclipse-workspace\\\\Cirrus\\\\src\\\\main\\\\java\\\\Resources\\\\UAT-0.11.0.apk");
+    	 log = new Log(PropertyReader.class);
+    	 driver = DriverManagement.getInstance("real","C:\\Users\\aarti.kulkarni\\eclipse-workspace\\\\Cirrus\\\\src\\\\main\\\\java\\\\Resources\\\\UAT-0.11.0.apk");
     	 //loadPropertyFile(Path);
     
 	}
@@ -44,6 +45,7 @@ public class PropertyReader {
     	/*
     	 * This will get propery file from given file
     	 */
+    	log.info("Return property File path");
     	return getSystemPath() + String.valueOf(propertyObj.get(key));
     	
     	

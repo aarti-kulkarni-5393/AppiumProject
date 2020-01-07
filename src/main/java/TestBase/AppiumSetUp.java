@@ -1,6 +1,7 @@
 package TestBase;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.ServerSocket;
 
 import io.appium.java_client.service.local.AppiumDriverLocalService;
@@ -8,9 +9,10 @@ import io.appium.java_client.service.local.AppiumDriverLocalService;
 public class AppiumSetUp {
 	
 	static AppiumDriverLocalService service = AppiumDriverLocalService.buildDefaultService();
-	
-	public AppiumSetUp() {
+	private Log log;
+	public AppiumSetUp() throws MalformedURLException {
 		// TODO Auto-generated constructor stub
+		log = new Log(AppiumSetUp.class);
 	}
 	
 	public  void startAppiumServer(int port)
@@ -18,6 +20,7 @@ public class AppiumSetUp {
 		if(!checkIfServerIsRunnning(port))
 		{
 			startService();
+			log.info("Appium server started");
 		}
 	}
 	
@@ -31,8 +34,10 @@ public class AppiumSetUp {
 		if(service.isRunning())
 		{
 			stopService();
+			log.info("Stopped existing running appium server");
 		}
 			service.start();
+			log.info("Fresh Appium server started Again");
 			
 		}
 	
@@ -42,6 +47,7 @@ public class AppiumSetUp {
 	{
 
 		service.stop();
+		log.info("Appium server service stopped");
 		
 	}
 public  boolean checkIfServerIsRunnning(int port) {
@@ -54,6 +60,7 @@ public  boolean checkIfServerIsRunnning(int port) {
 		} catch (IOException e) {
 			//If control comes here, then it means that the port is in use
 			isServerRunning = true;
+			log.info("service is already running");
 		} finally {
 			serverSocket = null;
 		}

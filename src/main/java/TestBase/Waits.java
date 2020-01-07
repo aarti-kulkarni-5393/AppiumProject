@@ -13,7 +13,7 @@ import io.appium.java_client.android.AndroidElement;
 public class Waits extends TestBase{
 
 	//AndroidDriver<AndroidElement> driver;
-	
+	private Log log;
 	public Waits() throws IOException {
 		// TODO Auto-generated constructor stub
 		//It gets you instance of existing class
@@ -27,6 +27,7 @@ public class Waits extends TestBase{
 	{
 		//it will wait for given time
 		//Time unit will be in seconds only
+		log.info("waiting for"+ time+" seconds");
 		driver.manage().timeouts().implicitlyWait(time, TimeUnit.SECONDS);
 	}
 	
@@ -37,6 +38,7 @@ public class Waits extends TestBase{
 	public void waitForGivenElement(int time,AndroidElement androidElement)
 	{
 		try {
+		log.info("waiting till next element is visible");
 		WebDriverWait wait = new WebDriverWait(driver, time);
 		wait.until(ExpectedConditions.visibilityOf(androidElement));
 		}catch (Exception e) {

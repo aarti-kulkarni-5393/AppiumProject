@@ -3,18 +3,22 @@ package stepDefinition;
 import java.net.MalformedURLException;
 
 import TestBase.AppiumSetUp;
+import TestBase.Log;
 import TestBase.TestBase;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 
 public class Hooks extends TestBase{
+	private Log log;
+	private AppiumSetUp appium;
 	public Hooks() throws MalformedURLException {
-		super();
+		log = new Log(Hooks.class);
+		appium = new AppiumSetUp();
 		// TODO Auto-generated constructor stub
 	}
 
-	AppiumSetUp appium = new AppiumSetUp();
+	
 	
 	/*
 	 * it will run before all scenarios, we can use appium start stop
@@ -22,10 +26,12 @@ public class Hooks extends TestBase{
 	@Before
 	public void setUp(Scenario scenario)
 	{
+		log.info("------------->Start of scenario "+scenario.getName()+" <------------");
 		if(scenario.getSourceTagNames().contains("@Login"))
 		{
-			// login will be first test case so it will check if this is first test case for execution if yes start appium
-           appium.startAppiumServer(4723);
+			log.info("Starting Appium server");
+		   // login will be first test case so it will check if this is first test case for execution if yes start appium
+            appium.startAppiumServer(4723);
 	    }
 				
 	}
@@ -36,12 +42,10 @@ public class Hooks extends TestBase{
 	@After("@EndTest")
 	public void tearDown(Scenario scenario)
 	{
-		System.out.println("Get Logs");
 		getDefaultLogs();
-	   appium.stopService();
-	   
-		
-		
+	    appium.stopService();
+	    log.info("Stopping Appium server");
+	    log.info("------------->End of scenario "+scenario.getName()+" <------------");	
 	}
 	
 

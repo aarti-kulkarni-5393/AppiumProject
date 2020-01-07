@@ -9,6 +9,7 @@ import org.openqa.selenium.By;
 import org.springframework.util.SystemPropertyUtils;
 
 import TestBase.DriverManagement;
+import TestBase.Log;
 import TestBase.PropertyReader;
 import TestBase.TestBase;
 import TestBase.Waits;
@@ -23,6 +24,7 @@ public class Login extends TestBase{
 	
 	//private AndroidDriver<AndroidElement> driver;
 	private Waits wait;
+	private Log log;
 	
 	
  public Login() throws IOException {
@@ -35,6 +37,7 @@ public class Login extends TestBase{
 	 
 	 //driver = DriverManagement.getInstance(propertyObj.getProperty("PlatForm"),propertyObj.getProperty("App_Path"));
      wait = new Waits();
+     log = new Log(Login.class);
 }
 	
 	
@@ -48,7 +51,7 @@ public class Login extends TestBase{
 		wait.waitForGivenTime(60);
 		if(driver.findElement(By.xpath("//android.widget.TextView[@text='LOGIN']")).isDisplayed())
 		{
-			System.out.println("Yes user is on landing page");
+			log.info("Yes user is on landing page");
 		    
 		}
 			
@@ -63,7 +66,7 @@ public class Login extends TestBase{
 		 */
 		if(!driver.findElement(By.xpath("//android.widget.TextView[@text='LOGIN']")).isDisplayed())
 		{
-			System.out.println("No user is not on landing page");
+			log.info("No user is not on landing page");
 		}
 		//This will click on login button on landing page which will redirect it to sign iin page
 		driver.findElement(By.xpath("//android.widget.TextView[@text='LOGIN']")).click();
@@ -114,12 +117,12 @@ public class Login extends TestBase{
 			}
 			
 		}}catch (Exception e) {
-			System.out.println("this is not first time user");
+			log.info("this is not first time user");
 			if(status.equalsIgnoreCase("be succesfully"))
 			{
 				if(driver.findElement(By.xpath("//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/label_my_hanger']")).isDisplayed())
 				{
-					System.out.println("Yes succesfully logged in");
+					log.info("Yes succesfully logged in");
 				}
 			}else if(status.equalsIgnoreCase("not be succesfully"))
 			{
@@ -134,10 +137,10 @@ public class Login extends TestBase{
     public void verifyUserGetInformativeMessage(String message) throws Throwable {
         
         AndroidElement messageElement = driver.findElement(By.xpath("//android.view.View[@text='"+message+"']"));
-        System.out.println(messageElement.getText());
+        log.info(messageElement.getText());
         if(messageElement.isDisplayed())
         {
-        	System.out.println("yes displayed");
+        	log.info("yes displayed");
         	
         }
         
@@ -152,7 +155,7 @@ public class Login extends TestBase{
 		if(!findMobileElement("xpath", "Username").isDisplayed())
 		{
 		
-			System.out.println("No user is not on sign in page");
+			log.info("No user is not on sign in page");
 			/*
 			 * if user is logged in then will logout
 			 */

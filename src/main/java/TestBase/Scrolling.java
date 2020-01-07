@@ -34,11 +34,13 @@ public class Scrolling extends TestBase {
 	
 	//public AndroidDriver<AndroidElement> driver ;
 	private Waits wait;
+	private Log log;
 	public Scrolling() throws IOException {
 		// TODO Auto-generated constructor stub
 		//driver = DriverManagement.getInstance(propertyObj.getProperty("PlatForm"),propertyObj.getProperty("App_Path"));
 		  //driver = DriverManagement.getInstance(propertyObj.getProperty("PlatForm"),propertyObj.getProperty("App_Path"));
 		wait = new Waits();
+		log = new Log(Scrolling.class);
 	}
 	
 	/*
@@ -79,36 +81,20 @@ public class Scrolling extends TestBase {
 	public void scrollingToExact(String Parent,String text)
 	{
 
-MobileElement el = (MobileElement) driver
+     MobileElement el = (MobileElement) driver
     .findElementByAndroidUIAutomator("new UiScrollable("
         + "new UiSelector().scrollable(true)).scrollIntoView("                      
         + "new UiSelector().textContains(\"LOCATION\"));");
 	}
 	
-	/*
-	 * Try to scroll using javascript
-	 * Its helpful in iOS than Android
-	 */
-//    public void scrollByJavascript(AndroidElement element,AndroidElement element1)
-//    { 
-//    	//create javascript object
-//    	JavascriptExecutor js = (JavascriptExecutor) driver;
-//    	// create hashmap to handle scroll object
-//    	HashMap<String, String> scrollObject = new HashMap<String, String>();
-//    	scrollObject.put("direction", "down");
-//    	scrollObject.put("elementId", ((RemoteWebElement)element).getId());
-//    	scrollObject.put("elementToId", ((RemoteWebElement)element1).getId());
-//    	// give scroll object and action as scroll
-//    	js.executeScript("mobile:scrollBackTo", scrollObject);
-//    }
-    
+
     /*
      * To work it, addinng static method for scroll which will scroll to specific amount
      */
     
     public void verticalScroll()
     {
-    	
+    	    log.info("This is static scroll,it will scroll till given cordinates");
     	    Dimension dimensions = driver.manage().window().getSize();
     	    int height = dimensions.getHeight();
     	    int width = dimensions.getWidth();
@@ -119,30 +105,9 @@ MobileElement el = (MobileElement) driver
     	    
     	    TouchAction action = new TouchAction(driver);
     	    action.press(PointOption.point(x, startY)).waitAction().moveTo(PointOption.point(x, endY)).release().perform();
-    	    
- 
-    	
-    	
-    }
+     }
     
-    public void smallverticalScroll()
-    {
-    	
-    	    Dimension dimensions = driver.manage().window().getSize();
-    	    int height = dimensions.getHeight();
-    	    int width = dimensions.getWidth();
-    	    // x will be same 
-    	    int x = width/2;
-    	    int startY = (int)(height*0.80);
-    	    int endY = (int)(height*0.20);
-    	    
-    	    TouchAction action = new TouchAction(driver);
-    	    action.press(PointOption.point(x, startY)).waitAction().moveTo(PointOption.point(x, endY)).release().perform();
-    	    
- 
-    	
-    	
-    }
+    
     
     public void scrollUp()
     {
@@ -184,6 +149,7 @@ MobileElement el = (MobileElement) driver
     
     public void singleTap(AndroidElement element)
     {
+    	log.info("Single tap on  element");
     	TouchAction action = new TouchAction(driver);
     	action.tap(tapOptions().withElement(element(element))).perform();
 
@@ -191,6 +157,7 @@ MobileElement el = (MobileElement) driver
     }
     public void longPress(AndroidElement element,int time)
     {
+    	log.info("Long press on element");
     	TouchAction action = new TouchAction(driver);
     	action.longPress(longPressOptions().withElement(element(element)).withDuration(ofSeconds(time))).release().perform();
     }

@@ -12,6 +12,7 @@ import org.springframework.util.SystemPropertyUtils;
 
 import com.aventstack.extentreports.model.Device;
 
+import TestBase.Log;
 import TestBase.Scrolling;
 import TestBase.TestBase;
 import TestBase.Waits;
@@ -22,10 +23,12 @@ import io.appium.java_client.android.AndroidElement;
 
 public class MyProfile extends TestBase{
 	private Waits wait;
+	private Log log;
 
 	public MyProfile() throws IOException {
 		super();
 		wait = new Waits();
+		log = new Log(MyProfile.class);
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -37,7 +40,7 @@ public class MyProfile extends TestBase{
 		try {
 			if(findMobileElement("xpath", "UpdateProfileScreenLabel").isDisplayed())
 			{
-				System.out.println("Yes user is on update profile");
+				log.info("Yes user is on update profile");
 			}
 			
 		}catch (Exception e) {
@@ -46,7 +49,7 @@ public class MyProfile extends TestBase{
 			findMobileElement("xpath", "MyProfileMenu").click();
 			if(findMobileElement("xpath", "UpdateProfileScreenLabel").isDisplayed())
 			{
-				System.out.println("Yes Navigated,Now user is on update profile");
+				log.info("Yes Navigated,Now user is on update profile");
 			}
 		}
     }
@@ -58,7 +61,7 @@ public class MyProfile extends TestBase{
            findMobileElement("xpath", "FirstName").sendKeys(firstname);
            findMobileElement("xpath", "LastName").sendKeys(lastname);
            findMobileElement("xpath", "updateProfileButton").click();
-           System.out.println("Dtails entered");
+           log.info("Dtails entered");
            wait.waitForGivenTime(30);
 	    }
 	 @Then("^User details should be updated to first name (.+) ,Last name (.+)$")
@@ -66,13 +69,13 @@ public class MyProfile extends TestBase{
 	        wait.waitForGivenTime(30);
 	        String updatedUsername = findMobileElement("xpath", "UserNameFromMyProfile").getText();
 	        String FinalName = firstNmae+" "+LastName;
-	        System.out.println(FinalName);
-	        System.out.println(updatedUsername);
+	        log.info(FinalName);
+	        log.info(updatedUsername);
 	        if(updatedUsername.equalsIgnoreCase(FinalName))
 	        {
-	        	System.out.println("Details updated");
+	        	log.info("Details updated");
 	        }else {
-	        	System.out.println("Details are not updated");
+	        	log.info("Details are not updated");
 	        }
 	        //verify on App Menu
 	        //findMobileElement("xpath", "").click();
@@ -99,7 +102,7 @@ public class MyProfile extends TestBase{
 					 findMobileElement("xpath", "AllowButton").click();
 				 }catch (Exception e) {
 					// TODO: handle exception
-					 System.out.println("No allow popup came");
+					 log.info("No allow popup came");
 				}
 				 
 				 //findMobileElement("xpath", "PermissionMessage").click();
@@ -112,21 +115,21 @@ public class MyProfile extends TestBase{
 					 findMobileElement("className","BackButton").click();
 					 if(isprofileSelected==false)
 					 {
-						 System.out.println("profile update failed");
+						 log.info("profile update failed");
 					 }else {
-						 System.out.println("yes it is true!");
+						 log.info("yes it is true!");
 					 }
 					 
 				 }
 				 }catch (Exception e) {
 					// TODO: handle exception
-					 System.out.println("Profile image is not updated");
+					 log.info("Profile image is not updated");
 				}
 			 }
 			 
 		 }catch (Exception e) {
 			// TODO: handle exception
-			 
+			 log.info("Permissions are already accepted");
 		}
 		 
 		 
@@ -136,10 +139,10 @@ public class MyProfile extends TestBase{
 	 public boolean choosePictureFromGallery() throws IOException, InterruptedException
 	 {
 		 boolean isPictureSelected = false;
-		 System.out.println("choosing gallery picture");
+		 log.info("choosing gallery picture");
 		
 				 List<AndroidElement> galleryImages =driver.findElements(By.className("com.sec.samsung.gallery.glview.composeView.ThumbObject"));
-				 System.out.println(galleryImages.size());
+				 log.info(String.valueOf(galleryImages.size()));
                  for (AndroidElement image : galleryImages) {
 					if(image.isDisplayed())
 					{
@@ -151,7 +154,7 @@ public class MyProfile extends TestBase{
 						try {
 							 if(findMobileElement("xpath", "EditPhoto").isDisplayed())
 								 {
-									 System.out.println("edit button is visible");
+									 log.info("edit button is visible");
 									 findMobileElement("xpath", "cropDone").click();
 									 wait.waitForGivenTime(60);
 									  isPictureSelected=true; 
@@ -159,7 +162,7 @@ public class MyProfile extends TestBase{
 								 }}catch (Exception e) {
 									// TODO: handle exception
 									 e.printStackTrace();
-									 System.out.println("No picture is selected");
+									 log.info("No picture is selected");
 									  isPictureSelected=false;
 									  break;
 								
@@ -168,10 +171,7 @@ public class MyProfile extends TestBase{
 					}
                 	 
 					
-				}
-					 	
-				 
-					
+				}	
 					 return isPictureSelected;
 		 
 				 
@@ -180,7 +180,7 @@ public class MyProfile extends TestBase{
 		 
 	 @When("^User remove profile picture$")
 	    public void removeProfilePicture() throws Throwable {
-	      System.out.println("Removing profile picture"); 
+	      log.info("Removing profile picture"); 
 		  removePictureFromGallery();
 		  
 	      
@@ -189,7 +189,7 @@ public class MyProfile extends TestBase{
 	 boolean isProfileRemoved=false;
 	 public boolean removePictureFromGallery()
 	 {
-		 System.out.println("This time it will remove profile pictuee");
+		 log.info("This time it will remove profile pictuee");
 		 wait.waitForGivenTime(30);
 		 findMobileElement("xpath", "updateProfile").click();
 		 try {
@@ -203,20 +203,20 @@ public class MyProfile extends TestBase{
 				 if(findMobileElement("xpath", "PanelToChooseProfileImage").isDisplayed())
 				 {
 					 findMobileElement("xpath", "RemoveOption").click();
-					 Thread.sleep(1000);
-					 
+					 wait.waitForGivenTime(50);
 					 //add code to verify if possible	 
 					 isProfileRemoved=true;
 				 }
 				 }catch (Exception e) {
 					// TODO: handle exception
-					 System.out.println("Profile image is not updated");
+					 log.info("Profile image is not updated");
 					 isProfileRemoved=false;
 				}
 			 }
 			 
 		 }catch (Exception e) {
 			// TODO: handle exception
+			 log.info("Profile image is not updated");
 			 isProfileRemoved=false;
 			 
 		}
@@ -227,16 +227,17 @@ public class MyProfile extends TestBase{
 	
 	 @Then("^profile picture should be removed$")
 	    public void verifyRemoveProfile() throws Throwable {
-	        
-		 driver.findElement(By.className("android.widget.ImageButton")).click();
+	      
+		 findMobileElement("className", "BackButton").click();
+		 //driver.findElement(By.className("android.widget.ImageButton")).click();
 		 try {
 			 findMobileElement("xpath", "HamburgerMenu").isDisplayed();
 		 }catch (Exception e) {
 			// TODO: handle exception
-			 driver.findElement(By.className("android.widget.ImageButton")).click();
+			 log.info("HamburgerMenu is not displayed,Again check and click");
+			 findMobileElement("className", "BackButton").click();
 		}
 		 Assert.assertTrue(isProfileRemoved);
-		 
 		 
 		 //findMobileElement("xpath", "RemovePictureValidations");
 		 //System.out.println(findMobileElement("xpath", "RemovePictureValidations").getAttribute("index"));
