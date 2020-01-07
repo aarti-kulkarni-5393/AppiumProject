@@ -1,0 +1,51 @@
+# Created at 2020-01-07T16:22:07.533
+TestSet has not finished before stream error has appeared >> initializing exit by non-null configuration: DEFAULT
+java.io.EOFException
+	at java.io.DataInputStream.readInt(DataInputStream.java:392)
+	at org.apache.maven.surefire.booter.MasterProcessCommand.decode(MasterProcessCommand.java:115)
+	at org.apache.maven.surefire.booter.CommandReader$CommandRunnable.run(CommandReader.java:390)
+	at java.lang.Thread.run(Thread.java:748)
+
+
+# Created at 2020-01-07T16:22:23.958
+Unexpected IOException with stream: [main] INFO TestBase.PropertyReader - Exception occured  while creating driver:::::Unable to create a new remote session. Please check the server log for more details. Original error: An unknown server-side error occurred while processing the command. Original error: Could not find a connected Android device.
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'NLPULTP4603920', ip: '172.16.6.66', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_181'
+Driver info: driver.version: AndroidDriver
+remote stacktrace: UnknownError: An unknown server-side error occurred while processing the command. Original error: Could not find a connected Android device.
+    at getResponseForW3CError (C:\Users\aarti.kulkarni\AppData\Roaming\npm\node_modules\appium\node_modules\appium-base-driver\lib\protocol\errors.js:826:9)
+    at asyncHandler (C:\Users\aarti.kulkarni\AppData\Roaming\npm\node_modules\appium\node_modules\appium-base-driver\lib\protocol\protocol.js:447:37)
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'NLPULTP4603920', ip: '172.16.6.66', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_181'
+Driver info: driver.version: AndroidDriver
+
+
+# Created at 2020-01-07T16:22:23.963
+Unexpected IOException with stream: [main] INFO TestBase.PropertyReader - Unable to create a new remote session. Please check the server log for more details. Original error: An unknown server-side error occurred while processing the command. Original error: Could not find a connected Android device.
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'NLPULTP4603920', ip: '172.16.6.66', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_181'
+Driver info: driver.version: AndroidDriver
+remote stacktrace: UnknownError: An unknown server-side error occurred while processing the command. Original error: Could not find a connected Android device.
+    at getResponseForW3CError (C:\Users\aarti.kulkarni\AppData\Roaming\npm\node_modules\appium\node_modules\appium-base-driver\lib\protocol\errors.js:826:9)
+    at asyncHandler (C:\Users\aarti.kulkarni\AppData\Roaming\npm\node_modules\appium\node_modules\appium-base-driver\lib\protocol\protocol.js:447:37)
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'NLPULTP4603920', ip: '172.16.6.66', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_181'
+Driver info: driver.version: AndroidDriver
+
+
+# Created at 2020-01-07T16:22:26.094
+Unexpected IOException with stream: [main] INFO TestBase.AppiumSetUp - ------------->Start of scenario User logged in to cirrus application with valid credentails <------------
+
+
+# Created at 2020-01-07T16:22:26.095
+Unexpected IOException with stream: [main] INFO TestBase.AppiumSetUp - Starting Appium server
+
+
+# Created at 2020-01-07T16:22:26.097
+Unexpected IOException with stream: [main] INFO TestBase.AppiumSetUp - service is already running
+
+
+# Created at 2020-01-07T16:22:26.309
+Unexpected IOException with stream: Log intialization for TestBase
+
+

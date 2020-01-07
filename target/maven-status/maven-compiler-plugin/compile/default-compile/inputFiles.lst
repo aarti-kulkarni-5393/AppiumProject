@@ -1,17 +1,8 @@
-<<<<<<< HEAD
 C:\Users\aarti.kulkarni\eclipse-workspace\Cirrus\src\main\java\TestBase\TestBase.java
 C:\Users\aarti.kulkarni\eclipse-workspace\Cirrus\src\main\java\TestBase\PropertyReader.java
 C:\Users\aarti.kulkarni\eclipse-workspace\Cirrus\src\main\java\TestBase\Waits.java
 C:\Users\aarti.kulkarni\eclipse-workspace\Cirrus\src\main\java\TestBase\Scrolling.java
 C:\Users\aarti.kulkarni\eclipse-workspace\Cirrus\src\main\java\TestBase\DriverManagement.java
 C:\Users\aarti.kulkarni\eclipse-workspace\Cirrus\src\main\java\TestBase\AppiumSetUp.java
+C:\Users\aarti.kulkarni\eclipse-workspace\Cirrus\src\main\java\TestBase\Log.java
 C:\Users\aarti.kulkarni\eclipse-workspace\Cirrus\src\main\java\TestBase\EmailUtility.java
-=======
-C:\sagar\cirrusnew\src\main\java\TestBase\TestBase.java
-C:\sagar\cirrusnew\src\main\java\TestBase\EmailUtility.java
-C:\sagar\cirrusnew\src\main\java\TestBase\Waits.java
-C:\sagar\cirrusnew\src\main\java\TestBase\PropertyReader.java
-C:\sagar\cirrusnew\src\main\java\TestBase\Scrolling.java
-C:\sagar\cirrusnew\src\main\java\TestBase\DriverManagement.java
-C:\sagar\cirrusnew\src\main\java\TestBase\AppiumSetUp.java
->>>>>>> 9df22d16a7855b5bab93a1685425e2acc6f69471

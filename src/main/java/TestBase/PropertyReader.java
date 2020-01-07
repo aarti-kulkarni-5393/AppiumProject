@@ -17,9 +17,6 @@ import io.appium.java_client.android.AndroidElement;
 public class PropertyReader {
 	
 	
-	/*
-	 * Property file will be reading from static block at testbase
-	 */
 	private Properties propertyObj;
 	AndroidDriver<AndroidElement> driver;
 	private Log log;
@@ -35,6 +32,7 @@ public class PropertyReader {
     
     public void loadPropertyFile(String path) throws IOException
     {
+    
      File ApplicationFile = new File(path);
    	 FileInputStream inputstream = new FileInputStream(ApplicationFile);
    	 propertyObj.load(inputstream);

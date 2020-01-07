@@ -341,6 +341,7 @@ public class Dashboard extends TestBase{
 	
     @When("^User refresh dashboard for updated aircraft vitals$")
     public void refreshDashboard() throws Throwable {
+    	
        
     }
 	

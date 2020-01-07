@@ -33,17 +33,10 @@ public class TestBase {
 	public TestBase() throws MalformedURLException {
 		// TODO Auto-generated constructor stub
 		try {
-			System.out.println("Log intialization for TestBase");
+			//System.out.println("Log intialization for TestBase");
 			log = new Log(TestBase.class);
-			propertyObj = new PropertyReader();
-			objectRepository = new PropertyReader();
 			handleProperties();
-			 /*
-			  * Need to add this in Before statement
-			  */
-			 //AppiumSetUp appium = new AppiumSetUp();
-			 //System.out.println(propertyObj.getProperty("PlatForm") + propertyObj.getProperty("App_Path"));
-	      driver = DriverManagement.getInstance(propertyObj.getProperty("PlatForm"),propertyObj.getProperty("App_Path"));
+		    driver = DriverManagement.getInstance(propertyObj.getProperty("PlatForm"),propertyObj.getProperty("App_Path"));
 		
 		}catch(Exception e) {
 			log.info("Exception occured  while creating driver:::::"+e.getMessage());
@@ -80,20 +73,27 @@ public class TestBase {
     */
 	public  void handleProperties() throws IOException
 	{
-		    log.info("Intializing application property file");
-			propertyObj.loadPropertyFile("C:\\Users\\aarti.kulkarni\\eclipse-workspace\\Cirrus\\src\\main\\java\\Resources\\Application.properties");
-			
-			if(propertyObj.getProperty("Enviornment").contains("QA"))
-			{
-				log.info("Loading Object Property file for QA");
-				objectRepository.loadPropertyFile(propertyObj.getProperty("QA_ObjectRepositoryPath"));
-				             
+		    
+		    if(propertyObj==null)
+		    {
+		    	log.info("Intializing application property file");
+		    	propertyObj = new PropertyReader();
+		    	objectRepository = new PropertyReader();
+		    	propertyObj.loadPropertyFile("C:\\Users\\aarti.kulkarni\\eclipse-workspace\\Cirrus\\src\\main\\java\\Resources\\Application.properties");
+		    	if(propertyObj.getProperty("Enviornment").contains("QA"))
+				{
+					log.info("Loading Object Property file for QA");
+					objectRepository.loadPropertyFile(propertyObj.getProperty("QA_ObjectRepositoryPath"));
+					             
+							
+				}else if(propertyObj.getProperty("Enviornment").contains("UAT")) {
+					log.info("Loading Object Property file for UAT");
+					objectRepository.loadPropertyFile(propertyObj.getProperty("UAT_ObjectRepositoryPath"));
+					 
+				}
+		    }
 						
-			}else if(propertyObj.getProperty("Enviornment").contains("UAT")) {
-				log.info("Loading Object Property file for UAT");
-				objectRepository.loadPropertyFile(propertyObj.getProperty("UAT_ObjectRepositoryPath"));
-				 
-			}
+			
 			
 		}
 	

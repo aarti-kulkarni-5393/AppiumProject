@@ -1,6 +1,9 @@
 stepDefinition\InviteUsers.class
 stepDefinition\Logout.class
-cucumberOptions\TestRunner.class
-stepDefinition\Dashboard.class
 stepDefinition\Login.class
+stepDefinition\MyProfile.class
 stepDefinition\ForgotYourPassword.class
+stepDefinition\Hooks.class
+cucumberOptions\TestRunner.class
+stepDefinition\AppMenu.class
+stepDefinition\Dashboard.class

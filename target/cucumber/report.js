@@ -72,7 +72,7 @@ formatter.examples({
   "keyword": "Examples"
 });
 formatter.before({
-  "duration": 15976000700,
+  "duration": 16953707400,
   "status": "passed"
 });
 formatter.scenario({
@@ -117,7 +117,7 @@ formatter.match({
   "location": "Login.verifyUserIsOnLoginPage()"
 });
 formatter.result({
-  "duration": 14246131400,
+  "duration": 13494008600,
   "status": "passed"
 });
 formatter.match({
@@ -134,14 +134,14 @@ formatter.match({
   "location": "Login.enterUserNameAndPassword(String,String)"
 });
 formatter.result({
-  "duration": 1736780700,
+  "duration": 1263345700,
   "status": "passed"
 });
 formatter.match({
   "location": "Login.userSubmitDetails()"
 });
 formatter.result({
-  "duration": 796029700,
+  "duration": 757891300,
   "status": "passed"
 });
 formatter.match({
@@ -154,7 +154,7 @@ formatter.match({
   "location": "Login.verifyUSerLoggedIn(String)"
 });
 formatter.result({
-  "duration": 60918214600,
+  "duration": 60691712800,
   "status": "passed"
 });
 formatter.uri("MyProfile.feature");
@@ -166,7 +166,7 @@ formatter.feature({
   "keyword": "Feature"
 });
 formatter.before({
-  "duration": 2186600,
+  "duration": 858000,
   "status": "passed"
 });
 formatter.background({
@@ -185,7 +185,7 @@ formatter.match({
   "location": "Dashboard.verifyUserIsOnMyHangarScreen()"
 });
 formatter.result({
-  "duration": 531146200,
+  "duration": 482121700,
   "status": "passed"
 });
 formatter.scenario({
@@ -216,7 +216,7 @@ formatter.match({
   "location": "MyProfile.veirfyUserIsOnMyProfileScreen()"
 });
 formatter.result({
-  "duration": 44945931200,
+  "duration": 44664432400,
   "status": "passed"
 });
 formatter.match({
@@ -227,9 +227,4 @@ formatter.match({
     }
   ],
   "location": "MyProfile.uploadProfilePicture(String)"
-});
-formatter.result({
-  "duration": 47480377300,
-  "status": "passed"
-});
 });

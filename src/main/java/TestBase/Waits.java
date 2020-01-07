@@ -8,15 +8,17 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.android.AndroidElement;;
 
 public class Waits extends TestBase{
 
 	//AndroidDriver<AndroidElement> driver;
-	private Log log;
+	
 	public Waits() throws IOException {
+	
 		// TODO Auto-generated constructor stub
 		//It gets you instance of existing class
+		//log = new Log(Waits.class);
 		
 		  //driver = DriverManagement.getInstance(propertyObj.getProperty("PlatForm"),propertyObj.getProperty("App_Path"));
 		//driver = DriverManagement.getInstance(propertyObj.getProperty("PlatForm"),propertyObj.getProperty("App_Path"));

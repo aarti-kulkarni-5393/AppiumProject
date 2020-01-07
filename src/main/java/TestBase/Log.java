@@ -10,7 +10,7 @@ public class Log {
 	static org.slf4j.Logger log ;
 
 	public Log(Class<?> cl) throws MalformedURLException {
-		super();
+		//super();
 	   // TODO Auto-generated constructor stub
 		log = LoggerFactory.getLogger(cl);
 	}
