@@ -21,7 +21,7 @@ public class AppiumSetUp {
 		}
 	}
 	
-	public static void startService()
+	public  void startService()
 	{
 		
 		/*
@@ -38,7 +38,7 @@ public class AppiumSetUp {
 	
 	
 	
-	public static void stopService()
+	public  void stopService()
 	{
 
 		service.stop();

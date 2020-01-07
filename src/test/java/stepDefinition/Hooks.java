@@ -1,11 +1,19 @@
 package stepDefinition;
 
+import java.net.MalformedURLException;
+
 import TestBase.AppiumSetUp;
+import TestBase.TestBase;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 
-public class Hooks {
+public class Hooks extends TestBase{
+	public Hooks() throws MalformedURLException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	AppiumSetUp appium = new AppiumSetUp();
 	
 	/*
@@ -19,8 +27,7 @@ public class Hooks {
 			// login will be first test case so it will check if this is first test case for execution if yes start appium
            appium.startAppiumServer(4723);
 	    }
-		
-		
+				
 	}
 	
 	/*
@@ -29,8 +36,10 @@ public class Hooks {
 	@After("@EndTest")
 	public void tearDown(Scenario scenario)
 	{
-		System.out.println("after hooks");
+		System.out.println("Get Logs");
+		getDefaultLogs();
 	   appium.stopService();
+	   
 		
 		
 	}

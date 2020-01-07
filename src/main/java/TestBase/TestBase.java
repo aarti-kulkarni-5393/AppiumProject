@@ -34,7 +34,7 @@ public class TestBase {
 		try {
 			propertyObj = new PropertyReader();
 			objectRepository = new PropertyReader();
-			 handleProperties();
+			handleProperties();
 			 /*
 			  * Need to add this in Before statement
 			  */
@@ -173,6 +173,9 @@ public boolean retryingFindClick(AndroidElement element,int tryCount) {
     return result;
 }
    
-
+public void getDefaultLogs()
+{
+	driver.manage().logs().get("driver");
+}
 
 }

@@ -11,12 +11,11 @@ import cucumber.api.junit.Cucumber;
 @CucumberOptions(
 		features = "C:\\Users\\aarti.kulkarni\\eclipse-workspace\\Cirrus\\src\\test\\java\\features",
 		glue="stepDefinition",tags= {"@Login,@MyProfile"},
-		plugin= {"pretty","html:target/cucumber"}
+		plugin= {"pretty","html:target/cucumber","json:target/cucumber1","junit:target/cucks.xml"}
 		)
-
 /*
  * "junit:json:target/cucks.xml","json:target/cucumber"
- * dryRun=true,monochrome=true,
+ *  dryRun=true,monochrome=true,
  */
 
 public class TestRunner {

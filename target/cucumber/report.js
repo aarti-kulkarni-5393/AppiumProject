@@ -72,7 +72,7 @@ formatter.examples({
   "keyword": "Examples"
 });
 formatter.before({
-  "duration": 2992435600,
+  "duration": 15976000700,
   "status": "passed"
 });
 formatter.scenario({
@@ -117,7 +117,7 @@ formatter.match({
   "location": "Login.verifyUserIsOnLoginPage()"
 });
 formatter.result({
-  "duration": 28577148300,
+  "duration": 14246131400,
   "status": "passed"
 });
 formatter.match({
@@ -134,14 +134,14 @@ formatter.match({
   "location": "Login.enterUserNameAndPassword(String,String)"
 });
 formatter.result({
-  "duration": 1556548000,
+  "duration": 1736780700,
   "status": "passed"
 });
 formatter.match({
   "location": "Login.userSubmitDetails()"
 });
 formatter.result({
-  "duration": 783820500,
+  "duration": 796029700,
   "status": "passed"
 });
 formatter.match({
@@ -152,4 +152,84 @@ formatter.match({
     }
   ],
   "location": "Login.verifyUSerLoggedIn(String)"
+});
+formatter.result({
+  "duration": 60918214600,
+  "status": "passed"
+});
+formatter.uri("MyProfile.feature");
+formatter.feature({
+  "line": 1,
+  "name": "MyProfile",
+  "description": "",
+  "id": "myprofile",
+  "keyword": "Feature"
+});
+formatter.before({
+  "duration": 2186600,
+  "status": "passed"
+});
+formatter.background({
+  "line": 3,
+  "name": "User logged into application",
+  "description": "",
+  "type": "background",
+  "keyword": "Background"
+});
+formatter.step({
+  "line": 4,
+  "name": "User is on My Hangar screen",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "Dashboard.verifyUserIsOnMyHangarScreen()"
+});
+formatter.result({
+  "duration": 531146200,
+  "status": "passed"
+});
+formatter.scenario({
+  "line": 7,
+  "name": "User should be able to update profile picture",
+  "description": "",
+  "id": "myprofile;user-should-be-able-to-update-profile-picture",
+  "type": "scenario",
+  "keyword": "Scenario",
+  "tags": [
+    {
+      "line": 6,
+      "name": "@MyProfile"
+    }
+  ]
+});
+formatter.step({
+  "line": 8,
+  "name": "User is on My profile page",
+  "keyword": "Given "
+});
+formatter.step({
+  "line": 9,
+  "name": "User upload profile pic from \"Gallery\"",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "MyProfile.veirfyUserIsOnMyProfileScreen()"
+});
+formatter.result({
+  "duration": 44945931200,
+  "status": "passed"
+});
+formatter.match({
+  "arguments": [
+    {
+      "val": "Gallery",
+      "offset": 30
+    }
+  ],
+  "location": "MyProfile.uploadProfilePicture(String)"
+});
+formatter.result({
+  "duration": 47480377300,
+  "status": "passed"
+});
 });
