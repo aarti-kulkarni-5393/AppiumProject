@@ -95,7 +95,8 @@ public class Dashboard extends TestBase{
 			findMobileElement("xpath", "ConfirmLogoutButton").isDisplayed();
             findMobileElement("xpath", "ConfirmLogoutButton").click();
 		}
-        wait.waitForGivenTime(60);
+        wait.waitForGivenTime(30);
+        wait.waitForGivenElement(60, findMobileElement("xpath", "Username"));
         try {
         	findMobileElement("xpath", "Username").isDisplayed();
         	log.info("Successfully logged out");
@@ -118,7 +119,7 @@ public class Dashboard extends TestBase{
  * scroll up	
  */
 	 scroll.scrollUp();
-     Boolean AircraftAccess = false;
+     Boolean AircraftAccess = true;
      int countOfAircraft =0;
 	 String aircraftNAme;
     
@@ -127,6 +128,8 @@ public class Dashboard extends TestBase{
 		aircraftNAme = onscreenAircraft.getText();
 		if(aircraftNAme.equalsIgnoreCase(aircraftmodelnumber))
 			break;
+		
+			
 		   scroll.verticalScroll();
 		   //scroll.pull();
 		   if(countOfAircraft>=20)
@@ -137,10 +140,7 @@ public class Dashboard extends TestBase{
 		   }
 		   countOfAircraft++;
 	} while (aircraftNAme.equalsIgnoreCase(aircraftmodelnumber));
-    // check if aicraft is on screen or at botom of screen
-	int aircrafts_onScreen = driver.findElements(By.xpath("//android.view.ViewGroup[@resource-id='com.cirrusaircraft.connectedapp.uat:id/hanger_holder']")).size();
-    if(aircrafts_onScreen!=1)
-    	scroll.verticalScroll();
+    // check if aicraft is on screen or at bottom of screen
 	
 	return AircraftAccess;
 	}
@@ -243,8 +243,9 @@ public class Dashboard extends TestBase{
     public void NavigateToGivenAircraft(String aircrafttailnumber) throws Throwable {
         
     	checkAccessToAircraft(aircrafttailnumber);
-    	AndroidElement Aircarft = driver.findElement(By.xpath("//android.widget.ImageView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/aircraft_image']"));
-    	Aircarft.click();
+    	//AndroidElement Aircarft = driver.findElement(By.xpath("//android.widget.ImageView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/aircraft_image']"));
+    	AndroidElement Aircraft = driver.findElement(By.xpath("//android.widget.TextView[@text='"+aircrafttailnumber+"']"));
+    	Aircraft.click();
     	
     }
     
@@ -310,9 +311,11 @@ public class Dashboard extends TestBase{
     	try {
     		if(driver.findElement(By.xpath("//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/logo_aircraft_status']")).isDisplayed())
     		{
+    			System.out.println(driver.findElement(By.xpath("//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/aircraft_tail_number']")).getText());
+    			if(!driver.findElement(By.xpath("")).getText().equalsIgnoreCase(modelNUmber))
+    			Assert.assertFalse(false);
+    			
     			log.info("succesfully navigated to dashboard");
-    			if(driver.findElement(By.xpath("//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/logo_aircraft_status']")).getText().equalsIgnoreCase(modelNUmber))
-    			Assert.assertFalse(false);	
     			
     		}
 			

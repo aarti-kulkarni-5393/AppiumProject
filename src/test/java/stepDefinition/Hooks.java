@@ -27,7 +27,7 @@ public class Hooks extends TestBase{
 	public void setUp(Scenario scenario)
 	{
 		log.info("------------->Start of scenario "+scenario.getName()+" <------------");
-		if(scenario.getSourceTagNames().contains("@Login"))
+		if(scenario.getSourceTagNames().contains("@startTest"))
 		{
 			log.info("Starting Appium server");
 		   // login will be first test case so it will check if this is first test case for execution if yes start appium
@@ -42,10 +42,11 @@ public class Hooks extends TestBase{
 	@After("@EndTest")
 	public void tearDown(Scenario scenario)
 	{
-		getDefaultLogs();
+		log.info("------------->End of scenario "+scenario.getName()+" <------------");
+		//getDefaultLogs();
 	    appium.stopService();
 	    log.info("Stopping Appium server");
-	    log.info("------------->End of scenario "+scenario.getName()+" <------------");	
+	    	
 	}
 	
 

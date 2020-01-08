@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsuite failures="0" name="cucumber.runtime.formatter.JUnitFormatter" skipped="0" tests="2" time="210.222594">
+<testcase classname="To verify aircraft vitals on dashboard" name="User request for latest aircraft vital" time="152.574816">
+<system-out><![CDATA[Given User is already logged in to application by username conaircraftnhltestuser1@gmail.com ,Password cirrus005.passed
+Given User is on My Hangar screen...........................................passed
+When User navigate to dashboard for aircaft N336HT..........................passed
+And User verify dashboard is displayed with all required aircraft vitals for aircraft N336HT.passed
+When User refresh dashboard for updated aircraft vitals.....................passed
+]]></system-out>
+</testcase>
+<testcase classname="Logout application" name="User logged out the application" time="57.647778">
+<system-out><![CDATA[Given User is on My Hangar screen...........................................passed
+When User log out from the application......................................passed
+]]></system-out>
+</testcase>
+</testsuite>

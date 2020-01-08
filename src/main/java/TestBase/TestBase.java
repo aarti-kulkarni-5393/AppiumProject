@@ -73,7 +73,9 @@ public class TestBase {
     */
 	public  void handleProperties() throws IOException
 	{
-		    
+		    /*
+		     * it will make sure property file object is intialized only once
+		     */
 		    if(propertyObj==null)
 		    {
 		    	log.info("Intializing application property file");

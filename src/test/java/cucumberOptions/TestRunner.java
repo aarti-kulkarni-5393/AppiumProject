@@ -10,7 +10,7 @@ import cucumber.api.junit.Cucumber;
 @RunWith(Cucumber.class)
 @CucumberOptions(
 		features = "C:\\Users\\aarti.kulkarni\\eclipse-workspace\\Cirrus\\src\\test\\java\\features",
-		glue="stepDefinition",tags= {"@Login,@MyProfile"},
+		glue="stepDefinition",tags= {"@StartTest,@EndTest"},
 		plugin= {"pretty","html:target/cucumber","json:target/cucumber1","junit:target/cucks.xml"}
 		)
 /*

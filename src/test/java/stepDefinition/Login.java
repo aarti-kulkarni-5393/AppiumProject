@@ -120,7 +120,7 @@ public class Login extends TestBase{
 			log.info("this is not first time user");
 			if(status.equalsIgnoreCase("be succesfully"))
 			{
-				if(driver.findElement(By.xpath("//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/label_my_hanger']")).isDisplayed())
+				if(findMobileElement("xpath", "MyHangarlabel").isDisplayed())
 				{
 					log.info("Yes succesfully logged in");
 				}

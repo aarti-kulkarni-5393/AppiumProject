@@ -1,230 +1,240 @@
-$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("Login.feature");
+$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("Dashboard.feature");
 formatter.feature({
   "line": 1,
-  "name": "Login to Cirrus Connected Mobile App",
+  "name": "To verify aircraft vitals on dashboard",
   "description": "",
-  "id": "login-to-cirrus-connected-mobile-app",
+  "id": "to-verify-aircraft-vitals-on-dashboard",
   "keyword": "Feature"
 });
 formatter.scenarioOutline({
-  "line": 5,
-  "name": "User logged in to cirrus application with valid credentails",
+  "line": 9,
+  "name": "User request for latest aircraft vital",
   "description": "",
-  "id": "login-to-cirrus-connected-mobile-app;user-logged-in-to-cirrus-application-with-valid-credentails",
+  "id": "to-verify-aircraft-vitals-on-dashboard;user-request-for-latest-aircraft-vital",
   "type": "scenario_outline",
   "keyword": "Scenario Outline",
   "tags": [
     {
-      "line": 4,
-      "name": "@Login"
+      "line": 8,
+      "name": "@StartTest"
     }
   ]
 });
 formatter.step({
-  "line": 6,
-  "name": "User is on sign in page",
-  "keyword": "Given "
-});
-formatter.step({
-  "line": 7,
-  "name": "User enter username \u003cUsername\u003e and password \u003cPassword\u003e",
+  "line": 10,
+  "name": "User navigate to dashboard for aircaft \u003cAircraft tail Number\u003e",
   "keyword": "When "
 });
 formatter.step({
-  "line": 8,
-  "name": "User submit the details",
+  "line": 11,
+  "name": "User verify dashboard is displayed with all required aircraft vitals for aircraft \u003cAircraft tail Number\u003e",
   "keyword": "And "
 });
 formatter.step({
-  "line": 9,
-  "name": "User should \"be succesfully\" logged in to application",
-  "keyword": "Then "
+  "line": 12,
+  "name": "User refresh dashboard for updated aircraft vitals",
+  "keyword": "When "
 });
 formatter.examples({
   "comments": [
     {
-      "line": 10,
-      "value": "#Then User log out from the application"
+      "line": 13,
+      "value": "#Then Dahsboard should be updated with latest aircraft vitals"
     }
   ],
-  "line": 12,
+  "line": 15,
   "name": "",
   "description": "",
-  "id": "login-to-cirrus-connected-mobile-app;user-logged-in-to-cirrus-application-with-valid-credentails;",
+  "id": "to-verify-aircraft-vitals-on-dashboard;user-request-for-latest-aircraft-vital;",
   "rows": [
     {
       "cells": [
-        "Username",
-        "Password"
+        "Aircraft tail Number"
       ],
-      "line": 13,
-      "id": "login-to-cirrus-connected-mobile-app;user-logged-in-to-cirrus-application-with-valid-credentails;;1"
+      "line": 16,
+      "id": "to-verify-aircraft-vitals-on-dashboard;user-request-for-latest-aircraft-vital;;1"
     },
     {
       "cells": [
-        "conaircraftnhltestuser1@gmail.com",
-        "cirrus005"
+        "N336HT"
       ],
-      "line": 14,
-      "id": "login-to-cirrus-connected-mobile-app;user-logged-in-to-cirrus-application-with-valid-credentails;;2"
+      "line": 17,
+      "id": "to-verify-aircraft-vitals-on-dashboard;user-request-for-latest-aircraft-vital;;2"
     }
   ],
   "keyword": "Examples"
 });
 formatter.before({
-  "duration": 16953707400,
-  "status": "passed"
-});
-formatter.scenario({
-  "line": 14,
-  "name": "User logged in to cirrus application with valid credentails",
-  "description": "",
-  "id": "login-to-cirrus-connected-mobile-app;user-logged-in-to-cirrus-application-with-valid-credentails;;2",
-  "type": "scenario",
-  "keyword": "Scenario Outline",
-  "tags": [
-    {
-      "line": 4,
-      "name": "@Login"
-    }
-  ]
-});
-formatter.step({
-  "line": 6,
-  "name": "User is on sign in page",
-  "keyword": "Given "
-});
-formatter.step({
-  "line": 7,
-  "name": "User enter username conaircraftnhltestuser1@gmail.com and password cirrus005",
-  "matchedColumns": [
-    0,
-    1
-  ],
-  "keyword": "When "
-});
-formatter.step({
-  "line": 8,
-  "name": "User submit the details",
-  "keyword": "And "
-});
-formatter.step({
-  "line": 9,
-  "name": "User should \"be succesfully\" logged in to application",
-  "keyword": "Then "
-});
-formatter.match({
-  "location": "Login.verifyUserIsOnLoginPage()"
-});
-formatter.result({
-  "duration": 13494008600,
-  "status": "passed"
-});
-formatter.match({
-  "arguments": [
-    {
-      "val": "conaircraftnhltestuser1@gmail.com",
-      "offset": 20
-    },
-    {
-      "val": "cirrus005",
-      "offset": 67
-    }
-  ],
-  "location": "Login.enterUserNameAndPassword(String,String)"
-});
-formatter.result({
-  "duration": 1263345700,
-  "status": "passed"
-});
-formatter.match({
-  "location": "Login.userSubmitDetails()"
-});
-formatter.result({
-  "duration": 757891300,
-  "status": "passed"
-});
-formatter.match({
-  "arguments": [
-    {
-      "val": "be succesfully",
-      "offset": 13
-    }
-  ],
-  "location": "Login.verifyUSerLoggedIn(String)"
-});
-formatter.result({
-  "duration": 60691712800,
-  "status": "passed"
-});
-formatter.uri("MyProfile.feature");
-formatter.feature({
-  "line": 1,
-  "name": "MyProfile",
-  "description": "",
-  "id": "myprofile",
-  "keyword": "Feature"
-});
-formatter.before({
-  "duration": 858000,
+  "duration": 15834785200,
   "status": "passed"
 });
 formatter.background({
   "line": 3,
-  "name": "User logged into application",
+  "name": "user is logged into application",
   "description": "",
   "type": "background",
   "keyword": "Background"
 });
 formatter.step({
-  "line": 4,
+  "comments": [
+    {
+      "line": 4,
+      "value": "#When User log out from the application"
+    }
+  ],
+  "line": 5,
+  "name": "User is already logged in to application by username conaircraftnhltestuser1@gmail.com ,Password cirrus005",
+  "keyword": "Given "
+});
+formatter.step({
+  "line": 6,
   "name": "User is on My Hangar screen",
   "keyword": "Given "
+});
+formatter.match({
+  "arguments": [
+    {
+      "val": "conaircraftnhltestuser1@gmail.com",
+      "offset": 53
+    },
+    {
+      "val": "cirrus005",
+      "offset": 97
+    }
+  ],
+  "location": "Login.userIsLoggedIn(String,String)"
+});
+formatter.result({
+  "duration": 77317882600,
+  "status": "passed"
 });
 formatter.match({
   "location": "Dashboard.verifyUserIsOnMyHangarScreen()"
 });
 formatter.result({
-  "duration": 482121700,
+  "duration": 490374100,
   "status": "passed"
 });
 formatter.scenario({
-  "line": 7,
-  "name": "User should be able to update profile picture",
+  "line": 17,
+  "name": "User request for latest aircraft vital",
   "description": "",
-  "id": "myprofile;user-should-be-able-to-update-profile-picture",
+  "id": "to-verify-aircraft-vitals-on-dashboard;user-request-for-latest-aircraft-vital;;2",
   "type": "scenario",
-  "keyword": "Scenario",
+  "keyword": "Scenario Outline",
   "tags": [
     {
-      "line": 6,
-      "name": "@MyProfile"
+      "line": 8,
+      "name": "@StartTest"
     }
   ]
 });
 formatter.step({
-  "line": 8,
-  "name": "User is on My profile page",
-  "keyword": "Given "
+  "line": 10,
+  "name": "User navigate to dashboard for aircaft N336HT",
+  "matchedColumns": [
+    0
+  ],
+  "keyword": "When "
 });
 formatter.step({
-  "line": 9,
-  "name": "User upload profile pic from \"Gallery\"",
+  "line": 11,
+  "name": "User verify dashboard is displayed with all required aircraft vitals for aircraft N336HT",
+  "matchedColumns": [
+    0
+  ],
+  "keyword": "And "
+});
+formatter.step({
+  "line": 12,
+  "name": "User refresh dashboard for updated aircraft vitals",
   "keyword": "When "
 });
 formatter.match({
-  "location": "MyProfile.veirfyUserIsOnMyProfileScreen()"
+  "arguments": [
+    {
+      "val": "N336HT",
+      "offset": 39
+    }
+  ],
+  "location": "Dashboard.NavigateToGivenAircraft(String)"
 });
 formatter.result({
-  "duration": 44664432400,
+  "duration": 5491541000,
   "status": "passed"
 });
 formatter.match({
   "arguments": [
     {
-      "val": "Gallery",
-      "offset": 30
+      "val": "N336HT",
+      "offset": 82
     }
   ],
-  "location": "MyProfile.uploadProfilePicture(String)"
+  "location": "Dashboard.verifyAndGetAircraftVitals(String)"
+});
+formatter.result({
+  "duration": 53440199100,
+  "status": "passed"
+});
+formatter.match({
+  "location": "Dashboard.refreshDashboard()"
+});
+formatter.result({
+  "duration": 33600,
+  "status": "passed"
+});
+formatter.uri("Logout.feature");
+formatter.feature({
+  "line": 1,
+  "name": "Logout application",
+  "description": "",
+  "id": "logout-application",
+  "keyword": "Feature"
+});
+formatter.before({
+  "duration": 425800,
+  "status": "passed"
+});
+formatter.scenario({
+  "line": 5,
+  "name": "User logged out the application",
+  "description": "",
+  "id": "logout-application;user-logged-out-the-application",
+  "type": "scenario",
+  "keyword": "Scenario",
+  "tags": [
+    {
+      "line": 4,
+      "name": "@EndTest"
+    }
+  ]
+});
+formatter.step({
+  "line": 6,
+  "name": "User is on My Hangar screen",
+  "keyword": "Given "
+});
+formatter.step({
+  "line": 7,
+  "name": "User log out from the application",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "Dashboard.verifyUserIsOnMyHangarScreen()"
+});
+formatter.result({
+  "duration": 46029090400,
+  "status": "passed"
+});
+formatter.match({
+  "location": "Dashboard.logout()"
+});
+formatter.result({
+  "duration": 11617281900,
+  "status": "passed"
+});
+formatter.after({
+  "duration": 980000,
+  "status": "passed"
+});
 });

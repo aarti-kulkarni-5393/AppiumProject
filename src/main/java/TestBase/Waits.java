@@ -29,7 +29,7 @@ public class Waits extends TestBase{
 	{
 		//it will wait for given time
 		//Time unit will be in seconds only
-		log.info("waiting for"+ time+" seconds");
+		log.info("waiting for "+ time+"  seconds");
 		driver.manage().timeouts().implicitlyWait(time, TimeUnit.SECONDS);
 	}
 	
