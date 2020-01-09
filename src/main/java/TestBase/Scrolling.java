@@ -161,5 +161,13 @@ public class Scrolling extends TestBase {
     	TouchAction action = new TouchAction(driver);
     	action.longPress(longPressOptions().withElement(element(element)).withDuration(ofSeconds(time))).release().perform();
     }
+    
+    public void swipe(AndroidElement fromElement,AndroidElement toElement)
+    {
+    	//Use long press first
+    	TouchAction action = new TouchAction(driver);
+    	log.info("swipping to given element");
+    	action.longPress(longPressOptions().withElement(element(fromElement)).withDuration(ofSeconds(2))).moveTo(element(toElement)).release().perform();
+    }
 
 }

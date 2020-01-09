@@ -32,7 +32,8 @@ Logout=//android.widget.CheckedTextView[@text='Log Out']
 ConfirmLogoutButton=//android.widget.Button[@text='CONFIRM']
 Hangers = //android.view.ViewGroup[@resource-id='com.cirrusaircraft.connectedapp.uat:id/hanger_holder']
 MyHangarlabel=//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/label_my_hanger']
-
+Aircraft = //android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/aircraft_key']
+AircraftNameOnMyHangar=//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/aircraft_name']
 
 ######### My Profile ###############
 MyProfileMenu=//android.widget.CheckedTextView[@text='My Profile']
@@ -63,3 +64,10 @@ BackButton=android.widget.ImageButton
 ########## Dashboard ###############
 OilTempLabel=//android.widget.TextView[@text='OIL TEMP']
 TailNumber=//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/aircraft_tail_number']
+LastUpdatedTime=//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/last_updated_time']
+AircraftStatus=//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/logo_aircraft_status']
+Hours=//android.widget.TextView[@text='HOURS']
+RefreshDataConfirmationPopUp=//android.widget.FrameLayout[@resource-id='android:id/content']
+TextOnRefreshDataConfirmationPopUp=//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/dialog_text']
+ConfirmButton=//android.widget.TextView[@text='Confirm']
+aircraftStatusFailed=//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/pdr_failed_message']

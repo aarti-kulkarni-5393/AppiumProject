@@ -124,7 +124,7 @@ public class Dashboard extends TestBase{
 	 String aircraftNAme;
     
 	do {
-		AndroidElement onscreenAircraft = driver.findElement(By.xpath("//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/aircraft_key']"));
+		AndroidElement onscreenAircraft = findMobileElement("xpath", "Aircraft");
 		aircraftNAme = onscreenAircraft.getText();
 		if(aircraftNAme.equalsIgnoreCase(aircraftmodelnumber))
 			break;
@@ -221,8 +221,9 @@ public class Dashboard extends TestBase{
     @And("^Aircraft module number is (.+)$")
     public void verifyModelNumber(String aircraftmodelnumber) throws Throwable {
         
-    	String ModelNUmber = driver.findElement(By.xpath("//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/aircraft_name']")).getText();
+    	//String ModelNUmber = driver.findElement(By.xpath("//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/aircraft_name']")).getText();
     	//System.out.println(ModelNUmber);
+    	String ModelNUmber = findMobileElement("xpath", "AircraftNameOnMyHangar").getText();
     	if(ModelNUmber.equalsIgnoreCase(aircraftmodelnumber))
         {
     		log.info("Location is present on my hangar for particular aircraft");
@@ -234,7 +235,7 @@ public class Dashboard extends TestBase{
     @And("^User should see Last updated date and time is (.+)$")
     public void vrifyLastUpdatedDateTime(String lastupdateddatetime) throws Throwable {
         
-       String ActualDateTime = driver.findElement(By.xpath("//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/last_updated_time']")).getText();
+       String ActualDateTime = findMobileElement("xpath", "LastUpdatedTime").getText();
        log.info(ActualDateTime);
     }
 	
@@ -309,10 +310,10 @@ public class Dashboard extends TestBase{
     	 * It will verify and get old data and keep it in map
     	 */
     	try {
-    		if(driver.findElement(By.xpath("//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/logo_aircraft_status']")).isDisplayed())
+    		if(findMobileElement("xpath", "AircraftStatus").isDisplayed())
     		{
-    			System.out.println(driver.findElement(By.xpath("//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/aircraft_tail_number']")).getText());
-    			if(!driver.findElement(By.xpath("")).getText().equalsIgnoreCase(modelNUmber))
+    			//System.out.println(driver.findElement(By.xpath("//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/aircraft_tail_number']")).getText());
+    			if(!findMobileElement("xpath", "TailNumber").getText().equalsIgnoreCase(modelNUmber))
     			Assert.assertFalse(false);
     			
     			log.info("succesfully navigated to dashboard");
@@ -344,7 +345,26 @@ public class Dashboard extends TestBase{
 	
     @When("^User refresh dashboard for updated aircraft vitals$")
     public void refreshDashboard() throws Throwable {
-    	
+    	//Using swipe functionality to refresh
+    	log.info("pull down to refresh");
+    	new Scrolling().swipe(findMobileElement("xpath", "AircraftStatus"), findMobileElement("xpath", "Hours"));
+    	try {
+    		findMobileElement("xpath", "RefreshDataConfirmationPopUp").isDisplayed();
+    		
+    	}catch (Exception e) {
+			// TODO: handle exception
+    		log.info("confirmation pop up have not displayed");
+    		log.info("Lets try ,Will again refresh for new data");
+    		new Scrolling().swipe(findMobileElement("xpath", "AircraftStatus"), findMobileElement("xpath", "Hours"));
+    		
+		}
+//    	if(findMobileElement("xpath", "TextOnRefreshDataConfirmationPopUp").getText().equalsIgnoreCase(""))
+//		{
+//			log.info("Text on confirmation pop up is verfied and it is as expected");
+//		}else{
+//			log.info("Text on confirmation pop up is verfied and it is not as expected");
+//		}
+			findMobileElement("xpath", "ConfirmButton").click();
        
     }
 	
