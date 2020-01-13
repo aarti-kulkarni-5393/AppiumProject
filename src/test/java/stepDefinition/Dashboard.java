@@ -126,6 +126,7 @@ public class Dashboard extends TestBase{
 	do {
 		AndroidElement onscreenAircraft = findMobileElement("xpath", "Aircraft");
 		aircraftNAme = onscreenAircraft.getText();
+		System.out.println(aircraftNAme);
 		if(aircraftNAme.equalsIgnoreCase(aircraftmodelnumber))
 			break;
 		
@@ -139,7 +140,8 @@ public class Dashboard extends TestBase{
 			   
 		   }
 		   countOfAircraft++;
-	} while (aircraftNAme.equalsIgnoreCase(aircraftmodelnumber));
+		  System.out.println(aircraftNAme.equalsIgnoreCase(aircraftmodelnumber));
+	} while (!aircraftNAme.equalsIgnoreCase(aircraftmodelnumber));
     // check if aicraft is on screen or at bottom of screen
 	
 	return AircraftAccess;
@@ -265,34 +267,33 @@ public class Dashboard extends TestBase{
     	HashMap<String, String> OldAircraftVitals = new HashMap<String, String>();
     	
     	try {
-    		AndroidElement TKSController = driver.findElement(By.xpath("//android.widget.RelativeLayout[@resource-id='com.cirrusaircraft.connectedapp.uat:id/tks_container']"));
-        	AndroidElement OxygenController = driver.findElement(By.xpath("//android.widget.RelativeLayout[@resource-id='com.cirrusaircraft.connectedapp.uat:id/oxygen_container']"));
+    		AndroidElement TKSController = findMobileElement("xpath", "TksController");
+    		TKSController.isDisplayed();
+    		AndroidElement TKS_Value = findMobileElement("xpath", "TksTotalValue");
+    		OldAircraftVitals.put("TKSVALUE", TKS_Value.getText());
+    	}catch(Exception e){
+    		log.info("No TKS is assigned to user");
+    	}
+    	
+    	try {
     		
-    		if(TKSController.isDisplayed())
-    		{
-    	        AndroidElement TKS_Value = driver.findElement(By.xpath("//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/tks_value_total']"));
-    	        OldAircraftVitals.put("TKSVALUE", TKS_Value.getText());
-    			
-    		}
+    		AndroidElement OxygenController = findMobileElement("xpath", "OxygenController");
+    		OxygenController.isDisplayed();
+    		AndroidElement Oxygen_Value = findMobileElement("xpath", "OxygentTotalValue");
+    		OldAircraftVitals.put("OxygenValue", Oxygen_Value.getText());
+    	}catch(Exception e1){
+    		log.info("No Oxygen is assigned to user");
+    	}
     		
-    			if (OxygenController.isDisplayed()) {
-    				AndroidElement Oxygen_Value = driver.findElement(By.xpath("//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/oxygen_value_total']"));
-    		        OldAircraftVitals.put("OxygenValue", Oxygen_Value.getText());
-    				
-    			}
-			
-		} catch (Exception e) {
-			
-			log.info("No oxygen and TKS is assigned to user");
-		}
+        
     	/*
     	 * Following are fields which will be always present
     	 */
-    	AndroidElement Fuel_Quantity = driver.findElement(By.xpath("//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/fuel_value_total']"));
+    	AndroidElement Fuel_Quantity = findMobileElement("xpath", "FuelTotalValue");
         OldAircraftVitals.put("FuelValue", Fuel_Quantity.getText());
-        AndroidElement Battery_Value = driver.findElement(By.xpath("//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/battery_value']"));
+        AndroidElement Battery_Value = findMobileElement("xpath", "BatteryValue");
         OldAircraftVitals.put("BatteryValue", Battery_Value.getText());
-        AndroidElement OilTemp_Value = driver.findElement(By.xpath("//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/oil_temp_value']"));
+        AndroidElement OilTemp_Value = findMobileElement("xpath", "OilTempValue");
         OldAircraftVitals.put("OilTempValue", OilTemp_Value.getText());
         //AndroidElement FlihtHours = driver.findElement(By.xpath("//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/et_flight_hours']"));
         //OldAircraftVitals.put("FlighHours", FlihtHours.getText());
@@ -344,6 +345,31 @@ public class Dashboard extends TestBase{
     }
 	
     @When("^User refresh dashboard for updated aircraft vitals$")
+    public void refreshingDashboardToUpdateAircraftVitals() throws Throwable
+    {
+    	boolean isPDRSuccess =refreshDashboard();
+    	
+    	
+    	
+    }
+    @Then("^Dahsboard should be updated with latest aircraft vitals$")
+    public void verifyDashboardresults() throws Throwable {
+        
+    	
+    }
+    
+    public void verifyResultsOnDashboard(boolean isSuccess)
+    {
+    	if(isSuccess)
+    	{
+    		
+    	}else {
+    		
+    		
+    	}
+    	
+    }
+    
     public boolean refreshDashboard() throws Throwable {
     	//Using swipe functionality to refresh
     	log.info("pull down to refresh");
@@ -366,52 +392,75 @@ public class Dashboard extends TestBase{
 //		}
 			findMobileElement("xpath", "ConfirmButton").click();
 			log.info("started refreshing data");
-			int expectedStatusCount =2;
+			int expectedStatusCount =3;
 			int actualStatusCount =0;
-			boolean isPDRSuccess = false;
-             while (actualStatusCount<expectedStatusCount) {
+			boolean isPDRRequestDone = false;
+			/*
+			 * here 5 min max time required to update data
+			 * after 5 min either it will fail or pass ---> static wait can work but its too long and sometimes it update data early
+			 * hence all checks are added.
+			 * It will check all required status messages are coming and check is process still running if yes wait till it finished
+			 */
+			try {
+			wait.waitForGivenElement(60,findMobileElement("xpath", "pdrStatus") );
+			
+             while (findMobileElement("xpath", "pdrStatus").isDisplayed()) {
 				
-            	 wait.waitForGivenElement(60, findMobileElement("xpath", "pdrStatus"));
-                try {
-                	findMobileElement("xpath", "pdrStatus").isDisplayed();
+                	//findMobileElement("xpath", "pdrStatus").isDisplayed();
                 	String currentStatus = findMobileElement("xpath", "pdrStatus").getText();
-                	
+                	System.out.println(actualStatusCount);
+                	System.out.println(currentStatus);
                 	if(currentStatus.contains("Connection established"))
                 	{
                 		if(actualStatusCount==0)
-                		actualStatusCount++;
+                		  actualStatusCount++;
                 		
                 		log.info("waiting till next status comes");
-                		wait.waitForGivenTime(60);
+                		wait.waitForGivenTime(30);
                 		
-                	}else if(currentStatus.contains("pdrStatusProcessing information")){
+                	}else if(currentStatus.contains("Processing information")){
                 		
                 		if(actualStatusCount==1)
-                    	 actualStatusCount++;
+                    	   actualStatusCount++;
                     		
                     	log.info("waiting till next status comes");
                     	wait.waitForGivenTime(60);
                 		
                 		
+                	}else if(currentStatus.contains("Aircraft status updated")) {
+                		
+                		log.info("status updated");
+                		actualStatusCount++;
+                		break;
                 	}
                 		
-                	}catch (Exception e) {
-						// TODO: handle exception
-                		log.info("PDR status is not visible");
-                		
-                		
-					}
+                	
                 }
-             if(actualStatusCount==expectedStatusCount)
-             {
-            	 isPDRSuccess = true;
-             }
-            	//progressBar can be used 
-             return isPDRSuccess;
+			}catch(Exception e2) {
+				log.info("PDR is completed or not displayed");
 			}
-      
-       
+			
+			if(actualStatusCount==expectedStatusCount)
+			{
+				log.info("All status are displayed");
+				log.info("Will check results");
+				isPDRRequestDone=true;
+			}
+					
+			findMobileElement("xpath", "FailedPDRStatusBar").isDisplayed();
+			findMobileElement("xpath", "ClosePDFailedBar").click();
+			//isPDRRequestDone=false;			
+					
+				
+			
+				
+             
+            
+
+			return isPDRRequestDone;
     }
+    
+}
 	
 	
 
