@@ -36,7 +36,8 @@ public class TestBase {
 			//System.out.println("Log intialization for TestBase");
 			log = new Log(TestBase.class);
 			handleProperties();
-		    driver = DriverManagement.getInstance(propertyObj.getProperty("PlatForm"),propertyObj.getProperty("App_Path"));
+		    driver = DriverManagement.getInstance(propertyObj.getObjectPropertyValue("PlatForm"),propertyObj.getProperty("App_Path"));
+		    
 		
 		}catch(Exception e) {
 			log.info("Exception occured  while creating driver:::::"+e.getMessage());
@@ -82,6 +83,7 @@ public class TestBase {
 		    	propertyObj = new PropertyReader();
 		    	objectRepository = new PropertyReader();
 		    	propertyObj.loadPropertyFile("C:\\Users\\aarti.kulkarni\\eclipse-workspace\\Cirrus\\src\\main\\java\\Resources\\Application.properties");
+		    	System.out.println(propertyObj.getProperty("App_Path"));
 		    	if(propertyObj.getProperty("Enviornment").contains("QA"))
 				{
 					log.info("Loading Object Property file for QA");

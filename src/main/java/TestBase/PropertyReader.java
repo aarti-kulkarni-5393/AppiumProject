@@ -25,7 +25,7 @@ public class PropertyReader {
 		// TODO Auto-generated constructor stub
     	 propertyObj = new Properties();
     	 log = new Log(PropertyReader.class);
-    	 driver = DriverManagement.getInstance("real","C:\\Users\\aarti.kulkarni\\eclipse-workspace\\\\Cirrus\\\\src\\\\main\\\\java\\\\Resources\\\\UAT-0.11.0.apk");
+    	 //driver = DriverManagement.getInstance("real","");
     	 //loadPropertyFile(Path);
     
 	}

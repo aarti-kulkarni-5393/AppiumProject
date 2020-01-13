@@ -344,7 +344,7 @@ public class Dashboard extends TestBase{
     }
 	
     @When("^User refresh dashboard for updated aircraft vitals$")
-    public void refreshDashboard() throws Throwable {
+    public boolean refreshDashboard() throws Throwable {
     	//Using swipe functionality to refresh
     	log.info("pull down to refresh");
     	new Scrolling().swipe(findMobileElement("xpath", "AircraftStatus"), findMobileElement("xpath", "Hours"));
@@ -365,16 +365,53 @@ public class Dashboard extends TestBase{
 //			log.info("Text on confirmation pop up is verfied and it is not as expected");
 //		}
 			findMobileElement("xpath", "ConfirmButton").click();
+			log.info("started refreshing data");
+			int expectedStatusCount =2;
+			int actualStatusCount =0;
+			boolean isPDRSuccess = false;
+             while (actualStatusCount<expectedStatusCount) {
+				
+            	 wait.waitForGivenElement(60, findMobileElement("xpath", "pdrStatus"));
+                try {
+                	findMobileElement("xpath", "pdrStatus").isDisplayed();
+                	String currentStatus = findMobileElement("xpath", "pdrStatus").getText();
+                	
+                	if(currentStatus.contains("Connection established"))
+                	{
+                		if(actualStatusCount==0)
+                		actualStatusCount++;
+                		
+                		log.info("waiting till next status comes");
+                		wait.waitForGivenTime(60);
+                		
+                	}else if(currentStatus.contains("pdrStatusProcessing information")){
+                		
+                		if(actualStatusCount==1)
+                    	 actualStatusCount++;
+                    		
+                    	log.info("waiting till next status comes");
+                    	wait.waitForGivenTime(60);
+                		
+                		
+                	}
+                		
+                	}catch (Exception e) {
+						// TODO: handle exception
+                		log.info("PDR status is not visible");
+                		
+                		
+					}
+                }
+             if(actualStatusCount==expectedStatusCount)
+             {
+            	 isPDRSuccess = true;
+             }
+            	//progressBar can be used 
+             return isPDRSuccess;
+			}
+      
        
     }
 	
 	
-	
-	
-	
-	
-	
-	
-	
 
-}
