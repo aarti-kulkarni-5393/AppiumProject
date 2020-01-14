@@ -79,4 +79,5 @@ FuelTotalValue=//android.widget.TextView[@resource-id='com.cirrusaircraft.connec
 BatteryValue=//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/battery_value']
 OilTempValue=//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/oil_temp_value']
 FailedPDRStatusBar=//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/pdr_failed_message']
-ClosePDFailedBar=//android.widget.ImageView[@resource-id='om.cirrusaircraft.connectedapp.uat:id/close_failed_pdr']
+ClosePDFailedBar=//android.widget.ImageView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/close_failed_pdr']
+LastSyncDataTime=//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/last_sync_time']

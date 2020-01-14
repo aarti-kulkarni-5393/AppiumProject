@@ -2,7 +2,9 @@ package stepDefinition;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -14,6 +16,7 @@ import javax.swing.plaf.synth.SynthSplitPaneUI;
 
 import org.apache.tools.ant.taskdefs.WaitFor;
 import org.junit.Assert;
+import org.junit.internal.runners.model.EachTestNotifier;
 import org.junit.rules.Verifier;
 import org.openqa.selenium.By;
 import org.openqa.selenium.interactions.touch.TouchActions;
@@ -41,6 +44,8 @@ public class Dashboard extends TestBase{
 	private Waits wait;
 	private Scrolling scroll;
 	private Log log;
+	private boolean isPDRSuccess;
+	private HashMap<String, String> oldData;
 	public Dashboard() throws IOException {
 		// TODO Auto-generated constructor stub
 		//driver = DriverManagement.getInstance(propertyObj.getProperty("PlatForm"),propertyObj.getProperty("App_Path"));
@@ -266,6 +271,19 @@ public class Dashboard extends TestBase{
     	
     	HashMap<String, String> OldAircraftVitals = new HashMap<String, String>();
     	
+    	String LastSyncDataTime =findMobileElement("xpath", "LastSyncDataTime").getText();
+    	// Expected LastSyncDataTime = LAST UPDATED TODAY AT  11:07 AM
+    	// Old Last Sync Data = LAST UPDATED JAN 13 2020 AT  4:53 PM
+    	/*
+    	 * We will check if Today is present in string
+    	 */
+    	
+    	System.out.println(LastSyncDataTime.substring(LastSyncDataTime.indexOf("UPDATED")+1,LastSyncDataTime.indexOf("AT")).trim());
+    	String LastSyncDate=LastSyncDataTime.substring(LastSyncDataTime.indexOf("LAST UPDATED")+1,LastSyncDataTime.indexOf("AT")).trim(); 
+    	System.out.println(LastSyncDataTime.indexOf("LAST UPDATED") );
+    	System.out.println(LastSyncDataTime.indexOf("AT"));
+    	OldAircraftVitals.put("LastSyncDate", LastSyncDataTime);
+    	
     	try {
     		AndroidElement TKSController = findMobileElement("xpath", "TksController");
     		TKSController.isDisplayed();
@@ -325,7 +343,10 @@ public class Dashboard extends TestBase{
 			System.out.println("USer is not properly navigated to dashboard");
 			// TODO: handle exception
 		}
-    	HashMap<String, String> oldData = getAllAircraftVitalsFromDashboardForGivenAircraft();
+    	/*
+    	 * Here its taking old data to verify it is updated on refreshing dashboard data
+    	 */
+    	 oldData = getAllAircraftVitalsFromDashboardForGivenAircraft();
     	
     	for (String keys : oldData.keySet()) {
 			
@@ -347,22 +368,46 @@ public class Dashboard extends TestBase{
     @When("^User refresh dashboard for updated aircraft vitals$")
     public void refreshingDashboardToUpdateAircraftVitals() throws Throwable
     {
-    	boolean isPDRSuccess =refreshDashboard();
-    	
-    	
+    	//Calling refresh dashboard method
+    	isPDRSuccess =refreshDashboard();
     	
     }
     @Then("^Dahsboard should be updated with latest aircraft vitals$")
     public void verifyDashboardresults() throws Throwable {
-        
     	
+    	log.info(String.valueOf(isPDRSuccess));
+    	verifyResultsOnDashboard(isPDRSuccess,oldData);
     }
     
-    public void verifyResultsOnDashboard(boolean isSuccess)
+    public void verifyResultsOnDashboard(boolean isSuccess,HashMap<String, String> oData)
     {
+    	HashMap<String, String> beforeRefreshData = oData;
     	if(isSuccess)
     	{
-    		
+    		log.info("PDR request is succesfull hence verify data should be updated");
+    		 /*
+    		  * On success check last updated date /time is Today and Data is updated with latest data
+    		  */
+    	     HashMap<String, String> updatedData = getAllAircraftVitalsFromDashboardForGivenAircraft();
+    	     for (String keys : updatedData.keySet()) {
+    				
+    	    		log.info(keys+"   "+updatedData.get(keys));
+    			}
+    	     
+    	   if((!beforeRefreshData.get("LastSyncDate").equalsIgnoreCase(updatedData.get("LastSyncDate"))) && updatedData.get("LastSyncDate").contains("Today"))
+    	   {
+                 
+    		   if((!updatedData.equals(beforeRefreshData)))
+    		   {
+    			   checkTwoMapVitals(beforeRefreshData, updatedData);
+    			   Assert.assertTrue(true);
+    		   }else {
+    			   Assert.assertTrue(false);
+    		   }
+              
+    		   
+    	   }
+    			
     	}else {
     		
     		
@@ -372,7 +417,7 @@ public class Dashboard extends TestBase{
     
     public boolean refreshDashboard() throws Throwable {
     	//Using swipe functionality to refresh
-    	log.info("pull down to refresh");
+    	log.info("pulling down to refresh");
     	new Scrolling().swipe(findMobileElement("xpath", "AircraftStatus"), findMobileElement("xpath", "Hours"));
     	try {
     		findMobileElement("xpath", "RefreshDataConfirmationPopUp").isDisplayed();
@@ -437,7 +482,7 @@ public class Dashboard extends TestBase{
                 	
                 }
 			}catch(Exception e2) {
-				log.info("PDR is completed or not displayed");
+				log.info("Either PDR request is completed or failed");
 			}
 			
 			if(actualStatusCount==expectedStatusCount)
@@ -445,19 +490,34 @@ public class Dashboard extends TestBase{
 				log.info("All status are displayed");
 				log.info("Will check results");
 				isPDRRequestDone=true;
+			}else {
+				findMobileElement("xpath", "FailedPDRStatusBar").isDisplayed();
+				findMobileElement("xpath", "ClosePDFailedBar").click();
+				isPDRRequestDone=false;
 			}
 					
-			findMobileElement("xpath", "FailedPDRStatusBar").isDisplayed();
-			findMobileElement("xpath", "ClosePDFailedBar").click();
-			//isPDRRequestDone=false;			
-					
-				
-			
-				
-             
-            
-
+		
 			return isPDRRequestDone;
+    }
+    
+    public boolean checkTwoMapVitals(HashMap<String, String> old,HashMap<String, String> latest)
+    {
+    	boolean isMatch = true;
+    	for (String keys : old.keySet()) {
+			
+    		if(!latest.get(keys).equalsIgnoreCase(old.get(keys)))
+    		{
+    			isMatch=false;
+    			log.info(keys + " Latest Data "+latest.get(keys)+" Old Data"+old.get(keys) );
+    			
+    		} else
+    		{
+    			isMatch=true;
+    		}
+    			
+    		
+		}
+    	return isMatch;
     }
     
 }
