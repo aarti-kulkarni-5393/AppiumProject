@@ -1,6 +1,7 @@
 Feature: MyProfile
 
 Background: User logged into application
+Given User is already logged in
 Given User is on My Hangar screen
 
 
@@ -13,8 +14,8 @@ When User upload profile pic from "Gallery"
 
 Scenario: User should be able to update profile picture
 Given User is on My profile page
-When User upload profile pic from Camera 
-Then Uploaded profile pic should be set
+#When User upload profile pic from Camera 
+#Then Uploaded profile pic should be set
 
 @MyProfile
 Scenario: User should be able to update profile picture

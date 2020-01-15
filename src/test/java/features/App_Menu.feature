@@ -8,7 +8,7 @@ Scenario: App menus should be in given sequence
 Given User is on My Hangar screen
 When User open App Menu
 Then App menus should be in sequence
-And Username "TEST1 TEST1" should be displayed with profile picture
+And Username "TEST 1 TEST 1" should be displayed with profile picture
 Then User verifies Mobile Application Support Number is 1.218.788.3000
 And User verifies Application Support Number is 1.218.788.3000
 

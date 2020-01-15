@@ -12,7 +12,7 @@ Then User should see Locaton of aircraft is <Location>
 
 Examples:
  | Aircraft tail Number  | Aircraft Model Number  | Location                        | LastUpdatedDateTime |
- | FHY374DH              | SR22                   | Delha Shores Airport            | 12                    |
+ | FHY374DH              | SR22                   | Delta Shores Airport            | 12                    |
  
  
  

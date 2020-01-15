@@ -2,7 +2,7 @@ Feature: To verify aircraft vitals on dashboard
 
 Background: user is logged into application
 #When User log out from the application
-Given User is already logged in to application by username nihilentqa15@gmail.com ,Password cirrus12
+Given User is already logged in
 Given User is on My Hangar screen
 
 @PDR

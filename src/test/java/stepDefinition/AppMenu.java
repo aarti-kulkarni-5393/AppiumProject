@@ -27,7 +27,7 @@ public class AppMenu extends TestBase {
 			findMobileElement("xpath", "HamburgerMenu").click();
 			if(findMobileElement("xpath", "MyHangarMenu").isDisplayed())
 			{
-				System.out.println("App menu opened");
+				log.info("App menu opened");
 			}
 		}
 		
@@ -36,14 +36,14 @@ public class AppMenu extends TestBase {
 	    public void verifyMobileApplicationSupport(String mobileappsupportnumber) throws Throwable {
 	        
 		String actual_MobileSupportNumber= findMobileElement("xpath", "MobileApplicationSupport").getText();
-		System.out.println(actual_MobileSupportNumber);
+		log.info(actual_MobileSupportNumber);
 		Assert.assertTrue("", actual_MobileSupportNumber.equals(mobileappsupportnumber));
 		 
 	    }
 	 @And("^User verifies Application Support Number is (.+)$")
 	    public void verifyApplicationSupportNumber(String applicationsupportnumber) throws Throwable {
 	        String actualApplicationSupportNumber = findMobileElement("xpath", "AppSuportNumber").getText();
-	        //System.out.println(actualApplicationSupportNumber);
+	        //log.info(actualApplicationSupportNumber);
 	        Assert.assertTrue("", actualApplicationSupportNumber.equals(applicationsupportnumber));
 	        findMobileElement("xpath", "HamburgerMenu").click();
 	        }
@@ -51,14 +51,16 @@ public class AppMenu extends TestBase {
 	    public void verifyUsernameDisplayedOnAppMenu(String username) throws Throwable {
 	        try {
 	        	findMobileElement("xpath", "AppMenu_UserName").isDisplayed();
+	        	
 	        }catch (Exception e) {
 				// TODO: handle exception
 	        	findMobileElement("xpath", "HamburgerMenu").click();
 	        	
 			}
-		    String actual_Username=findMobileElement("xpath", "AppMenu_UserName").getText().trim();
-		    //System.out.println(actual_Username);
-		    Assert.assertTrue(actual_Username.equalsIgnoreCase(username.trim()));
+	        String actual_Username=findMobileElement("xpath", "AppMenu_UserName").getText().trim();
+        	Assert.assertTrue(actual_Username.equalsIgnoreCase(username.trim()));
+		    //log.info(actual_Username);
+		    
 		    findMobileElement("xpath", "HamburgerMenu").click();
 	    }
 
@@ -68,19 +70,19 @@ public class AppMenu extends TestBase {
 	       
 	    	//List<AndroidElement> Menus = driver.findElements(By.xpath("//androidx.appcompat.widget.LinearLayoutCompat"));
 	    	List<AndroidElement> Menus 	 = driver.findElements(By.xpath("//android.widget.CheckedTextView"));
-	    	System.out.println(Menus.size());
+	    	log.info(String.valueOf(Menus.size()));
 	    	
-	    	System.out.println(Menus.get(0).getText());
+	    	log.info(Menus.get(0).getText());
 	    	if(Menus.get(0).getText().equalsIgnoreCase("My Hangar"))
-	    		System.out.println("First Menu is My Hangar");
+	    		log.info("First Menu is My Hangar");
 	    	if(Menus.get(1).getText().equalsIgnoreCase("Manage Additional Users"))
-	    	   System.err.println("Second Menu is Manage Additional Users");
+	    	   log.info("Second Menu is Manage Additional Users");
 	    	if(Menus.get(2).getText().equalsIgnoreCase("My Profile"));
-	    		System.out.println("Third Menu is My Profile");
+	    		log.info("Third Menu is My Profile");
 	    	if(Menus.get(3).getText().equalsIgnoreCase("Mobile Application Support"));
-	    	System.out.println("Fourth menu is Mobile Application Support");
+	    	log.info("Fourth menu is Mobile Application Support");
 	    	if(Menus.get(4).getText().equalsIgnoreCase("Log Out"));
-	    	System.out.println("Fifth menu is Log out");
+	    	log.info("Fifth menu is Log out");
 	    	
 	    }
 }
