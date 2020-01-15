@@ -10,13 +10,14 @@ import cucumber.api.junit.Cucumber;
 @RunWith(Cucumber.class)
 @CucumberOptions(
 		features = "C:\\Users\\aarti.kulkarni\\eclipse-workspace\\Cirrus\\src\\test\\java\\features",
-		glue="stepDefinition",tags= {"@PDR,@EndTest"},
+		glue="stepDefinition",tags= {"@MyProfile"},
 		plugin= {"pretty","html:target/cucumber","json:target/cucumber1","junit:target/cucks.xml"}
 		)
 /*
  * "junit:json:target/cucks.xml","json:target/cucumber"
  *  dryRun=true,monochrome=true,
  *  //@Appmenu,@MyProfile,@MyHangar
+ *  Logs = appium.cmd --log-timestamp --log C:\Users\aarti.kulkarni\eclipse-workspace\Cirrus\Logs
  */
 
 public class TestRunner {

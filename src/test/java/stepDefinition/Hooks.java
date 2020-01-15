@@ -34,6 +34,11 @@ public class Hooks extends TestBase{
         
 				
 	}
+	@After
+	public void afterForAll() throws IOException
+	{
+		getAppiumServerLogs();
+	}
 	
 	/*
 	 * it will run after all scenarios
@@ -42,7 +47,7 @@ public class Hooks extends TestBase{
 	public void tearDown(Scenario scenario)
 	{
 		log.info("------------->End of scenario "+scenario.getName()+" <------------");
-	    appium.stopService();
+		appium.stopService();
 	    log.info("Stopping Appium server");
 	    	
 	}

@@ -39,6 +39,7 @@ public class AppiumSetUp {
 			log.info("Stopped existing running appium server");
 		}
 			service.start();
+			
 			log.info("Fresh Appium server started Again");
 			
 		}
@@ -51,6 +52,10 @@ public class AppiumSetUp {
 		service.stop();
 		log.info("Appium server service stopped");
 		
+	}
+	public String serverStdOut()
+	{
+		return service.getStdOut();
 	}
 public  boolean checkIfServerIsRunnning(int port) {
 		

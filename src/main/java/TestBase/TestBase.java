@@ -2,14 +2,18 @@ package TestBase;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Calendar;
 import java.util.Properties;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.logging.LogEntries;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -175,15 +179,30 @@ public boolean retryingFindClick(AndroidElement element,int tryCount) {
     return result;
 }
    
-public void getDefaultLogs()
+public LogEntries getDefaultLogs()
 {
-	driver.manage().logs().get("driver");
+	LogEntries logEntry = driver.manage().logs().get("driver");
+	return logEntry;
 }
 
 public void getLoginUserDetails()
 {
 	Username=propertyObj.getObjectPropertyValue("Username");
 	password=propertyObj.getObjectPropertyValue("Password");
+}
+public void getAppiumServerLogs() throws IOException
+{
+	//Getting server logs
+	
+	String ServerLogs = new AppiumSetUp().serverStdOut();
+	System.out.println(ServerLogs.length());
+	File serverLogFile = new File("AppiumServer"+Calendar.getInstance().getTimeInMillis());
+	FileOutputStream fileOut = new FileOutputStream(serverLogFile);
+	fileOut.write(ServerLogs.getBytes(), 0, ServerLogs.length());
+	
+	fileOut.close();
+	//writeFile.flush();
+
 }
 
 }
