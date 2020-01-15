@@ -43,9 +43,10 @@ public class AppMenu extends TestBase {
 	 @And("^User verifies Application Support Number is (.+)$")
 	    public void verifyApplicationSupportNumber(String applicationsupportnumber) throws Throwable {
 	        String actualApplicationSupportNumber = findMobileElement("xpath", "AppSuportNumber").getText();
-	        System.out.println(actualApplicationSupportNumber);
+	        //System.out.println(actualApplicationSupportNumber);
 	        Assert.assertTrue("", actualApplicationSupportNumber.equals(applicationsupportnumber));
-	    }
+	        findMobileElement("xpath", "HamburgerMenu").click();
+	        }
 	 @And("^Username \"([^\"]*)\" should be displayed with profile picture$")
 	    public void verifyUsernameDisplayedOnAppMenu(String username) throws Throwable {
 	        try {
@@ -56,9 +57,9 @@ public class AppMenu extends TestBase {
 	        	
 			}
 		    String actual_Username=findMobileElement("xpath", "AppMenu_UserName").getText().trim();
-		    System.out.println(actual_Username);
+		    //System.out.println(actual_Username);
 		    Assert.assertTrue(actual_Username.equalsIgnoreCase(username.trim()));
-		 
+		    findMobileElement("xpath", "HamburgerMenu").click();
 	    }
 
 

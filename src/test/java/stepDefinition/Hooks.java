@@ -1,5 +1,6 @@
 package stepDefinition;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 
 import TestBase.AppiumSetUp;
@@ -24,15 +25,13 @@ public class Hooks extends TestBase{
 	 * it will run before all scenarios, we can use appium start stop
 	 */
 	@Before
-	public void setUp(Scenario scenario)
+	public void setUp(Scenario scenario) throws IOException, Throwable
 	{
 		log.info("------------->Start of scenario "+scenario.getName()+" <------------");
-		if(scenario.getSourceTagNames().contains("@startTest"))
-		{
-			log.info("Starting Appium server");
+        log.info("Running appium server if its not running");
 		   // login will be first test case so it will check if this is first test case for execution if yes start appium
-            appium.startAppiumServer(4723);
-	    }
+        appium.startAppiumServer(4723);
+        
 				
 	}
 	
@@ -43,7 +42,6 @@ public class Hooks extends TestBase{
 	public void tearDown(Scenario scenario)
 	{
 		log.info("------------->End of scenario "+scenario.getName()+" <------------");
-		//getDefaultLogs();
 	    appium.stopService();
 	    log.info("Stopping Appium server");
 	    	

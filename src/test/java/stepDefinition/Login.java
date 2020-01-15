@@ -103,21 +103,22 @@ public class Login extends TestBase{
 		/*
 		 * VErify it is logged in
 		 */
+		log.info("verify user is logged in succesfully");
 		try {
-		if(driver.findElement(By.xpath("//android.view.View[@text=\"TERMS AND CONDITIONS\"]")).isDisplayed())
+		if(findMobileElement("xpath", "TermsAndCondition").isDisplayed())
 		{
 			/*
 			 * if accept terms are coming accept and go ahead
 			 */
-			driver.findElement(By.xpath("//android.widget.Button[@text=\"Accept\"]")).click();
+			findMobileElement("xpath", "AcceptTermsCondition").click();
 			wait.waitForGivenTime(30);
-			if(driver.findElement(By.xpath("//android.view.View[@text='Allow Access?']")).isDisplayed())
+			if(findMobileElement("xpath", "AllowAccess").isDisplayed())
 			{
-				driver.findElement(By.xpath("//android.widget.Button[@text='Allow']")).click();
+				findMobileElement("xpath", "AllowButton").click();
 			}
 			
 		}}catch (Exception e) {
-			log.info("this is not first time user");
+			log.info("User has already accepted terms and condition hence directly logged in");
 			if(status.equalsIgnoreCase("be succesfully"))
 			{
 				if(findMobileElement("xpath", "MyHangarlabel").isDisplayed())
@@ -169,11 +170,39 @@ public class Login extends TestBase{
      */
 @Given("^User is already logged in to application by username (.+) ,Password (.+)$")
 public void userIsLoggedIn(String username, String password) throws Throwable {
-	verifyUserIsOnLoginPage();
-	enterUserNameAndPassword(username, password);
-	userSubmitDetails();
-	verifyUSerLoggedIn("be succesfully");
+	
+    try {
+    	
+    	findMobileElement("xpath", "MyHangarlabel").isDisplayed();
+    	log.info("User is already logged in");
+    }catch(Exception e){
+    	
+    	verifyUserIsOnLoginPage();
+    	enterUserNameAndPassword(username, password);
+    	userSubmitDetails();
+    	verifyUSerLoggedIn("be succesfully");
+    }
 	
 	
-}}
+	
+	
+}
+
+@Given("^User is already logged in$")
+public void userLoggedIn() throws Throwable {
+   
+try {
+    	
+    	findMobileElement("xpath", "MyHangarlabel").isDisplayed();
+    	log.info("User is already logged in");
+    }catch(Exception e){
+    	
+    	verifyUserIsOnLoginPage();
+    	enterUserNameAndPassword(Username, password);
+    	userSubmitDetails();
+    	verifyUSerLoggedIn("be succesfully");
+    }
+}
+
+}
    

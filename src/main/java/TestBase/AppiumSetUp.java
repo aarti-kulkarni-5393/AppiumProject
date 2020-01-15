@@ -21,6 +21,8 @@ public class AppiumSetUp {
 		{
 			startService();
 			log.info("Appium server started");
+		}else {
+			log.info("Appium server is already Running on port  "+port);
 		}
 	}
 	

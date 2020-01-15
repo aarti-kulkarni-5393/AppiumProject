@@ -1,8 +1,10 @@
 ##### Login page #########
 loginPage= //android.widget.TextView[@text='LOGIN']
 Username= //android.widget.EditText[@resource-id='loginPage:loginForm:username']
-
-
+TermsAndCondition=//android.view.View[@text="TERMS AND CONDITIONS"]
+AcceptTermsCondition=//android.widget.Button[@text="Accept"]
+AllowAccess=//android.view.View[@text='Allow Access?']
+AllowButton=//android.widget.Button[@text='Allow']
 #### Manage Users ################
 ManageUserPageTitle= //android.widget.TextView[@text='Manage Users']
 AdditionalUsersLabel= //android.widget.TextView[@text='Additional Users']
@@ -34,7 +36,7 @@ Hangers = //android.view.ViewGroup[@resource-id='com.cirrusaircraft.connectedapp
 MyHangarlabel=//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.qa:id/label_my_hanger']
 Aircraft = //android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.qa:id/aircraft_key']
 AircraftNameOnMyHangar=//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.qa:id/aircraft_name']
-
+Aircraft_Location=//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.qa:id/aircraft_location']
 ######### My Profile ###############
 MyProfileMenu=//android.widget.CheckedTextView[@text='My Profile']
 updateProfile=//android.widget.ImageView[@resource-id='com.cirrusaircraft.connectedapp.qa:id/iv_edit_profile']

@@ -27,6 +27,8 @@ public class TestBase {
 	public static MobileElement mobileElement;
 	public Log log;
 	protected AndroidDriver<AndroidElement> driver;
+	public static String Username;
+	public static String password;
 	/*
 	 * This is launching app in emulator or device
 	 */
@@ -83,7 +85,7 @@ public class TestBase {
 		    	propertyObj = new PropertyReader();
 		    	objectRepository = new PropertyReader();
 		    	propertyObj.loadPropertyFile("C:\\Users\\aarti.kulkarni\\eclipse-workspace\\Cirrus\\src\\main\\java\\Resources\\Application.properties");
-		    	System.out.println(propertyObj.getProperty("App_Path"));
+		    	getLoginUserDetails();
 		    	if(propertyObj.getProperty("Enviornment").contains("QA"))
 				{
 					log.info("Loading Object Property file for QA");
@@ -176,6 +178,12 @@ public boolean retryingFindClick(AndroidElement element,int tryCount) {
 public void getDefaultLogs()
 {
 	driver.manage().logs().get("driver");
+}
+
+public void getLoginUserDetails()
+{
+	Username=propertyObj.getObjectPropertyValue("Username");
+	password=propertyObj.getObjectPropertyValue("Password");
 }
 
 }

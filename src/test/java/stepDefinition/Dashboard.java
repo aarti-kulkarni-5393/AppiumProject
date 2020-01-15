@@ -216,7 +216,7 @@ public class Dashboard extends TestBase{
     @Then("^User should see Locaton of aircraft is (.+)$")
     public void verifyLocationOnMyHangar(String location) throws Throwable {
         
-    	String Actual_location = driver.findElement(By.xpath("//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/aircraft_location']")).getText();
+    	String Actual_location = findMobileElement("xpath", "Aircraft_Location").getText();
         //System.out.println(Actual_location);
     	if(Actual_location.equalsIgnoreCase(location))
         {
@@ -520,6 +520,7 @@ public class Dashboard extends TestBase{
     	return isMatch;
     }
     
+   
 }
 	
 	
