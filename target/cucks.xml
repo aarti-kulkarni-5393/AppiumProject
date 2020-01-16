@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsuite failures="0" name="cucumber.runtime.formatter.JUnitFormatter" skipped="0" tests="1" time="384.811028">
+<testcase classname="To verify aircraft vitals on dashboard" name="User request for latest aircraft vital" time="384.811028">
+<system-out><![CDATA[Given User is already logged in.............................................passed
+Given User is on My Hangar screen...........................................passed
+When User navigate to dashboard for aircaft FHA762OIU.......................passed
+And User verify dashboard is displayed with all required aircraft vitals for aircraft FHA762OIU.passed
+When User refresh dashboard for updated aircraft vitals.....................passed
+Then Dahsboard should be updated with latest aircraft vitals................passed
+]]></system-out>
+</testcase>
+</testsuite>

@@ -34,11 +34,7 @@ public class Hooks extends TestBase{
         
 				
 	}
-	@After
-	public void afterForAll() throws IOException
-	{
-		getAppiumServerLogs();
-	}
+
 	
 	/*
 	 * it will run after all scenarios
