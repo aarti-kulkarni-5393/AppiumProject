@@ -382,13 +382,14 @@ public class Dashboard extends TestBase{
     public void verifyResultsOnDashboard(boolean isSuccess,HashMap<String, String> oData)
     {
     	HashMap<String, String> beforeRefreshData = oData;
+    	HashMap<String, String> updatedData = getAllAircraftVitalsFromDashboardForGivenAircraft();
     	if(isSuccess)
     	{
     		log.info("PDR request is succesfull hence verify data should be updated");
     		 /*
     		  * On success check last updated date /time is Today and Data is updated with latest data
     		  */
-    	     HashMap<String, String> updatedData = getAllAircraftVitalsFromDashboardForGivenAircraft();
+    		
     	     for (String keys : updatedData.keySet()) {
     				
     	    		log.info(keys+"   "+updatedData.get(keys));
@@ -399,9 +400,11 @@ public class Dashboard extends TestBase{
                  
     		   if((!updatedData.equals(beforeRefreshData)))
     		   {
-    			   checkTwoMapVitals(beforeRefreshData, updatedData);
-    			   Assert.assertTrue(true);
+    			   boolean isMatched=checkTwoMapVitals(beforeRefreshData, updatedData);
+    			   log.info("data did not match"+isMatched);
+    			   Assert.assertTrue(isMatched);
     		   }else {
+    			   log.info("its failing");
     			   Assert.assertTrue(false);
     		   }
               
@@ -409,6 +412,22 @@ public class Dashboard extends TestBase{
     	   }
     			
     	}else {
+    		
+    		//Verify if status failed then nothing should be updated
+    		log.info("PDR is failed hence checking data did not change");
+    		if((beforeRefreshData.get("LastSyncDate").equalsIgnoreCase(updatedData.get("LastSyncDate"))))
+     	   {
+                  log.info("PDR is failed hence checking data did not change");
+     		   if((updatedData.equals(beforeRefreshData)))
+     		   {
+     			   boolean isUnMatched=checkTwoMapVitals(beforeRefreshData, updatedData);
+     			   log.info("data did match "+ isUnMatched);
+     			   Assert.assertTrue(!isUnMatched);
+     		   }else {
+     			   Assert.assertTrue(false);
+     		   }
+               		   
+     	   }
     		
     		
     	}
@@ -437,7 +456,7 @@ public class Dashboard extends TestBase{
 //		}
 			findMobileElement("xpath", "ConfirmButton").click();
 			log.info("started refreshing data");
-			int expectedStatusCount =3;
+			int expectedStatusCount =4;
 			int actualStatusCount =0;
 			boolean isPDRRequestDone = false;
 			/*
@@ -453,30 +472,41 @@ public class Dashboard extends TestBase{
 				
                 	//findMobileElement("xpath", "pdrStatus").isDisplayed();
                 	String currentStatus = findMobileElement("xpath", "pdrStatus").getText();
-                	System.out.println(actualStatusCount);
-                	System.out.println(currentStatus);
-                	if(currentStatus.contains("Connection established"))
+                	log.info(String.valueOf(actualStatusCount));
+                	log.info(currentStatus);
+                	if(currentStatus.contains("aircraft status update requested"))
                 	{
                 		if(actualStatusCount==0)
+                  		  actualStatusCount++;
+                	}
+                	else if(currentStatus.contains("Connection established"))
+                	{
+                		if(actualStatusCount==1)
                 		  actualStatusCount++;
                 		
                 		log.info("waiting till next status comes");
-                		wait.waitForGivenTime(30);
+                		//wait.waitForGivenTime(10);
                 		
                 	}else if(currentStatus.contains("Processing information")){
                 		
-                		if(actualStatusCount==1)
+                		if(actualStatusCount==2)
                     	   actualStatusCount++;
                     		
                     	log.info("waiting till next status comes");
-                    	wait.waitForGivenTime(60);
-                		
+                    	//wait.waitForGivenTime(10);
+                    	//System.out.println(currentStatus.contains("Aircraft status updated"));
                 		
                 	}else if(currentStatus.contains("Aircraft status updated")) {
                 		
                 		log.info("status updated");
-                		actualStatusCount++;
-                		break;
+                		if(actualStatusCount==3)
+                		{
+                			System.out.println(currentStatus.contains("Aircraft status updated"));
+                			actualStatusCount++;
+                			break;
+                		}
+                		
+                		
                 	}
                 		
                 	
@@ -502,22 +532,23 @@ public class Dashboard extends TestBase{
     
     public boolean checkTwoMapVitals(HashMap<String, String> old,HashMap<String, String> latest)
     {
-    	boolean isMatch = true;
+    	log.info("checking data by comparing two map");
+    	boolean isUnMatch = false;
     	for (String keys : old.keySet()) {
 			
     		if(!latest.get(keys).equalsIgnoreCase(old.get(keys)))
     		{
-    			isMatch=false;
+    			isUnMatch=true;
     			log.info(keys + " Latest Data "+latest.get(keys)+" Old Data"+old.get(keys) );
     			
     		} else
     		{
-    			isMatch=true;
+    			isUnMatch=false;
     		}
     			
     		
 		}
-    	return isMatch;
+    	return isUnMatch;
     }
     
    

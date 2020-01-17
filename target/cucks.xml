@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite failures="0" name="cucumber.runtime.formatter.JUnitFormatter" skipped="0" tests="1" time="384.811028">
-<testcase classname="To verify aircraft vitals on dashboard" name="User request for latest aircraft vital" time="384.811028">
+<testsuite failures="0" name="cucumber.runtime.formatter.JUnitFormatter" skipped="0" tests="1" time="227.179228">
+<testcase classname="To verify aircraft vitals on dashboard" name="User request for latest aircraft vital" time="227.179228">
 <system-out><![CDATA[Given User is already logged in.............................................passed
 Given User is on My Hangar screen...........................................passed
 When User navigate to dashboard for aircaft FHA762OIU.......................passed

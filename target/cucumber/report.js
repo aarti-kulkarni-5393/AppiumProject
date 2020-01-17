@@ -64,7 +64,7 @@ formatter.examples({
   "keyword": "Examples"
 });
 formatter.before({
-  "duration": 45763243800,
+  "duration": 15390885400,
   "status": "passed"
 });
 formatter.background({
@@ -94,14 +94,14 @@ formatter.match({
   "location": "Login.userLoggedIn()"
 });
 formatter.result({
-  "duration": 99960949700,
+  "duration": 78449636600,
   "status": "passed"
 });
 formatter.match({
   "location": "Dashboard.verifyUserIsOnMyHangarScreen()"
 });
 formatter.result({
-  "duration": 493708000,
+  "duration": 490117700,
   "status": "passed"
 });
 formatter.scenario({
@@ -154,7 +154,7 @@ formatter.match({
   "location": "Dashboard.NavigateToGivenAircraft(String)"
 });
 formatter.result({
-  "duration": 2608465100,
+  "duration": 2795426200,
   "status": "passed"
 });
 formatter.match({
@@ -167,21 +167,21 @@ formatter.match({
   "location": "Dashboard.verifyAndGetAircraftVitals(String)"
 });
 formatter.result({
-  "duration": 16750370500,
+  "duration": 13822409000,
   "status": "passed"
 });
 formatter.match({
   "location": "Dashboard.refreshingDashboardToUpdateAircraftVitals()"
 });
 formatter.result({
-  "duration": 219234082500,
+  "duration": 103334583400,
   "status": "passed"
 });
 formatter.match({
   "location": "Dashboard.verifyDashboardresults()"
 });
 formatter.result({
-  "duration": 207900,
+  "duration": 12896170000,
   "status": "passed"
 });
 });

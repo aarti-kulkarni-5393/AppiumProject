@@ -1,7 +1,7 @@
 Feature: Login to Cirrus Connected Mobile App
 
 
-@Login @startTest
+@Login
 Scenario Outline: User logged in to cirrus application with valid credentails
   Given User is on sign in page
   When User enter username <Username> and password <Password>
