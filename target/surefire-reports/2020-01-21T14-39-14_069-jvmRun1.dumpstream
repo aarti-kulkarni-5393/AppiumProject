@@ -1,0 +1,432 @@
+# Created at 2020-01-21T14:39:22.352
+TestSet has not finished before stream error has appeared >> initializing exit by non-null configuration: DEFAULT
+java.io.EOFException
+	at java.io.DataInputStream.readInt(DataInputStream.java:392)
+	at org.apache.maven.surefire.booter.MasterProcessCommand.decode(MasterProcessCommand.java:115)
+	at org.apache.maven.surefire.booter.CommandReader$CommandRunnable.run(CommandReader.java:390)
+	at java.lang.Thread.run(Thread.java:748)
+
+
+# Created at 2020-01-21T14:39:29.679
+Unexpected IOException with stream: Jan 21, 2020 2:39:29 PM io.appium.java_client.remote.AppiumCommandExecutor$1 lambda$0
+INFO: Detected dialect: W3C
+
+
+# Created at 2020-01-21T14:39:31.552
+Unexpected IOException with stream: [main] INFO TestBase.AppiumSetUp - ------------->Start of scenario App menus should be in given sequence <------------
+
+
+# Created at 2020-01-21T14:39:31.552
+Unexpected IOException with stream: [main] INFO TestBase.AppiumSetUp - Running appium server if its not running
+
+
+# Created at 2020-01-21T14:39:31.552
+Unexpected IOException with stream: [main] INFO TestBase.AppiumSetUp - service is already running
+
+
+# Created at 2020-01-21T14:39:31.561
+Unexpected IOException with stream: [main] INFO TestBase.AppiumSetUp - Appium server is already Running on port  4723
+
+
+# Created at 2020-01-21T14:39:31.782
+Unexpected IOException with stream: [main] INFO TestBase.TestBase - Return property File path
+
+
+# Created at 2020-01-21T14:39:31.794
+Unexpected IOException with stream: [main] INFO TestBase.TestBase - Return property File path
+
+
+# Created at 2020-01-21T14:39:31.794
+Unexpected IOException with stream: [main] INFO stepDefinition.Login - Getting Element MyHangarlabel of Type xpath
+
+
+# Created at 2020-01-21T14:39:32.548
+Unexpected IOException with stream: [main] INFO stepDefinition.Login - waiting for 30  seconds
+
+
+# Created at 2020-01-21T14:39:32.568
+Unexpected IOException with stream: [main] INFO stepDefinition.Login - Getting Element Username of Type xpath
+
+
+# Created at 2020-01-21T14:39:46.139
+Unexpected IOException with stream: 
+
+
+# Created at 2020-01-21T14:39:46.140
+Unexpected IOException with stream:   Background: User is logged into application [90m# App_Menu.feature:3[0m
+
+
+# Created at 2020-01-21T14:39:46.141
+Unexpected IOException with stream:     [31mGiven [0m[31mUser is already logged in[0m           [90m# Login.userLoggedIn()[0m
+
+
+# Created at 2020-01-21T14:39:46.144
+Unexpected IOException with stream:       [31morg.openqa.selenium.WebDriverException: An unknown server-side error occurred while processing the command. Original error: Could not proxy command to remote server. Original error: Error: socket hang up
+      Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+      System info: host: 'NLPULTP4603920', ip: '172.16.6.66', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_181'
+      Driver info: io.appium.java_client.android.AndroidDriver
+      Capabilities {app: C:\Users\aarti.kulkarni\ecl..., appPackage: com.cirrusaircraft.connecte..., automationName: UiAutomator2, databaseEnabled: false, desired: {app: C:\Users\aarti.kulkarni\ecl..., automationName: UiAutomator2, deviceName: Android Device, disableWindowAnimation: true, platformName: android, waitForIdleTimeout: 2000}, deviceApiLevel: 26, deviceManufacturer: samsung, deviceModel: SM-G930F, deviceName: ce061606e4d9ce3e02, deviceScreenDensity: 480, deviceScreenSize: 1080x1920, deviceUDID: ce061606e4d9ce3e02, disableWindowAnimation: true, javascriptEnabled: true, locationContextEnabled: false, networkConnectionEnabled: true, pixelRatio: 3, platform: LINUX, platformName: Android, platformVersion: 8.0.0, statBarHeight: 72, takesScreenshot: true, viewportRect: {height: 1848, left: 0, top: 72, width: 1080}, waitForIdleTimeout: 2000, warnings: {}, webStorageEnabled: false}
+      Session ID: 1c90aab7-2a08-4577-8338-d06f160a0ea7
+      *** Element info: {Using=xpath, value=//android.widget.EditText[@resource-id='loginPage:loginForm:username']}
+      	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+      	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+      	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+      	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+      	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+      	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+      	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+      	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+      	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:239)
+      	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+      	at io.appium.java_client.DefaultGenericMobileDriver.execute(DefaultGenericMobileDriver.java:42)
+      	at io.appium.java_client.AppiumDriver.execute(AppiumDriver.java:1)
+      	at io.appium.java_client.android.AndroidDriver.execute(AndroidDriver.java:1)
+      	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
+      	at io.appium.java_client.DefaultGenericMobileDriver.findElement(DefaultGenericMobileDriver.java:62)
+      	at io.appium.java_client.AppiumDriver.findElement(AppiumDriver.java:1)
+      	at io.appium.java_client.android.AndroidDriver.findElement(AndroidDriver.java:1)
+      	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)
+      	at io.appium.java_client.DefaultGenericMobileDriver.findElementByXPath(DefaultGenericMobileDriver.java:152)
+      	at io.appium.java_client.AppiumDriver.findElementByXPath(AppiumDriver.java:1)
+      	at io.appium.java_client.android.AndroidDriver.findElementByXPath(AndroidDriver.java:1)
+      	at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
+      	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+      	at io.appium.java_client.DefaultGenericMobileDriver.findElement(DefaultGenericMobileDriver.java:58)
+      	at io.appium.java_client.AppiumDriver.findElement(AppiumDriver.java:1)
+      	at io.appium.java_client.android.AndroidDriver.findElement(AndroidDriver.java:1)
+      	at TestBase.TestBase.findMobileElement(TestBase.java:127)
+      	at stepDefinition.Login.verifyUserIsOnLoginPage(Login.java:156)
+      	at stepDefinition.Login.userLoggedIn(Login.java:200)
+      	at ?.Given User is already logged in(App_Menu.feature:4)
+      [0m
+
+
+# Created at 2020-01-21T14:39:46.157
+Unexpected IOException with stream: 
+
+
+# Created at 2020-01-21T14:39:46.157
+Unexpected IOException with stream:   @Appmenu
+
+
+# Created at 2020-01-21T14:39:46.158
+Unexpected IOException with stream:   Scenario: App menus should be in given sequence                         [90m# App_Menu.feature:7[0m
+
+
+# Created at 2020-01-21T14:39:46.158
+Unexpected IOException with stream:     [36mGiven [0m[36mUser is on My Hangar screen[0m                                     [90m# Dashboard.verifyUserIsOnMyHangarScreen()[0m
+
+
+# Created at 2020-01-21T14:39:46.158
+Unexpected IOException with stream:     [36mWhen [0m[36mUser open App Menu[0m                                               [90m# AppMenu.user_open_app_menu()[0m
+
+
+# Created at 2020-01-21T14:39:46.159
+Unexpected IOException with stream:     [36mThen [0m[36mApp menus should be in sequence[0m                                  [90m# AppMenu.verifyAppMenuSequence()[0m
+
+
+# Created at 2020-01-21T14:39:46.159
+Unexpected IOException with stream:     [36mAnd [0m[36mUser verifies Mobile Application Support Number is [0m[36m[1m1.218.788.3000[0m [90m# AppMenu.verifyMobileApplicationSupport(String)[0m
+
+
+# Created at 2020-01-21T14:39:46.160
+Unexpected IOException with stream:     [36mAnd [0m[36mUser verifies Application Support Number is [0m[36m[1m1.218.788.3000[0m        [90m# AppMenu.verifyApplicationSupportNumber(String)[0m
+
+
+# Created at 2020-01-21T14:39:46.160
+Unexpected IOException with stream:     [36mAnd [0m[36mUsername "[0m[36m[1mTEST 1 TEST 1[0m[36m" should be displayed with profile picture[0m [90m# AppMenu.verifyUsernameDisplayedOnAppMenu(String)[0m
+
+
+# Created at 2020-01-21T14:39:46.193
+Unexpected IOException with stream: 
+
+
+# Created at 2020-01-21T14:39:46.193
+Unexpected IOException with stream: [31mFailed scenarios:[0m
+
+
+# Created at 2020-01-21T14:39:46.193
+Unexpected IOException with stream: [31mApp_Menu.feature:7 [0m
+
+# Created at 2020-01-21T14:39:46.194
+Unexpected IOException with stream: # Scenario: App menus should be in given sequence
+
+
+# Created at 2020-01-21T14:39:46.195
+Unexpected IOException with stream: 
+
+
+# Created at 2020-01-21T14:39:46.195
+Unexpected IOException with stream: 1
+
+# Created at 2020-01-21T14:39:46.195
+Unexpected IOException with stream:  Scenarios (
+
+# Created at 2020-01-21T14:39:46.196
+Unexpected IOException with stream: [31m1 failed[0m
+
+# Created at 2020-01-21T14:39:46.197
+Unexpected IOException with stream: )
+
+
+# Created at 2020-01-21T14:39:46.197
+Unexpected IOException with stream: 7
+
+# Created at 2020-01-21T14:39:46.198
+Unexpected IOException with stream:  Steps (
+
+# Created at 2020-01-21T14:39:46.199
+Unexpected IOException with stream: [31m1 failed[0m
+
+# Created at 2020-01-21T14:39:46.199
+Unexpected IOException with stream: , 
+
+# Created at 2020-01-21T14:39:46.200
+Unexpected IOException with stream: [36m6 skipped[0m
+
+# Created at 2020-01-21T14:39:46.200
+Unexpected IOException with stream: )
+
+
+# Created at 2020-01-21T14:39:46.201
+Unexpected IOException with stream: 0m
+
+# Created at 2020-01-21T14:39:46.202
+Unexpected IOException with stream: 30.011s
+
+
+# Created at 2020-01-21T14:39:46.202
+Unexpected IOException with stream: 
+
+
+# Created at 2020-01-21T14:39:46.204
+Unexpected IOException with stream: org.openqa.selenium.WebDriverException: An unknown server-side error occurred while processing the command. Original error: Could not proxy command to remote server. Original error: Error: socket hang up
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'NLPULTP4603920', ip: '172.16.6.66', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_181'
+Driver info: io.appium.java_client.android.AndroidDriver
+Capabilities {app: C:\Users\aarti.kulkarni\ecl..., appPackage: com.cirrusaircraft.connecte..., automationName: UiAutomator2, databaseEnabled: false, desired: {app: C:\Users\aarti.kulkarni\ecl..., automationName: UiAutomator2, deviceName: Android Device, disableWindowAnimation: true, platformName: android, waitForIdleTimeout: 2000}, deviceApiLevel: 26, deviceManufacturer: samsung, deviceModel: SM-G930F, deviceName: ce061606e4d9ce3e02, deviceScreenDensity: 480, deviceScreenSize: 1080x1920, deviceUDID: ce061606e4d9ce3e02, disableWindowAnimation: true, javascriptEnabled: true, locationContextEnabled: false, networkConnectionEnabled: true, pixelRatio: 3, platform: LINUX, platformName: Android, platformVersion: 8.0.0, statBarHeight: 72, takesScreenshot: true, viewportRect: {height: 1848, left: 0, top: 72, width: 1080}, waitForIdleTimeout: 2000, warnings: {}, webStorageEnabled: false}
+Session ID: 1c90aab7-2a08-4577-8338-d06f160a0ea7
+*** Element info: {Using=xpath, value=//android.widget.EditText[@resource-id='loginPage:loginForm:username']}
+
+# Created at 2020-01-21T14:39:46.204
+Unexpected IOException with stream: 
+
+
+# Created at 2020-01-21T14:39:46.205
+Unexpected IOException with stream: 	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+
+# Created at 2020-01-21T14:39:46.206
+Unexpected IOException with stream: 
+
+
+# Created at 2020-01-21T14:39:46.206
+Unexpected IOException with stream: 	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+
+# Created at 2020-01-21T14:39:46.207
+Unexpected IOException with stream: 
+
+
+# Created at 2020-01-21T14:39:46.207
+Unexpected IOException with stream: 	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+
+# Created at 2020-01-21T14:39:46.208
+Unexpected IOException with stream: 
+
+
+# Created at 2020-01-21T14:39:46.209
+Unexpected IOException with stream: 	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+
+# Created at 2020-01-21T14:39:46.210
+Unexpected IOException with stream: 
+
+
+# Created at 2020-01-21T14:39:46.210
+Unexpected IOException with stream: 	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+
+# Created at 2020-01-21T14:39:46.211
+Unexpected IOException with stream: 
+
+
+# Created at 2020-01-21T14:39:46.212
+Unexpected IOException with stream: 	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+
+# Created at 2020-01-21T14:39:46.212
+Unexpected IOException with stream: 
+
+
+# Created at 2020-01-21T14:39:46.213
+Unexpected IOException with stream: 	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+
+# Created at 2020-01-21T14:39:46.214
+Unexpected IOException with stream: 
+
+
+# Created at 2020-01-21T14:39:46.214
+Unexpected IOException with stream: 	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+
+# Created at 2020-01-21T14:39:46.215
+Unexpected IOException with stream: 
+
+
+# Created at 2020-01-21T14:39:46.215
+Unexpected IOException with stream: 	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:239)
+
+# Created at 2020-01-21T14:39:46.216
+Unexpected IOException with stream: 
+
+
+# Created at 2020-01-21T14:39:46.217
+Unexpected IOException with stream: 	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+
+# Created at 2020-01-21T14:39:46.217
+Unexpected IOException with stream: 
+
+
+# Created at 2020-01-21T14:39:46.218
+Unexpected IOException with stream: 	at io.appium.java_client.DefaultGenericMobileDriver.execute(DefaultGenericMobileDriver.java:42)
+
+# Created at 2020-01-21T14:39:46.219
+Unexpected IOException with stream: 
+
+
+# Created at 2020-01-21T14:39:46.219
+Unexpected IOException with stream: 	at io.appium.java_client.AppiumDriver.execute(AppiumDriver.java:1)
+
+# Created at 2020-01-21T14:39:46.220
+Unexpected IOException with stream: 
+
+
+# Created at 2020-01-21T14:39:46.220
+Unexpected IOException with stream: 	at io.appium.java_client.android.AndroidDriver.execute(AndroidDriver.java:1)
+
+# Created at 2020-01-21T14:39:46.221
+Unexpected IOException with stream: 
+
+
+# Created at 2020-01-21T14:39:46.221
+Unexpected IOException with stream: 	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
+
+# Created at 2020-01-21T14:39:46.222
+Unexpected IOException with stream: 
+
+
+# Created at 2020-01-21T14:39:46.222
+Unexpected IOException with stream: 	at io.appium.java_client.DefaultGenericMobileDriver.findElement(DefaultGenericMobileDriver.java:62)
+
+# Created at 2020-01-21T14:39:46.223
+Unexpected IOException with stream: 
+
+
+# Created at 2020-01-21T14:39:46.223
+Unexpected IOException with stream: 	at io.appium.java_client.AppiumDriver.findElement(AppiumDriver.java:1)
+
+# Created at 2020-01-21T14:39:46.224
+Unexpected IOException with stream: 
+
+
+# Created at 2020-01-21T14:39:46.224
+Unexpected IOException with stream: 	at io.appium.java_client.android.AndroidDriver.findElement(AndroidDriver.java:1)
+
+# Created at 2020-01-21T14:39:46.224
+Unexpected IOException with stream: 
+
+
+# Created at 2020-01-21T14:39:46.225
+Unexpected IOException with stream: 	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)
+
+# Created at 2020-01-21T14:39:46.225
+Unexpected IOException with stream: 
+
+
+# Created at 2020-01-21T14:39:46.226
+Unexpected IOException with stream: 	at io.appium.java_client.DefaultGenericMobileDriver.findElementByXPath(DefaultGenericMobileDriver.java:152)
+
+# Created at 2020-01-21T14:39:46.226
+Unexpected IOException with stream: 
+
+
+# Created at 2020-01-21T14:39:46.227
+Unexpected IOException with stream: 	at io.appium.java_client.AppiumDriver.findElementByXPath(AppiumDriver.java:1)
+
+# Created at 2020-01-21T14:39:46.227
+Unexpected IOException with stream: 
+
+
+# Created at 2020-01-21T14:39:46.228
+Unexpected IOException with stream: 	at io.appium.java_client.android.AndroidDriver.findElementByXPath(AndroidDriver.java:1)
+
+# Created at 2020-01-21T14:39:46.228
+Unexpected IOException with stream: 
+
+
+# Created at 2020-01-21T14:39:46.229
+Unexpected IOException with stream: 	at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
+
+# Created at 2020-01-21T14:39:46.229
+Unexpected IOException with stream: 
+
+
+# Created at 2020-01-21T14:39:46.229
+Unexpected IOException with stream: 	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+
+# Created at 2020-01-21T14:39:46.230
+Unexpected IOException with stream: 
+
+
+# Created at 2020-01-21T14:39:46.230
+Unexpected IOException with stream: 	at io.appium.java_client.DefaultGenericMobileDriver.findElement(DefaultGenericMobileDriver.java:58)
+
+# Created at 2020-01-21T14:39:46.230
+Unexpected IOException with stream: 
+
+
+# Created at 2020-01-21T14:39:46.231
+Unexpected IOException with stream: 	at io.appium.java_client.AppiumDriver.findElement(AppiumDriver.java:1)
+
+# Created at 2020-01-21T14:39:46.231
+Unexpected IOException with stream: 
+
+
+# Created at 2020-01-21T14:39:46.232
+Unexpected IOException with stream: 	at io.appium.java_client.android.AndroidDriver.findElement(AndroidDriver.java:1)
+
+# Created at 2020-01-21T14:39:46.232
+Unexpected IOException with stream: 
+
+
+# Created at 2020-01-21T14:39:46.232
+Unexpected IOException with stream: 	at TestBase.TestBase.findMobileElement(TestBase.java:127)
+
+# Created at 2020-01-21T14:39:46.233
+Unexpected IOException with stream: 
+
+
+# Created at 2020-01-21T14:39:46.233
+Unexpected IOException with stream: 	at stepDefinition.Login.verifyUserIsOnLoginPage(Login.java:156)
+
+# Created at 2020-01-21T14:39:46.234
+Unexpected IOException with stream: 
+
+
+# Created at 2020-01-21T14:39:46.234
+Unexpected IOException with stream: 	at stepDefinition.Login.userLoggedIn(Login.java:200)
+
+# Created at 2020-01-21T14:39:46.234
+Unexpected IOException with stream: 
+
+
+# Created at 2020-01-21T14:39:46.235
+Unexpected IOException with stream: 	at ?.Given User is already logged in(App_Menu.feature:4)
+
+# Created at 2020-01-21T14:39:46.235
+Unexpected IOException with stream: 
+
+
+# Created at 2020-01-21T14:39:46.236
+Unexpected IOException with stream: 
+
+
+# Created at 2020-01-21T14:39:46.303
+Unexpected IOException: 2,1,org.apache.maven.surefire.testng.TestNGDirectoryTestSuite,cucumberOptions.TestRunner,null,null,null
+
+

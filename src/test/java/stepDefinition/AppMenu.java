@@ -32,12 +32,13 @@ public class AppMenu extends TestBase {
 		}
 		
     
-	 @Then("^User verifies Mobile Application Support Number is (.+)$")
+	 @And("^User verifies Mobile Application Support Number is (.+)$")
 	    public void verifyMobileApplicationSupport(String mobileappsupportnumber) throws Throwable {
 	        
 		String actual_MobileSupportNumber= findMobileElement("xpath", "MobileApplicationSupport").getText();
 		log.info(actual_MobileSupportNumber);
-		Assert.assertTrue("", actual_MobileSupportNumber.equals(mobileappsupportnumber));
+		Assert.assertTrue("Verify Mobile Application support is done", actual_MobileSupportNumber.equals(mobileappsupportnumber));
+	
 		 
 	    }
 	 @And("^User verifies Application Support Number is (.+)$")
@@ -45,7 +46,7 @@ public class AppMenu extends TestBase {
 	        String actualApplicationSupportNumber = findMobileElement("xpath", "AppSuportNumber").getText();
 	        //log.info(actualApplicationSupportNumber);
 	        Assert.assertTrue("", actualApplicationSupportNumber.equals(applicationsupportnumber));
-	        findMobileElement("xpath", "HamburgerMenu").click();
+	        //findMobileElement("xpath", "HamburgerMenu").click();
 	        }
 	 @And("^Username \"([^\"]*)\" should be displayed with profile picture$")
 	    public void verifyUsernameDisplayedOnAppMenu(String username) throws Throwable {

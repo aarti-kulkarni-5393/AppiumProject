@@ -192,8 +192,7 @@ public void userIsLoggedIn(String username, String password) throws Throwable {
 public void userLoggedIn() throws Throwable {
    
 try {
-    	
-    	findMobileElement("xpath", "MyHangarlabel").isDisplayed();
+	    findMobileElement("xpath", "MyHangarlabel").isDisplayed();
     	log.info("User is already logged in");
     }catch(Exception e){
     	

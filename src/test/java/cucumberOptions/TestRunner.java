@@ -17,7 +17,7 @@ import cucumber.api.junit.Cucumber;
 /*
  * "junit:json:target/cucks.xml","json:target/cucumber"
  *  dryRun=true,monochrome=true,
- *  //@Appmenu,@MyProfile,@MyHangar
+ *  //@Appmenu,@MyProfile,@MyHangar //@MyProfile,@MyHangar,@PDR
  *  Logs = appium.cmd --log-timestamp --log C:\Users\aarti.kulkarni\eclipse-workspace\Cirrus\Logs
  */
 

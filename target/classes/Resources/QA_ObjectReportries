@@ -29,6 +29,7 @@ YesButton=//android.widget.Button[@text='YES']
 CancelButton=//android.widget.Button[@text='CANCEL']
 ##### My hangar ###############
 MyHangarMenu= //android.widget.CheckedTextView[@text='My Hangar']
+MyHangarLabelByText=//android.widget.TextView[@text='MY HANGAR']
 Progressbar=//android.widget.ProgressBar
 Logout=//android.widget.CheckedTextView[@text='Log Out']
 ConfirmLogoutButton=//android.widget.Button[@text='CONFIRM']

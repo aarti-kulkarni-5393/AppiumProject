@@ -1,0 +1,50 @@
+# Created at 2020-01-21T16:16:34.298
+TestSet has not finished before stream error has appeared >> initializing exit by non-null configuration: DEFAULT
+java.io.EOFException
+	at java.io.DataInputStream.readInt(DataInputStream.java:392)
+	at org.apache.maven.surefire.booter.MasterProcessCommand.decode(MasterProcessCommand.java:115)
+	at org.apache.maven.surefire.booter.CommandReader$CommandRunnable.run(CommandReader.java:390)
+	at java.lang.Thread.run(Thread.java:748)
+
+
+# Created at 2020-01-21T16:17:03.891
+Unexpected IOException with stream: Jan 21, 2020 4:17:03 PM io.appium.java_client.remote.AppiumCommandExecutor$1 lambda$0
+INFO: Detected dialect: W3C
+
+
+# Created at 2020-01-21T16:17:05.598
+Unexpected IOException with stream: [main] INFO TestBase.AppiumSetUp - ------------->Start of scenario App menus should be in given sequence <------------
+
+
+# Created at 2020-01-21T16:17:05.598
+Unexpected IOException with stream: [main] INFO TestBase.AppiumSetUp - Running appium server if its not running
+
+
+# Created at 2020-01-21T16:17:05.599
+Unexpected IOException with stream: [main] INFO TestBase.AppiumSetUp - service is already running
+
+
+# Created at 2020-01-21T16:17:05.599
+Unexpected IOException with stream: [main] INFO TestBase.AppiumSetUp - Appium server is already Running on port  4723
+
+
+# Created at 2020-01-21T16:17:05.724
+Unexpected IOException with stream: [main] INFO TestBase.TestBase - Return property File path
+
+
+# Created at 2020-01-21T16:17:05.736
+Unexpected IOException with stream: [main] INFO TestBase.TestBase - Return property File path
+
+
+# Created at 2020-01-21T16:17:05.737
+Unexpected IOException with stream: [main] INFO stepDefinition.Login - Getting Element MyHangarlabel of Type xpath
+
+
+# Created at 2020-01-21T16:17:08.945
+Unexpected IOException with stream: [main] INFO stepDefinition.Login - waiting for 30  seconds
+
+
+# Created at 2020-01-21T16:17:08.952
+Unexpected IOException with stream: [main] INFO stepDefinition.Login - Getting Element Username of Type xpath
+
+

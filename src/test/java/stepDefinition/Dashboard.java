@@ -62,16 +62,23 @@ public class Dashboard extends TestBase{
 		
 		//if(driver.findElement(By.xpath("//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp:id/label_my_hanger']")).isDisplayed())
 		try {
-			if(driver.findElement(By.xpath("//android.widget.TextView[@text='MY HANGAR']")).isDisplayed())
+			if(findMobileElement("xpath", "MyHangarLabelByText").isDisplayed())
 			{
 				log.info("user is logged in and now on my hangar screen");
 				
 			}
 		}catch (Exception e) {
 			// User navigates to My hangar page
-			findMobileElement("xpath", "HamburgerMenu").click();
-			findMobileElement("xpath", "MyHangarMenu").click();
-			wait.waitForGivenTime(30);
+			try {
+				
+			findMobileElement("className", "BackButton").isDisplayed();
+			findMobileElement("className", "BackButton").click();
+			}catch(Exception e1){
+				findMobileElement("xpath", "HamburgerMenu").click();
+				findMobileElement("xpath", "MyHangarMenu").click();
+				wait.waitForGivenTime(30);
+			}
+			
 		}
 		
 	}
@@ -377,6 +384,9 @@ public class Dashboard extends TestBase{
     	
     	log.info(String.valueOf(isPDRSuccess));
     	verifyResultsOnDashboard(isPDRSuccess,oldData);
+		findMobileElement("className","BackButton").click();
+		//findMobileElement("", ObjectName)
+    	
     }
     
     public void verifyResultsOnDashboard(boolean isSuccess,HashMap<String, String> oData)
@@ -501,7 +511,7 @@ public class Dashboard extends TestBase{
                 		log.info("status updated");
                 		if(actualStatusCount==3)
                 		{
-                			System.out.println(currentStatus.contains("Aircraft status updated"));
+                			//System.out.println(currentStatus.contains("Aircraft status updated"));
                 			actualStatusCount++;
                 			break;
                 		}
@@ -512,7 +522,8 @@ public class Dashboard extends TestBase{
                 	
                 }
 			}catch(Exception e2) {
-				log.info("Either PDR request is completed or failed");
+				log.info("PDR status bar is not visible anymore");
+							
 			}
 			
 			if(actualStatusCount==expectedStatusCount)
@@ -521,9 +532,20 @@ public class Dashboard extends TestBase{
 				log.info("Will check results");
 				isPDRRequestDone=true;
 			}else {
+				try {
 				findMobileElement("xpath", "FailedPDRStatusBar").isDisplayed();
 				findMobileElement("xpath", "ClosePDFailedBar").click();
 				isPDRRequestDone=false;
+				}catch(Exception e)
+				{
+					// if in any case update pdt status bar did not catch or get or disappear soon then 
+					// as well PDRDONE should be set to true as PDR request is completed succesfully
+					log.info("PDR status count differ ,Might be PDR status bar with vitals updated did not appear or disappeared ");
+//					if(findMobileElement("xpath", "LastSyncDataTime").getText().equalsIgnoreCase(findMobileElement("xpath", "LastSyncDataTime").getText()))
+//						isPDRRequestDone=false;
+					
+					isPDRRequestDone=true;
+				}
 			}
 					
 		

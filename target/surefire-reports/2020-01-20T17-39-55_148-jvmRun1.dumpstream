@@ -1,0 +1,55 @@
+# Created at 2020-01-20T17:40:07.017
+TestSet has not finished before stream error has appeared >> initializing exit by non-null configuration: DEFAULT
+java.io.EOFException
+	at java.io.DataInputStream.readInt(DataInputStream.java:392)
+	at org.apache.maven.surefire.booter.MasterProcessCommand.decode(MasterProcessCommand.java:115)
+	at org.apache.maven.surefire.booter.CommandReader$CommandRunnable.run(CommandReader.java:390)
+	at java.lang.Thread.run(Thread.java:748)
+
+
+# Created at 2020-01-20T17:40:44.990
+Unexpected IOException with stream: [main] INFO TestBase.PropertyReader - Exception occured  while creating driver:::::Unable to create a new remote session. Please check the server log for more details. Original error: An unknown server-side error occurred while processing the command. Original error: Cannot start the 'com.cirrusaircraft.connectedapp.qa' application. Visit https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/android/activity-startup.md for troubleshooting. Original error: Error executing adbExec. Original error: 'Command 'C\:\\Users\\aarti.kulkarni\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb.exe -P 5037 -s ce061606e4d9ce3e02 shell am start -W -n com.cirrusaircraft.connectedapp.qa/com.cirrusaircraft.connectedapp.view.splash.SplashActivity -S -a android.intent.action.MAIN -c android.intent.category.LAUNCHER -f 0x10200000' timed out after 20000ms'. Try to increase the 20000ms adb execution timeout represented by 'adbExecTimeout' capability
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'NLPULTP4603920', ip: '172.16.6.66', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_181'
+Driver info: driver.version: AndroidDriver
+remote stacktrace: UnknownError: An unknown server-side error occurred while processing the command. Original error: Cannot start the 'com.cirrusaircraft.connectedapp.qa' application. Visit https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/android/activity-startup.md for troubleshooting. Original error: Error executing adbExec. Original error: 'Command 'C\:\\Users\\aarti.kulkarni\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb.exe -P 5037 -s ce061606e4d9ce3e02 shell am start -W -n com.cirrusaircraft.connectedapp.qa/com.cirrusaircraft.connectedapp.view.splash.SplashActivity -S -a android.intent.action.MAIN -c android.intent.category.LAUNCHER -f 0x10200000' timed out after 20000ms'. Try to increase the 20000ms adb execution timeout represented by 'adbExecTimeout' capability
+    at getResponseForW3CError (C:\Users\aarti.kulkarni\AppData\Roaming\npm\node_modules\appium\node_modules\appium-base-driver\lib\protocol\errors.js:826:9)
+    at asyncHandler (C:\Users\aarti.kulkarni\AppData\Roaming\npm\node_modules\appium\node_modules\appium-base-driver\lib\protocol\protocol.js:447:37)
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'NLPULTP4603920', ip: '172.16.6.66', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_181'
+Driver info: driver.version: AndroidDriver
+
+
+# Created at 2020-01-20T17:40:44.995
+Unexpected IOException with stream: [main] INFO TestBase.PropertyReader - Unable to create a new remote session. Please check the server log for more details. Original error: An unknown server-side error occurred while processing the command. Original error: Cannot start the 'com.cirrusaircraft.connectedapp.qa' application. Visit https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/android/activity-startup.md for troubleshooting. Original error: Error executing adbExec. Original error: 'Command 'C\:\\Users\\aarti.kulkarni\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb.exe -P 5037 -s ce061606e4d9ce3e02 shell am start -W -n com.cirrusaircraft.connectedapp.qa/com.cirrusaircraft.connectedapp.view.splash.SplashActivity -S -a android.intent.action.MAIN -c android.intent.category.LAUNCHER -f 0x10200000' timed out after 20000ms'. Try to increase the 20000ms adb execution timeout represented by 'adbExecTimeout' capability
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'NLPULTP4603920', ip: '172.16.6.66', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_181'
+Driver info: driver.version: AndroidDriver
+remote stacktrace: UnknownError: An unknown server-side error occurred while processing the command. Original error: Cannot start the 'com.cirrusaircraft.connectedapp.qa' application. Visit https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/android/activity-startup.md for troubleshooting. Original error: Error executing adbExec. Original error: 'Command 'C\:\\Users\\aarti.kulkarni\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb.exe -P 5037 -s ce061606e4d9ce3e02 shell am start -W -n com.cirrusaircraft.connectedapp.qa/com.cirrusaircraft.connectedapp.view.splash.SplashActivity -S -a android.intent.action.MAIN -c android.intent.category.LAUNCHER -f 0x10200000' timed out after 20000ms'. Try to increase the 20000ms adb execution timeout represented by 'adbExecTimeout' capability
+    at getResponseForW3CError (C:\Users\aarti.kulkarni\AppData\Roaming\npm\node_modules\appium\node_modules\appium-base-driver\lib\protocol\errors.js:826:9)
+    at asyncHandler (C:\Users\aarti.kulkarni\AppData\Roaming\npm\node_modules\appium\node_modules\appium-base-driver\lib\protocol\protocol.js:447:37)
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'NLPULTP4603920', ip: '172.16.6.66', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_181'
+Driver info: driver.version: AndroidDriver
+
+
+# Created at 2020-01-20T17:40:47.741
+Unexpected IOException with stream: [main] INFO TestBase.AppiumSetUp - ------------->Start of scenario User request for latest aircraft vital <------------
+
+
+# Created at 2020-01-20T17:40:47.741
+Unexpected IOException with stream: [main] INFO TestBase.AppiumSetUp - Running appium server if its not running
+
+
+# Created at 2020-01-20T17:40:47.743
+Unexpected IOException with stream: [main] INFO TestBase.AppiumSetUp - service is already running
+
+
+# Created at 2020-01-20T17:40:47.744
+Unexpected IOException with stream: [main] INFO TestBase.AppiumSetUp - Appium server is already Running on port  4723
+
+
+# Created at 2020-01-20T17:40:48.084
+Unexpected IOException with stream: [main] INFO TestBase.TestBase - Return property File path
+
+
