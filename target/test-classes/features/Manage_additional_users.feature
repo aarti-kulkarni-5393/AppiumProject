@@ -26,7 +26,7 @@ Scenario Outline: User verifies user got an access to invited aircraft
  
  @Inviteuser
  Scenario Outline:User deletes invited user for given aircraft
-Given User is already logged in to application by username conaircraftnhltestuser1@gmail.com ,Password cirrus005
+ Given User is already logged in to application by username nihilentqa15@gmail.com ,Password cirrus12
  Given User is on My Hangar screen
  Given User is on Manage users screen
  When User deletes invited user <Email> access for aircarft <AircraftTailNumber>

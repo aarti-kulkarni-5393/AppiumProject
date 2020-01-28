@@ -1,0 +1,584 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 17951232500,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hooks.setUp(Scenario)"
+            }
+          }
+        ],
+        "line": 14,
+        "name": "User logged in to cirrus application with valid credentails",
+        "description": "",
+        "id": "login-to-cirrus-connected-mobile-app;user-logged-in-to-cirrus-application-with-valid-credentails;;2",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 12963646200,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "User is on sign in page",
+            "match": {
+              "location": "Login.verifyUserIsOnLoginPage()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 2103784200,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "User enter username conaircraftnhltestuser1@gmail.com and password cirrus005",
+            "match": {
+              "arguments": [
+                {
+                  "val": "conaircraftnhltestuser1@gmail.com",
+                  "offset": 20
+                },
+                {
+                  "val": "cirrus005",
+                  "offset": 67
+                }
+              ],
+              "location": "Login.enterUserNameAndPassword(String,String)"
+            },
+            "matchedColumns": [
+              0,
+              1
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 796561700,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "User submit the details",
+            "match": {
+              "location": "Login.userSubmitDetails()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 60568812200,
+              "status": "passed"
+            },
+            "line": 9,
+            "name": "User should \"be succesfully\" logged in to application",
+            "match": {
+              "arguments": [
+                {
+                  "val": "be succesfully",
+                  "offset": 13
+                }
+              ],
+              "location": "Login.verifyUSerLoggedIn(String)"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "line": 4,
+            "name": "@Login"
+          }
+        ]
+      }
+    ],
+    "name": "Login to Cirrus Connected Mobile App",
+    "description": "",
+    "id": "login-to-cirrus-connected-mobile-app",
+    "keyword": "Feature",
+    "uri": "Login.feature"
+  },
+  {
+    "line": 1,
+    "elements": [
+      {
+        "line": 3,
+        "name": "User log out to verify invite user flow",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 10331765000,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "User log out from the application",
+            "match": {
+              "location": "Dashboard.logout()"
+            },
+            "keyword": "When "
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 712500,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hooks.setUp(Scenario)"
+            }
+          }
+        ],
+        "line": 16,
+        "name": "User invites existing user with new aircraft access",
+        "description": "",
+        "id": "manage-additional-users;user-invites-existing-user-with-new-aircraft-access;;2",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 94025586000,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "User is already logged in to application by username nihilentqa15@gmail.com ,Password cirrus12",
+            "match": {
+              "arguments": [
+                {
+                  "val": "nihilentqa15@gmail.com",
+                  "offset": 53
+                },
+                {
+                  "val": "cirrus12",
+                  "offset": 86
+                }
+              ],
+              "location": "Login.userIsLoggedIn(String,String)"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 444299400,
+              "status": "passed"
+            },
+            "line": 9,
+            "name": "User is on My Hangar screen",
+            "match": {
+              "location": "Dashboard.verifyUserIsOnMyHangarScreen()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 44264126400,
+              "status": "passed"
+            },
+            "line": 10,
+            "name": "User is on Manage users screen",
+            "match": {
+              "location": "InviteUsers.userisOnManageUSerPage()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 80300192500,
+              "status": "passed"
+            },
+            "line": 11,
+            "name": "User submit details of additional user firstname test ,lastname test,emailnihilentautomation@gmail.com,airctaftFHA762OIW",
+            "match": {
+              "arguments": [
+                {
+                  "val": "test",
+                  "offset": 49
+                },
+                {
+                  "val": "test",
+                  "offset": 64
+                },
+                {
+                  "val": "nihilentautomation@gmail.com",
+                  "offset": 74
+                },
+                {
+                  "val": "FHA762OIW",
+                  "offset": 111
+                }
+              ],
+              "location": "InviteUsers.submitAdditionalUserDetails(String,String,String,String)"
+            },
+            "matchedColumns": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 66505931200,
+              "status": "passed"
+            },
+            "comments": [
+              {
+                "line": 12,
+                "value": "#Then User verifies user is succesfully invited[Email Verification]"
+              }
+            ],
+            "line": 13,
+            "name": "Invited user nihilentautomation@gmail.com is present under list of invited users for Aircraft FHA762OIW",
+            "match": {
+              "arguments": [
+                {
+                  "val": "nihilentautomation@gmail.com",
+                  "offset": 13
+                },
+                {
+                  "val": "FHA762OIW",
+                  "offset": 94
+                }
+              ],
+              "location": "InviteUsers.verfyUserIsList(String,String)"
+            },
+            "matchedColumns": [
+              2,
+              3
+            ],
+            "keyword": "And "
+          }
+        ],
+        "tags": [
+          {
+            "line": 6,
+            "name": "@Inviteuser"
+          }
+        ]
+      },
+      {
+        "line": 3,
+        "name": "User log out to verify invite user flow",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 11935648400,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "User log out from the application",
+            "match": {
+              "location": "Dashboard.logout()"
+            },
+            "keyword": "When "
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 268300,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hooks.setUp(Scenario)"
+            }
+          }
+        ],
+        "line": 25,
+        "name": "User verifies user got an access to invited aircraft",
+        "description": "",
+        "id": "manage-additional-users;user-verifies-user-got-an-access-to-invited-aircraft;;2",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 93924855300,
+              "status": "passed"
+            },
+            "line": 20,
+            "name": "User is already logged in to application by username nihilentautomation@gmail.com ,Password cirrus001",
+            "match": {
+              "arguments": [
+                {
+                  "val": "nihilentautomation@gmail.com",
+                  "offset": 53
+                },
+                {
+                  "val": "cirrus001",
+                  "offset": 92
+                }
+              ],
+              "location": "Login.userIsLoggedIn(String,String)"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 275067100,
+              "status": "passed"
+            },
+            "line": 21,
+            "name": "User is on My Hangar screen",
+            "match": {
+              "location": "Dashboard.verifyUserIsOnMyHangarScreen()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 1856648400,
+              "status": "passed"
+            },
+            "line": 22,
+            "name": "User has access to FHA762OIW aircraft",
+            "match": {
+              "arguments": [
+                {
+                  "val": "FHA762OIW",
+                  "offset": 19
+                }
+              ],
+              "location": "Dashboard.checkAccessToAircraft(String)"
+            },
+            "matchedColumns": [
+              0
+            ],
+            "keyword": "When "
+          }
+        ],
+        "tags": [
+          {
+            "line": 18,
+            "name": "@Inviteuser"
+          }
+        ]
+      },
+      {
+        "line": 3,
+        "name": "User log out to verify invite user flow",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 9655016800,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "User log out from the application",
+            "match": {
+              "location": "Dashboard.logout()"
+            },
+            "keyword": "When "
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 487100,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hooks.setUp(Scenario)"
+            }
+          }
+        ],
+        "line": 36,
+        "name": "User deletes invited user for given aircraft",
+        "description": "",
+        "id": "manage-additional-users;user-deletes-invited-user-for-given-aircraft;;2",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 92645212200,
+              "status": "passed"
+            },
+            "line": 29,
+            "name": "User is already logged in to application by username nihilentqa15@gmail.com ,Password cirrus12",
+            "match": {
+              "arguments": [
+                {
+                  "val": "nihilentqa15@gmail.com",
+                  "offset": 53
+                },
+                {
+                  "val": "cirrus12",
+                  "offset": 86
+                }
+              ],
+              "location": "Login.userIsLoggedIn(String,String)"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 619825500,
+              "status": "passed"
+            },
+            "line": 30,
+            "name": "User is on My Hangar screen",
+            "match": {
+              "location": "Dashboard.verifyUserIsOnMyHangarScreen()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 44423996000,
+              "status": "passed"
+            },
+            "line": 31,
+            "name": "User is on Manage users screen",
+            "match": {
+              "location": "InviteUsers.userisOnManageUSerPage()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 120017587000,
+              "status": "passed"
+            },
+            "line": 32,
+            "name": "User deletes invited user nihilentautomation@gmail.com access for aircarft FHA762OIW",
+            "match": {
+              "arguments": [
+                {
+                  "val": "nihilentautomation@gmail.com",
+                  "offset": 26
+                },
+                {
+                  "val": "FHA762OIW",
+                  "offset": 75
+                }
+              ],
+              "location": "InviteUsers.deleteUserFromList(String,String)"
+            },
+            "matchedColumns": [
+              0,
+              1
+            ],
+            "keyword": "When "
+          }
+        ],
+        "tags": [
+          {
+            "line": 27,
+            "name": "@Inviteuser"
+          }
+        ]
+      },
+      {
+        "line": 3,
+        "name": "User log out to verify invite user flow",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 10807432100,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "User log out from the application",
+            "match": {
+              "location": "Dashboard.logout()"
+            },
+            "keyword": "When "
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 248700,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hooks.setUp(Scenario)"
+            }
+          }
+        ],
+        "line": 45,
+        "name": "User verifies access is removed for invited aircraft",
+        "description": "",
+        "id": "manage-additional-users;user-verifies-access-is-removed-for-invited-aircraft;;2",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 93047257400,
+              "status": "passed"
+            },
+            "line": 40,
+            "name": "User is already logged in to application by username nihilentautomation@gmail.com ,Password cirrus001",
+            "match": {
+              "arguments": [
+                {
+                  "val": "nihilentautomation@gmail.com",
+                  "offset": 53
+                },
+                {
+                  "val": "cirrus001",
+                  "offset": 92
+                }
+              ],
+              "location": "Login.userIsLoggedIn(String,String)"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 198337300,
+              "status": "passed"
+            },
+            "line": 41,
+            "name": "User is on My Hangar screen",
+            "match": {
+              "location": "Dashboard.verifyUserIsOnMyHangarScreen()"
+            },
+            "keyword": "Given "
+          }
+        ],
+        "tags": [
+          {
+            "line": 38,
+            "name": "@Inviteuser"
+          }
+        ]
+      }
+    ],
+    "name": "Manage Additional Users",
+    "description": "",
+    "id": "manage-additional-users",
+    "keyword": "Feature",
+    "uri": "Manage_additional_users.feature"
+  }
+]

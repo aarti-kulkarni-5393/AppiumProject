@@ -19,6 +19,9 @@ AircarftSelectionDropDown=//android.widget.Spinner[@resource-id='com.cirrusaircr
 SendInviteButton=//android.widget.Button[@resource-id='com.cirrusaircraft.connectedapp.qa:id/send_invite']
 SelectedAircraftText=//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.qa:id/item_text']
 list_Aircrafts=//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.qa:id/item_text']
+AircraftsOnManageUserScreen=//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.qa:id/tv_aircraft_name_label']
+List_ExpandButtons=//android.widget.ImageView[@resource-id='com.cirrusaircraft.connectedapp.qa:id/iv_expand']
+ListOfDisplayedInvitedUserCount=//android.widget.LinearLayout[@resource-id='com.cirrusaircraft.connectedapp.qa:id/ll_view_aircraft_user']
 #### common Properties###########
 HamburgerMenu=//android.widget.ImageView[@resource-id='com.cirrusaircraft.connectedapp.qa:id/bottom_sheet_hamburger']
 TestUsersCount=//android.widget.LinearLayout[@resource-id='com.cirrusaircraft.connectedapp.qa:id/ll_view_aircraft_user']

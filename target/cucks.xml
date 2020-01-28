@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsuite failures="0" name="cucumber.runtime.formatter.JUnitFormatter" skipped="0" tests="5" time="869.664537">
+<testcase classname="Login to Cirrus Connected Mobile App" name="User logged in to cirrus application with valid credentails" time="94.384037">
+<system-out><![CDATA[Given User is on sign in page...............................................passed
+When User enter username conaircraftnhltestuser1@gmail.com and password cirrus005.passed
+And User submit the details.................................................passed
+Then User should "be succesfully" logged in to application..................passed
+]]></system-out>
+</testcase>
+<testcase classname="Manage Additional Users" name="User invites existing user with new aircraft access" time="295.872613">
+<system-out><![CDATA[When User log out from the application......................................passed
+Given User is already logged in to application by username nihilentqa15@gmail.com ,Password cirrus12.passed
+Given User is on My Hangar screen...........................................passed
+Given User is on Manage users screen........................................passed
+When User submit details of additional user firstname test ,lastname test,emailnihilentautomation@gmail.com,airctaftFHA762OIW.passed
+And Invited user nihilentautomation@gmail.com is present under list of invited users for Aircraft FHA762OIW.passed
+]]></system-out>
+</testcase>
+<testcase classname="Manage Additional Users" name="User verifies user got an access to invited aircraft" time="107.992487">
+<system-out><![CDATA[When User log out from the application......................................passed
+Given User is already logged in to application by username nihilentautomation@gmail.com ,Password cirrus001.passed
+Given User is on My Hangar screen...........................................passed
+When User has access to FHA762OIW aircraft..................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Manage Additional Users" name="User deletes invited user for given aircraft" time="267.362125">
+<system-out><![CDATA[When User log out from the application......................................passed
+Given User is already logged in to application by username nihilentqa15@gmail.com ,Password cirrus12.passed
+Given User is on My Hangar screen...........................................passed
+Given User is on Manage users screen........................................passed
+When User deletes invited user nihilentautomation@gmail.com access for aircarft FHA762OIW.passed
+]]></system-out>
+</testcase>
+<testcase classname="Manage Additional Users" name="User verifies access is removed for invited aircraft" time="104.053275">
+<system-out><![CDATA[When User log out from the application......................................passed
+Given User is already logged in to application by username nihilentautomation@gmail.com ,Password cirrus001.passed
+Given User is on My Hangar screen...........................................passed
+]]></system-out>
+</testcase>
+</testsuite>
