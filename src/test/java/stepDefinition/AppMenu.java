@@ -29,6 +29,7 @@ public class AppMenu extends TestBase {
 			{
 				log.info("App menu opened");
 			}
+
 		}
 		
     

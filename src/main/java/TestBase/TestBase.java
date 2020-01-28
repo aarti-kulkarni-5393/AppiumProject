@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Properties;
 
 import org.apache.log4j.Logger;
@@ -143,8 +144,17 @@ public class TestBase {
     	
     	
     }
+    
+    
 
-	
+	public List<AndroidElement> findMobileElements(String objectName)
+	{
+		
+		String ObjectNameValue= objectRepository.getObjectPropertyValue(objectName);
+		return driver.findElements(By.xpath(ObjectNameValue));
+		
+		
+	}
 
 
 boolean isElementPresent;

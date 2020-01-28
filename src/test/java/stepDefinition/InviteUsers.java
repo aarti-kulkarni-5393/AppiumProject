@@ -72,7 +72,7 @@ public class InviteUsers extends TestBase {
 				// TODO: handle exception
 				 if(findMobileElement("xpath", "AddNewUser").isDisplayed())
 				 {
-					 System.out.println("unable to click on Add user");
+					 log.info("unable to click on Add user");
 					 findMobileElement("xpath", "AddNewUser").click();
 					 findMobileElement("xpath", "FirstName").sendKeys(firstname);
 					 findMobileElement("xpath", "LastName").sendKeys(lastname);
@@ -87,14 +87,15 @@ public class InviteUsers extends TestBase {
 			 {
 				 // now select aircrat from list
 				 
-				 List<AndroidElement> list_airctaft = driver.findElements(By.xpath("//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.uat:id/item_text']"));
+				 List<AndroidElement> list_airctaft = findMobileElements("list_Aircrafts");
+						 //driver.findElements(By.xpath("list_Aircrafts"));
 				 System.out.println(list_airctaft.size());
 				 for (AndroidElement aircraft : list_airctaft) {
-					 System.out.println(aircraft.getText());
-					 System.out.println(aircraft.getText().equals(airctaftName));
+					log.info(aircraft.getText());
+					log.info(String.valueOf(aircraft.getText().equals(airctaftName)));
 					 if(aircraft.getText().equalsIgnoreCase(airctaftName))
 					 {
-						 System.out.println(aircraft.getText());
+						log.info(aircraft.getText());
 						 aircraft.click();
 						 break;
 					 }
@@ -113,7 +114,7 @@ public class InviteUsers extends TestBase {
 //				 {
 //					 driver.findElement(By.xpath("//android.widget.TextView[@text='Aircraft Co-Owner']")).click();
 //				 }
-	        	 System.out.println("Aircarft is selected");
+	        	 log.info("Aircarft is selected");
 	         }}catch (Exception e) {
 				// TODO: handle exception
 	        	 System.out.println("aircarft is not selected");
@@ -374,8 +375,9 @@ public class InviteUsers extends TestBase {
     	  String AircraftName=aircraftName;
     	  int openingBracketIndex=AircraftName.indexOf("(");
           int closingBracketIndex=AircraftName.indexOf(")");
+          log.info(String.valueOf(openingBracketIndex));
           String Total_count = AircraftName.substring(openingBracketIndex+1, closingBracketIndex);
-          System.out.println(Total_count);
+          log.info(Total_count);
           return Integer.valueOf(Total_count);
       }
 	  }

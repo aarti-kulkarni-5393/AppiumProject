@@ -1,0 +1,166 @@
+# Created at 2020-01-23T10:29:13.426
+TestSet has not finished before stream error has appeared >> initializing exit by non-null configuration: DEFAULT
+java.io.EOFException
+	at java.io.DataInputStream.readInt(DataInputStream.java:392)
+	at org.apache.maven.surefire.booter.MasterProcessCommand.decode(MasterProcessCommand.java:115)
+	at org.apache.maven.surefire.booter.CommandReader$CommandRunnable.run(CommandReader.java:390)
+	at java.lang.Thread.run(Thread.java:748)
+
+
+# Created at 2020-01-23T10:29:14.787
+Unexpected IOException with stream: 
+
+
+# Created at 2020-01-23T10:29:14.788
+Unexpected IOException with stream:   Background: User log out to verify invite user flow [90m# Manage_additional_users.feature:3[0m
+
+
+# Created at 2020-01-23T10:29:14.789
+Unexpected IOException with stream:     [31mWhen [0m[31mUser log out from the application[0m            [90m# Dashboard.logout()[0m
+
+
+# Created at 2020-01-23T10:29:14.792
+Unexpected IOException with stream:       [31morg.openqa.selenium.NoSuchElementException: An element could not be located on the page using the given search parameters.
+      For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+      Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+      System info: host: 'NLPULTP4603920', ip: '172.16.6.66', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_181'
+      Driver info: io.appium.java_client.android.AndroidDriver
+      Capabilities {app: C:\Users\aarti.kulkarni\ecl..., appPackage: com.cirrusaircraft.connecte..., automationName: UiAutomator2, databaseEnabled: false, desired: {app: C:\Users\aarti.kulkarni\ecl..., automationName: UiAutomator2, deviceName: Android Device, disableWindowAnimation: true, platformName: android, waitForIdleTimeout: 2000}, deviceApiLevel: 28, deviceManufacturer: samsung, deviceModel: SM-A750F, deviceName: 32002d34c0e59501, deviceScreenDensity: 420, deviceScreenSize: 1080x2220, deviceUDID: 32002d34c0e59501, disableWindowAnimation: true, javascriptEnabled: true, locationContextEnabled: false, networkConnectionEnabled: true, pixelRatio: 2.625, platform: LINUX, platformName: Android, platformVersion: 9, statBarHeight: 63, takesScreenshot: true, viewportRect: {height: 2031, left: 0, top: 63, width: 1080}, waitForIdleTimeout: 2000, warnings: {}, webStorageEnabled: false}
+      Session ID: a353c1ee-f061-4cef-9d63-75fc688342db
+      *** Element info: {Using=xpath, value=//android.widget.ImageView[@resource-id='com.cirrusaircraft.connectedapp.qa:id/bottom_sheet_hamburger']}
+      	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+      	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+      	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+      	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+      	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+      	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+      	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+      	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+      	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:239)
+      	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+      	at io.appium.java_client.DefaultGenericMobileDriver.execute(DefaultGenericMobileDriver.java:42)
+      	at io.appium.java_client.AppiumDriver.execute(AppiumDriver.java:1)
+      	at io.appium.java_client.android.AndroidDriver.execute(AndroidDriver.java:1)
+      	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
+      	at io.appium.java_client.DefaultGenericMobileDriver.findElement(DefaultGenericMobileDriver.java:62)
+      	at io.appium.java_client.AppiumDriver.findElement(AppiumDriver.java:1)
+      	at io.appium.java_client.android.AndroidDriver.findElement(AndroidDriver.java:1)
+      	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)
+      	at io.appium.java_client.DefaultGenericMobileDriver.findElementByXPath(DefaultGenericMobileDriver.java:152)
+      	at io.appium.java_client.AppiumDriver.findElementByXPath(AppiumDriver.java:1)
+      	at io.appium.java_client.android.AndroidDriver.findElementByXPath(AndroidDriver.java:1)
+      	at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
+      	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+      	at io.appium.java_client.DefaultGenericMobileDriver.findElement(DefaultGenericMobileDriver.java:58)
+      	at io.appium.java_client.AppiumDriver.findElement(AppiumDriver.java:1)
+      	at io.appium.java_client.android.AndroidDriver.findElement(AndroidDriver.java:1)
+      	at TestBase.TestBase.findMobileElement(TestBase.java:127)
+      	at stepDefinition.Dashboard.logout(Dashboard.java:94)
+      	at ?.When User log out from the application(Manage_additional_users.feature:4)
+      [0m
+
+
+# Created at 2020-01-23T10:29:14.801
+Unexpected IOException with stream: 
+
+
+# Created at 2020-01-23T10:29:14.802
+Unexpected IOException with stream:   @Inviteuser
+
+
+# Created at 2020-01-23T10:29:14.803
+Unexpected IOException with stream:   Scenario Outline: User verifies user got an access to invited aircraft                                        [90m# Manage_additional_users.feature:25[0m
+
+
+# Created at 2020-01-23T10:29:14.804
+Unexpected IOException with stream:     [36mGiven [0m[36mUser is already logged in to application by username [0m[36m[1mnihilentautomation@gmail.com[0m[36m ,Password [0m[36m[1mcirrus001[0m [90m# Login.userIsLoggedIn(String,String)[0m
+
+
+# Created at 2020-01-23T10:29:14.805
+Unexpected IOException with stream:     [36mGiven [0m[36mUser is on My Hangar screen[0m                                                                           [90m# Dashboard.verifyUserIsOnMyHangarScreen()[0m
+
+
+# Created at 2020-01-23T10:29:14.805
+Unexpected IOException with stream:     [36mWhen [0m[36mUser has access to [0m[36m[1mN105PG[0m[36m aircraft[0m                                                                     [90m# Dashboard.checkAccessToAircraft(String)[0m
+
+
+# Created at 2020-01-23T10:29:14.808
+Unexpected IOException with stream: 
+
+
+# Created at 2020-01-23T10:29:14.808
+Unexpected IOException with stream:   @Inviteuser
+
+
+# Created at 2020-01-23T10:29:14.809
+Unexpected IOException with stream:   Scenario Outline: User deletes invited user for given aircraft                                                     [90m# Manage_additional_users.feature:28[0m
+
+
+# Created at 2020-01-23T10:29:14.810
+Unexpected IOException with stream:     [36mGiven [0m[36mUser is already logged in to application by username conaircraftnhltestuser1@gmail.com ,Password cirrus005[0m
+
+
+# Created at 2020-01-23T10:29:14.810
+Unexpected IOException with stream:     [36mGiven [0m[36mUser is on My Hangar screen[0m
+
+
+# Created at 2020-01-23T10:29:14.811
+Unexpected IOException with stream:     [36mGiven [0m[36mUser is on Manage users screen[0m
+
+
+# Created at 2020-01-23T10:29:14.812
+Unexpected IOException with stream:     [36mWhen [0m[36mUser deletes invited user <Email> access for aircarft <AircraftTailNumber>[0m
+
+
+# Created at 2020-01-23T10:29:14.813
+Unexpected IOException with stream: 
+
+
+# Created at 2020-01-23T10:29:14.814
+Unexpected IOException with stream:     Examples: 
+
+
+# Created at 2020-01-23T10:29:14.817
+Unexpected IOException with stream: [main] INFO TestBase.TestBase - Return property File path
+
+
+# Created at 2020-01-23T10:29:14.818
+Unexpected IOException with stream: [main] INFO TestBase.AppiumSetUp - ------------->Start of scenario User deletes invited user for given aircraft <------------
+
+
+# Created at 2020-01-23T10:29:14.819
+Unexpected IOException with stream: [main] INFO TestBase.AppiumSetUp - Running appium server if its not running
+
+
+# Created at 2020-01-23T10:29:14.820
+Unexpected IOException with stream: [main] INFO TestBase.AppiumSetUp - service is already running
+
+
+# Created at 2020-01-23T10:29:14.821
+Unexpected IOException with stream: [main] INFO TestBase.AppiumSetUp - Appium server is already Running on port  4723
+
+
+# Created at 2020-01-23T10:29:14.824
+Unexpected IOException with stream: [main] INFO TestBase.TestBase - Return property File path
+
+
+# Created at 2020-01-23T10:29:14.825
+Unexpected IOException with stream: [main] INFO TestBase.TestBase - Return property File path
+
+
+# Created at 2020-01-23T10:29:14.826
+Unexpected IOException with stream: [main] INFO TestBase.TestBase - Return property File path
+
+
+# Created at 2020-01-23T10:29:14.827
+Unexpected IOException with stream: [main] INFO TestBase.TestBase - Return property File path
+
+
+# Created at 2020-01-23T10:29:14.828
+Unexpected IOException with stream: [main] INFO stepDefinition.Dashboard - waiting for 30  seconds
+
+
+# Created at 2020-01-23T10:29:14.835
+Unexpected IOException with stream: [main] INFO stepDefinition.Dashboard - Getting Element HamburgerMenu of Type xpath
+
+

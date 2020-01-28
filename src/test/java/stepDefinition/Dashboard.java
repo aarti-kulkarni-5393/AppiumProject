@@ -384,8 +384,8 @@ public class Dashboard extends TestBase{
     	
     	log.info(String.valueOf(isPDRSuccess));
     	verifyResultsOnDashboard(isPDRSuccess,oldData);
-		findMobileElement("className","BackButton").click();
-		//findMobileElement("", ObjectName)
+		findMobileElement("xpath","BackButtonOnDashboard").click();
+		
     	
     }
     
@@ -446,6 +446,8 @@ public class Dashboard extends TestBase{
     
     public boolean refreshDashboard() throws Throwable {
     	//Using swipe functionality to refresh
+    	String beforeRefreshLastSyncDate=findMobileElement("xpath", "LastSyncDataTime").getText();
+    	System.out.println(beforeRefreshLastSyncDate);
     	log.info("pulling down to refresh");
     	new Scrolling().swipe(findMobileElement("xpath", "AircraftStatus"), findMobileElement("xpath", "Hours"));
     	try {
@@ -526,13 +528,13 @@ public class Dashboard extends TestBase{
 							
 			}
 			
-			if(actualStatusCount==expectedStatusCount)
+			if(actualStatusCount==expectedStatusCount && !beforeRefreshLastSyncDate.equalsIgnoreCase(findMobileElement("xpath", "LastSyncDataTime").getText()))		
 			{
 				log.info("All status are displayed");
 				log.info("Will check results");
 				isPDRRequestDone=true;
 			}else {
-				try {
+				try {	
 				findMobileElement("xpath", "FailedPDRStatusBar").isDisplayed();
 				findMobileElement("xpath", "ClosePDFailedBar").click();
 				isPDRRequestDone=false;
@@ -541,8 +543,8 @@ public class Dashboard extends TestBase{
 					// if in any case update pdt status bar did not catch or get or disappear soon then 
 					// as well PDRDONE should be set to true as PDR request is completed succesfully
 					log.info("PDR status count differ ,Might be PDR status bar with vitals updated did not appear or disappeared ");
-//					if(findMobileElement("xpath", "LastSyncDataTime").getText().equalsIgnoreCase(findMobileElement("xpath", "LastSyncDataTime").getText()))
-//						isPDRRequestDone=false;
+					if(beforeRefreshLastSyncDate.equalsIgnoreCase(findMobileElement("xpath", "LastSyncDataTime").getText()))
+						isPDRRequestDone=false;
 					
 					isPDRRequestDone=true;
 				}

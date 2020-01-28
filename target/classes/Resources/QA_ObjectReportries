@@ -18,6 +18,7 @@ Email=//android.widget.EditText[@resource-id='com.cirrusaircraft.connectedapp.qa
 AircarftSelectionDropDown=//android.widget.Spinner[@resource-id='com.cirrusaircraft.connectedapp.qa:id/aircraft_spinner']
 SendInviteButton=//android.widget.Button[@resource-id='com.cirrusaircraft.connectedapp.qa:id/send_invite']
 SelectedAircraftText=//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.qa:id/item_text']
+list_Aircrafts=//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.qa:id/item_text']
 #### common Properties###########
 HamburgerMenu=//android.widget.ImageView[@resource-id='com.cirrusaircraft.connectedapp.qa:id/bottom_sheet_hamburger']
 TestUsersCount=//android.widget.LinearLayout[@resource-id='com.cirrusaircraft.connectedapp.qa:id/ll_view_aircraft_user']
@@ -64,6 +65,7 @@ EditPhoto=//android.widget.TextView[@text='Edit Photo']
 cropDone=//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.qa:id/menu_crop']
 RemovePictureValidations=//android.widget.ImageView
 BackButton=android.widget.ImageButton
+BackButtonOnDashboard=//android.widget.ImageView[@resource-id='com.cirrusaircraft.connectedapp.qa:id/ic_back_button']
 ########## Dashboard ###############
 OilTempLabel=//android.widget.TextView[@text='OIL TEMP']
 TailNumber=//android.widget.TextView[@resource-id='com.cirrusaircraft.connectedapp.qa:id/aircraft_tail_number']
