@@ -40,7 +40,7 @@ Then Dahsboard should be updated with latest aircraft vitals
  | Aircraft tail Number  |
  | FHA762OIU             |
  
- @MyHangar
+
 Scenario Outline: User see all assigned aircraft on my hangar screen
 Given User is on My Hangar screen
 When User has access to <Aircraft tail Number> aircraft

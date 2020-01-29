@@ -1,9 +1,15 @@
 package TestBase;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.ServerSocket;
 
+import javax.swing.plaf.synth.SynthStyle;
+
+import gherkin.deps.net.iharder.Base64.OutputStream;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 
 public class AppiumSetUp {
@@ -15,7 +21,7 @@ public class AppiumSetUp {
 		log = new Log(AppiumSetUp.class);
 	}
 	
-	public  void startAppiumServer(int port)
+	public  void startAppiumServer(int port) throws FileNotFoundException
 	{
 		if(!checkIfServerIsRunnning(port))
 		{
@@ -26,7 +32,7 @@ public class AppiumSetUp {
 		}
 	}
 	
-	public  void startService()
+	public  void startService() throws FileNotFoundException
 	{
 		
 		/*
@@ -46,9 +52,9 @@ public class AppiumSetUp {
 	
 	
 	
-	public  void stopService()
+	public  void stopService() throws FileNotFoundException
 	{
-
+		getAppiumServerLog();
 		service.stop();
 		log.info("Appium server service stopped");
 		
@@ -56,6 +62,12 @@ public class AppiumSetUp {
 	public String serverStdOut()
 	{
 		return service.getStdOut();
+	}
+	
+	public void getAppiumServerLog() throws FileNotFoundException
+	{
+		FileOutputStream output = new FileOutputStream(System.getProperty("user.dir"));
+		service.sendOutputTo(output);
 	}
 public  boolean checkIfServerIsRunnning(int port) {
 		

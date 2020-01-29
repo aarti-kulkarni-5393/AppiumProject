@@ -1,5 +1,6 @@
 package stepDefinition;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
 
@@ -40,7 +41,7 @@ public class Hooks extends TestBase{
 	 * it will run after all scenarios
 	 */
 	@After("@EndTest")
-	public void tearDown(Scenario scenario)
+	public void tearDown(Scenario scenario) throws FileNotFoundException
 	{
 		log.info("------------->End of scenario "+scenario.getName()+" <------------");
 		appium.stopService();

@@ -10,7 +10,7 @@ import cucumber.api.junit.Cucumber;
 @RunWith(Cucumber.class)
 @CucumberOptions(
 		features = "C:\\Users\\aarti.kulkarni\\eclipse-workspace\\Cirrus\\src\\test\\java\\features",
-		glue="stepDefinition",tags= {"@Appmenu,@MyProfile,@MyHangar,@PDR,@Inviteuser"},
+		glue="stepDefinition",tags= {"@Login,@EndTest"},
 		plugin= {"pretty","html:target/cucumber","json:target/cucumber1","junit:target/cucks.xml"}
 	)
 /*
@@ -18,6 +18,7 @@ import cucumber.api.junit.Cucumber;
  *  dryRun=true,monochrome=true,
  *  //@Appmenu,@MyProfile,@MyHangar //@MyProfile,@MyHangar,@PDR
  *  Logs = appium.cmd --log-timestamp --log C:\Users\aarti.kulkarni\eclipse-workspace\Cirrus\Logs
+ * Finla tags = @Appmenu,@MyProfile,@MyHangar,@PDR,@Inviteuser
  */
 
 public class TestRunner {

@@ -1,40 +1,62 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite failures="0" name="cucumber.runtime.formatter.JUnitFormatter" skipped="0" tests="5" time="869.664537">
-<testcase classname="Login to Cirrus Connected Mobile App" name="User logged in to cirrus application with valid credentails" time="94.384037">
+<testsuite failures="1" name="cucumber.runtime.formatter.JUnitFormatter" skipped="0" tests="2" time="101.235781">
+<testcase classname="Login to Cirrus Connected Mobile App" name="User logged in to cirrus application with valid credentails" time="90.833541">
 <system-out><![CDATA[Given User is on sign in page...............................................passed
 When User enter username conaircraftnhltestuser1@gmail.com and password cirrus005.passed
 And User submit the details.................................................passed
 Then User should "be succesfully" logged in to application..................passed
 ]]></system-out>
 </testcase>
-<testcase classname="Manage Additional Users" name="User invites existing user with new aircraft access" time="295.872613">
-<system-out><![CDATA[When User log out from the application......................................passed
-Given User is already logged in to application by username nihilentqa15@gmail.com ,Password cirrus12.passed
-Given User is on My Hangar screen...........................................passed
-Given User is on Manage users screen........................................passed
-When User submit details of additional user firstname test ,lastname test,emailnihilentautomation@gmail.com,airctaftFHA762OIW.passed
-And Invited user nihilentautomation@gmail.com is present under list of invited users for Aircraft FHA762OIW.passed
-]]></system-out>
-</testcase>
-<testcase classname="Manage Additional Users" name="User verifies user got an access to invited aircraft" time="107.992487">
-<system-out><![CDATA[When User log out from the application......................................passed
-Given User is already logged in to application by username nihilentautomation@gmail.com ,Password cirrus001.passed
-Given User is on My Hangar screen...........................................passed
-When User has access to FHA762OIW aircraft..................................passed
-]]></system-out>
-</testcase>
-<testcase classname="Manage Additional Users" name="User deletes invited user for given aircraft" time="267.362125">
-<system-out><![CDATA[When User log out from the application......................................passed
-Given User is already logged in to application by username nihilentqa15@gmail.com ,Password cirrus12.passed
-Given User is on My Hangar screen...........................................passed
-Given User is on Manage users screen........................................passed
-When User deletes invited user nihilentautomation@gmail.com access for aircarft FHA762OIW.passed
-]]></system-out>
-</testcase>
-<testcase classname="Manage Additional Users" name="User verifies access is removed for invited aircraft" time="104.053275">
-<system-out><![CDATA[When User log out from the application......................................passed
-Given User is already logged in to application by username nihilentautomation@gmail.com ,Password cirrus001.passed
-Given User is on My Hangar screen...........................................passed
-]]></system-out>
+<testcase classname="Logout application" name="User logged out the application" time="10.40224">
+<failure message="java.io.FileNotFoundException: C:\Users\aarti.kulkarni\eclipse-workspace\Cirrus (Access is denied)&#13;&#10;&#9;at java.io.FileOutputStream.open0(Native Method)&#13;&#10;&#9;at java.io.FileOutputStream.open(FileOutputStream.java:270)&#13;&#10;&#9;at java.io.FileOutputStream.&lt;init&gt;(FileOutputStream.java:213)&#13;&#10;&#9;at java.io.FileOutputStream.&lt;init&gt;(FileOutputStream.java:101)&#13;&#10;&#9;at TestBase.AppiumSetUp.getAppiumServerLog(AppiumSetUp.java:69)&#13;&#10;&#9;at TestBase.AppiumSetUp.stopService(AppiumSetUp.java:57)&#13;&#10;&#9;at stepDefinition.Hooks.tearDown(Hooks.java:47)&#13;&#10;&#9;at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)&#13;&#10;&#9;at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)&#13;&#10;&#9;at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)&#13;&#10;&#9;at java.lang.reflect.Method.invoke(Method.java:498)&#13;&#10;&#9;at cucumber.runtime.Utils$1.call(Utils.java:40)&#13;&#10;&#9;at cucumber.runtime.Timeout.timeout(Timeout.java:16)&#13;&#10;&#9;at cucumber.runtime.Utils.invoke(Utils.java:34)&#13;&#10;&#9;at cucumber.runtime.java.JavaHookDefinition.execute(JavaHookDefinition.java:60)&#13;&#10;&#9;at cucumber.runtime.Runtime.runHookIfTagsMatch(Runtime.java:224)&#13;&#10;&#9;at cucumber.runtime.Runtime.runHooks(Runtime.java:212)&#13;&#10;&#9;at cucumber.runtime.Runtime.runAfterHooks(Runtime.java:206)&#13;&#10;&#9;at cucumber.runtime.model.CucumberScenario.run(CucumberScenario.java:46)&#13;&#10;&#9;at cucumber.runtime.junit.ExecutionUnitRunner.run(ExecutionUnitRunner.java:102)&#13;&#10;&#9;at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:63)&#13;&#10;&#9;at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:18)&#13;&#10;&#9;at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)&#13;&#10;&#9;at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)&#13;&#10;&#9;at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)&#13;&#10;&#9;at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)&#13;&#10;&#9;at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)&#13;&#10;&#9;at org.junit.runners.ParentRunner.run(ParentRunner.java:363)&#13;&#10;&#9;at cucumber.runtime.junit.FeatureRunner.run(FeatureRunner.java:70)&#13;&#10;&#9;at cucumber.api.junit.Cucumber.runChild(Cucumber.java:95)&#13;&#10;&#9;at cucumber.api.junit.Cucumber.runChild(Cucumber.java:38)&#13;&#10;&#9;at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)&#13;&#10;&#9;at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)&#13;&#10;&#9;at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)&#13;&#10;&#9;at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)&#13;&#10;&#9;at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)&#13;&#10;&#9;at org.junit.runners.ParentRunner.run(ParentRunner.java:363)&#13;&#10;&#9;at cucumber.api.junit.Cucumber.run(Cucumber.java:100)&#13;&#10;&#9;at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)&#13;&#10;&#9;at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)&#13;&#10;&#9;at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)&#13;&#10;&#9;at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:678)&#13;&#10;&#9;at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)&#13;&#10;&#9;at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)&#13;&#10;"><![CDATA[Given User is on My Hangar screen...........................................passed
+When User log out from the application......................................passed
+
+StackTrace:
+java.io.FileNotFoundException: C:\Users\aarti.kulkarni\eclipse-workspace\Cirrus (Access is denied)
+	at java.io.FileOutputStream.open0(Native Method)
+	at java.io.FileOutputStream.open(FileOutputStream.java:270)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:213)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:101)
+	at TestBase.AppiumSetUp.getAppiumServerLog(AppiumSetUp.java:69)
+	at TestBase.AppiumSetUp.stopService(AppiumSetUp.java:57)
+	at stepDefinition.Hooks.tearDown(Hooks.java:47)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at cucumber.runtime.Utils$1.call(Utils.java:40)
+	at cucumber.runtime.Timeout.timeout(Timeout.java:16)
+	at cucumber.runtime.Utils.invoke(Utils.java:34)
+	at cucumber.runtime.java.JavaHookDefinition.execute(JavaHookDefinition.java:60)
+	at cucumber.runtime.Runtime.runHookIfTagsMatch(Runtime.java:224)
+	at cucumber.runtime.Runtime.runHooks(Runtime.java:212)
+	at cucumber.runtime.Runtime.runAfterHooks(Runtime.java:206)
+	at cucumber.runtime.model.CucumberScenario.run(CucumberScenario.java:46)
+	at cucumber.runtime.junit.ExecutionUnitRunner.run(ExecutionUnitRunner.java:102)
+	at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:63)
+	at cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:18)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at cucumber.runtime.junit.FeatureRunner.run(FeatureRunner.java:70)
+	at cucumber.api.junit.Cucumber.runChild(Cucumber.java:95)
+	at cucumber.api.junit.Cucumber.runChild(Cucumber.java:38)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at cucumber.api.junit.Cucumber.run(Cucumber.java:100)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:678)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)
+]]></failure>
 </testcase>
 </testsuite>

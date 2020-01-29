@@ -3,7 +3,7 @@ Feature: Manage Additional Users
 Background: User log out to verify invite user flow
 When User log out from the application
 
- @Inviteuser
+
 Scenario Outline:User invites existing user with new aircraft access
  Given User is already logged in to application by username nihilentqa15@gmail.com ,Password cirrus12
  Given User is on My Hangar screen
@@ -15,7 +15,7 @@ Scenario Outline:User invites existing user with new aircraft access
  | firstName | LastName | Email                             | AircraftTailNumber |
  | test      | test     | nihilentautomation@gmail.com      | FHA762OIW            |
  
- @Inviteuser
+
 Scenario Outline: User verifies user got an access to invited aircraft
  Given User is already logged in to application by username nihilentautomation@gmail.com ,Password cirrus001
  Given User is on My Hangar screen
@@ -24,7 +24,7 @@ Scenario Outline: User verifies user got an access to invited aircraft
  | Aircraft tail Number |
  |  FHA762OIW           |
  
- @Inviteuser
+
  Scenario Outline:User deletes invited user for given aircraft
  Given User is already logged in to application by username nihilentqa15@gmail.com ,Password cirrus12
  Given User is on My Hangar screen
@@ -35,7 +35,7 @@ Scenario Outline: User verifies user got an access to invited aircraft
  | Email                        |  AircraftTailNumber |
  | nihilentautomation@gmail.com |  FHA762OIW             |
  
- @Inviteuser
+
  Scenario Outline: User verifies access is removed for invited aircraft
  Given User is already logged in to application by username nihilentautomation@gmail.com ,Password cirrus001
  Given User is on My Hangar screen

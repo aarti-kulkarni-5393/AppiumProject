@@ -1,7 +1,9 @@
 Feature: Verify forgot your password functionality
 
+Background: User log out to verify invite user flow
+When User log out from the application
 
-
+@ResetPassword
 Scenario Outline: User reset password using forgot your password link 
 Given User is on sign in page
 And User navigate to forgot your password page
@@ -12,7 +14,7 @@ Examples:
  | Username |
  | nihilentuat8@gmail.com         |
  
-@ResetPassword
+
  Scenario Outline: User set password through email
  Given user <username> and <password> received an email to reset password
  
